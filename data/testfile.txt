@@ -1,3 +1,5 @@
 This is a test file to show you what it looks like to commit files to the repository.
 
 As you can see, the GitHub client shows you what changes have happened since the file was last committed.
+
+Some new stuff.
