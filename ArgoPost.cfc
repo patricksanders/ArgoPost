@@ -1,7 +1,5 @@
 <cfcomponent>
-	<cfset theDS="argopost_db"> <!--- Name the datasource --->
-	
-	<!--- An example of a select query returning the result of the query --->
+	<cfset theDS="SEproject_argopost"> <!--- Name the datasource --->
 	
 	<cffunction name="getSearchResults" access="remote" returnFormat="plain" returnType="string">
 		<cfquery name="getUsers" dataSource="#theDS#">
@@ -9,7 +7,6 @@
 			from Users 
 			where Users.name = "Ryan"
 		</cfquery>
-		
 		
 		<cfset rtnStruct = structNew() >
 		
@@ -21,8 +18,6 @@
 		</cfloop>
 		
 		<cfreturn rtnStruct >
-
-		
 	</cffunction>
 	
 	<cffunction name="test" access="remote" returnFormat="JSON" returnType="struct">
