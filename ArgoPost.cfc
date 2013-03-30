@@ -1,5 +1,5 @@
 <cfcomponent>
-	<cfset theDS="SEproject_argopost"> <!--- Name the datasource --->
+	<cfset theDS="seproject_argopost"> <!--- Name the datasource --->
 	
 	<cffunction name="getSearchResults" access="remote" returnFormat="plain" returnType="string">
 		<cfquery name="getUsers" dataSource="#theDS#">
