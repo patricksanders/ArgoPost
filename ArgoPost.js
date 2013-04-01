@@ -5,13 +5,14 @@ function getSearchResults()
 	console.log("post getSearchResults() call");
 	
 	$.ajax({
-		type: "GET", url: "http://argopost.localhost/ArgoPostT3.cfc?wsdl&method=getSearchResults",
+		type: "GET", url: "http://localhost:8888/argopost/argopost.cfc?wsdl&method=getSearchResults",
 		contentType: "application/json; charset=utf-8",
 		dataType: "json",
 		success: getSearchResultsSuccess,
 		failure: getSearchResultsFail
 	 });
 	
+	console.log("done getSearchResults() call");
 }
 
 // Handles a successful response from the getSearchResults function

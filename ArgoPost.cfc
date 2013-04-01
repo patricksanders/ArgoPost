@@ -1,19 +1,18 @@
 <cfcomponent>
 	<cfset theDS="seproject_argopost"> <!--- Name the datasource --->
 	
-	<cffunction name="getSearchResults" access="remote" returnFormat="plain" returnType="string">
+	<cffunction name="getSearchResults" access="remote" returnFormat="JSON" returnType="struct">
 		<cfquery name="getUsers" dataSource="#theDS#">
 			select * 
-			from Users 
-			where Users.name = "Ryan"
+			from Posts 
 		</cfquery>
 		
 		<cfset rtnStruct = structNew() >
 		
 		<cfloop query="getUsers">
-			<cfset rtnStruct[id] = structNew()  >
+			<cfset rtnStruct[PostId] = structNew()  >
 			<cfloop list="#getUsers.columnList#" index="thisColumn">
-				<cfset rtnStruct[Id][thisColumn] = evaluate(thisColumn) >
+				<cfset rtnStruct[PostId][thisColumn] = evaluate(thisColumn) >
 			</cfloop>
 		</cfloop>
 		
