@@ -5,15 +5,17 @@
 </head>
 <body>
 	<cftry>
-		<cfinvoke webservice="http://dev.argopost.com/ArgoPost.cfc?wsdl" method="getSearchResults" returnVariable="return">
-		</cfinvoke>
-		
+		<cfinvoke  
+    		webservice="argopost.cfc?wsdl" 
+    		method="getSearchResults"
+    		returnvariable="return"> 
+		<cfinvokeargument name="s" value="work"/> 
+		</cfinvoke> 
 		<cfdump var="#return#">
 	<cfcatch type="any">
 		<h2>ERROR:</h2>
 		<cfdump var="#cfcatch#">
 	</cfcatch>
-	
 	</cftry>
 </body>
 </html>
