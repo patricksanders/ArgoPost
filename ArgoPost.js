@@ -22,7 +22,7 @@ function showArgoPostDetails(argoPostItem)
         }
         else 
         {
-        	$(this).hide(600);
+        	$(this).hide(400);
     	}
     });
 }
