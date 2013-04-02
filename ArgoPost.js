@@ -1,5 +1,4 @@
-
-// Sends a query to the getSearchResults method in tier 2
+// Sends a query to the getArgoPostSearchResults method in tier 2
 function getArgoPostSearchResults()
 {
 	$.ajax({
@@ -12,15 +11,13 @@ function getArgoPostSearchResults()
 	 });
 }
 
-// Shows the details of an ArgoPost
+// Shows/hides the details of an ArgoPost
 function showArgoPostDetails(argoPostItem)
 {
 	$('.posts').each(function(index) 
 	{
-		console.log("iterating");
     	if ($(this).attr("id") == $(argoPostItem).attr("id")) 
     	{
-        	console.log("found you");
         	$(this).show(200);
         }
         else 
@@ -33,8 +30,6 @@ function showArgoPostDetails(argoPostItem)
 // Handles a successful response from the getSearchResults function
 function getArgoPostSearchResultsSuccess(response)
 {
-	console.log("BACK");
-	
 	var count = 0;
 	$.each(response, function(k, v) { count++; });
 	
@@ -92,8 +87,6 @@ function getArgoPostSearchResultsSuccess(response)
 // Handles a failed response from the getSearchResults function
 function getArgoPostSearchResultsFail(response)
 {
-	console.log("FAIL");
-	
 	$('#searchResults').empty();
 		
 	$('#searchResults').append("<span style='font: italic 12px Helvetica, Arial, sans-serif;color:gray;'>There was an error with the server.</span><br />");
