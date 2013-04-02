@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- ArgoPost UI Team Version 1.0 -->
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>ArgoPost</title>
+	<link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+<body>
+	<div id="header">
+		<div>
+			<a href="index.html" id="logo"><img src="images/logo.png" alt="logo"></a>
+			<ul>
+				<li>
+					<a href="index.html">Home</a>
+				</li>
+				<li>
+					<a href="subscriptions.html">Subscriptions</a>
+				</li>
+				<li class="selected">
+					<a href="createpost.html">Create Post</a>
+				</li>
+				<li>
+					<a href="">Logout</a>
+				</li>
+
+			</ul>
+		</div>
+	</div>
+	<div id="body">
+	
+	<div class="page_title">
+		<h2>Create Post</h2>		
+	</div>
+
+	<form name="aPost" action="" method="post">
+	<table>
+		<tr>
+			<td>
+				Forum:
+			</td>
+			<td>
+				<select name="sForum">
+					<option>Select a forum</option>
+					<option value="forumId">Forum Title</option>
+				</select>
+			</td>
+		</tr>
+	
+		<tr>
+			<td>
+				Thread:
+			</td>
+			<td>
+				<select name="sThread">
+					<option>Select a thread</option>
+					<option value="threadId">Thread Title</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Title:
+			</td>
+			<td>
+				<input type="text" name="title">
+			</td>
+		</tr>		
+
+		<tr>
+			<td>
+				Description: 
+			</td>
+			<td>
+				<textarea name="description" rows="4" cols="50">Enter post content here.</textarea> 
+			</td>
+		</tr>
+	
+		<tr>
+			<td>
+				<button type="submit">Create</button> 
+			</td>
+		</tr>
+	</table>
+	</form>
+	
+	</div>
+	<div id="footer">
+		<div>
+			<p>
+				&#169; UWF ArgoPost. All Rights Reserved.
+			</p>
+			<div class="connect">
+
+
+					<a href="index.html">Home</a>
+
+					<a href="subscriptions.html">Subscriptions</a>
+
+					<a href="createpost.html">Create Post</a>
+
+					<a href="">Logout</a>
+	
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>
