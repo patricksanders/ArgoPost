@@ -17,20 +17,21 @@
 		<cfset expDate = Now() + 30>
 		<cfset expDate = DateFormat(expDate, "mm/dd/yyyy")>
 		
-		<!--- Get the argonet username of the current user and query the db for the UserID of this user --->
-		<cfinvoke component="User" method="getUserID" returnvariable="currentUserName">
+		<!--- Get the argonet username of the current user and query the db for the UserID of this user
+		<cfinvoke component="User" method="getUserName" returnvariable="currentUserName">
 		</cfinvoke>		
 		<cfset currentUID = "#currentUserName#">
+		 --->
 		
-		<cfset currentUID = getUserID("#currentUID#")>
+		<cfset currentUID = getUserID(#session.userName#)>
 		
 		<!--- Get the thread ID of this thread --->
-		<cfset threadID = getThreadID("#threadTitle#")>
+		<cfset threadID = getThreadID("#arguments.threadTitle#")>
 		
 		<!--- Add the post to the database--->
 		<cfquery name="addPostQuery" datasource="#dataSource#" >		
 			insert into Posts (UserID, ThreadID, LastModifiedDate, EnteredDate, ExpirationDate, Title, Description)
-			values('#currentUID#', '#threadID#', '#dateLastModified#', '#postDate#', '#expDate#', '#postTitle#', '#postContent#');			
+			values('#currentUID#', '#threadID#', '#dateLastModified#', '#postDate#', '#expDate#', '#arguments.postTitle#', '#arguments.postContent#');			
 		</cfquery>
 		<cfreturn true>
 	</cffunction>
