@@ -78,23 +78,21 @@ a img {
 #body table td.submit { padding-left:35px; }
 
 #searchControls {float:right; padding:15px; margin-bottom:20px; border:1px solid #CCCCCC; background:#f0f0f0;}
-#searchControls .submit{ 	-moz-box-shadow:inset 0px 1px 0px 0px #c1ed9c;
-	-webkit-box-shadow:inset 0px 1px 0px 0px #c1ed9c;
-	box-shadow:inset 0px 1px 0px 0px #c1ed9c;
-	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #9dce2c), color-stop(1, #8cb82b) );
-	background:-moz-linear-gradient( center top, #9dce2c 5%, #8cb82b 100% );
+#searchControls .submit{
+	margin-left: 5px;
 	background-color:#9dce2c;
-	-moz-border-radius:6px;
-	-webkit-border-radius:6px;
-	border-radius:6px;
 	border:1px solid #83c41a;
 	display:inline-block;
 	color:#ffffff;
 	font-weight:bold;
-	padding:6px 24px;
+	min-height:21px;
+	padding:3px 5px;
 	text-decoration:none;
-	text-shadow:1px 1px 0px #689324;} 
-
+}
+#searchControls .submit selected 
+{
+	background-color:#dddddd;
+}
 
 .ad_list table { background:#eef1f8; border: 1px solid #006fad; clear:both; width:100%; }
 .ad_list table td { border-bottom:1px solid #006fad; }
