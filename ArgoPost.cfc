@@ -8,6 +8,7 @@
 				<cfquery name="getArgoPostSearchResults" datasource="#theDS#">
 				select 	p.PostID 'Post_ID'
 						, p.Title 'Post_Title'
+						, p.Description 'Post_Description'
 						, p.EnteredDate 'Post_EnteredDate'
             			, p.ExpirationDate 'Post_ExpirationDate'
             			, p.LastModifiedDate 'Post_LastModifiedDate'

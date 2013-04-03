@@ -13,5 +13,3 @@
 			<div id="searchResults"></div>
 		</body>
 </html>
- 
-

@@ -50,7 +50,7 @@ function getArgoPostSearchResultsSuccess(response)
 			var postDescription = result.POST_DESCRIPTION;
 			var createdDate = result.POST_ENTEREDDATE
 			var userEmail = result.USER_EMAIL;
-			
+					
 			if(postTitle == "")
 			{
 				postTitle = "N/A"
@@ -69,11 +69,10 @@ function getArgoPostSearchResultsSuccess(response)
 				+ "</a>"
 				+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
 				+ "<span style='font: italic 10px Helvetica, Arial, sans-serif;color:gray;'>Created by "
-				+ userEmail
-				+ " on " + createdDate
+				+ userEmail + " on " + createdDate
 				+ "</span>"
 				+ "<br />"
-				+ "<div class='posts' id='postIdContent"+postId+"' style='display: none;'>"
+				+ "<div class='posts' id='postIdContent"+postId+"' style='display:none;'>"
 				+ "<span style='font: 12px Helvetica, Arial, sans-serif;color:black;'>"
 				+ postDescription
 				+ "</span></div>"
