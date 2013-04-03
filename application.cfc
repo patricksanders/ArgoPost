@@ -64,11 +64,12 @@
 	WARNING!!!!! THE USE OF THIS METHOD WILL BREAK FLASH REMOTING, WEB SERVICES, AND AJAX CALLS. 
 	DO NOT USE THIS METHOD UNLESS YOU KNOW THIS AND KNOW HOW TO WORK AROUND IT!
 	EXAMPLE: http://www.coldfusionjedi.com/index.cfm?mode=entry&entry=ED9D4058-E661-02E9-E70A41706CD89724
-	--->
+	
 	<cffunction name="onRequest" returnType="void">
 		<cfargument name="thePage" type="string" required="true">
 		<cfinclude template="#arguments.thePage#">
 	</cffunction>
+	--->
 
 	<!--- Runs at end of request --->
 	<cffunction name="onRequestEnd" returnType="void" output="false">
@@ -87,11 +88,17 @@
 	<cffunction name="onSessionStart" returnType="void" output="false">
     	<!--- declare session variables  here --->
         <cfset session.loggedIn = 0>
+		<cfset session.userName = "">
+		<cfset session.isFaculty = false>
+		<cfset session.emailAddress = "">
+		<cfset session.DSN = "argoPost">
 	</cffunction>
 
 	<!--- Runs when session ends --->
 	<cffunction name="onSessionEnd" returnType="void" output="false">
 		<cfargument name="sessionScope" type="struct" required="true">
 		<cfargument name="appScope" type="struct" required="false">
+		
+		<cfset session.loggedIn = 0>
 	</cffunction>
 </cfcomponent>
