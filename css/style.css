@@ -73,7 +73,13 @@ a img {
 .page_title { width:100%; height:50px; background:#006fad; clear:both; }
 .page_title h2{ color:#FFFFFF; padding:10px;}
 
+#body table { margin-top:15px; }
+#body table td{ padding: 10px; }
+#body table td.submit { padding-left:35px; }
+
 #searchControls {float:right; padding:15px; margin-bottom:20px; border:1px solid #CCCCCC; background:#f0f0f0;}
+#searchControls .submit{ background:#c6d500; display:inline-block; } 
+
 
 .ad_list table { background:#eef1f8; border: 1px solid #006fad; clear:both; width:100%; }
 .ad_list table td { border-bottom:1px solid #006fad; }
