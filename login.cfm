@@ -93,8 +93,6 @@
         
         Good luck!
 --->
-<cfelse>
-		<cflocation url="http://uwf.edu/seproject/TestDeployment/login.cfm">
 </cfif>
 
 </body>
