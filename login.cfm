@@ -94,28 +94,7 @@
         Good luck!
 --->
 <cfelse>
-	<cfset session.userName=#argoUserName#>
-
-			<cfinvoke
-				component="User"
-				method="setUpUser">
-			</cfinvoke>
-
-			<cfinvoke
-				component="User"
-				method="findUser"
-				returnVariable="userExists">
-			</cfinvoke>
-
-			<cfif userExists eq true>
-				<cflocation url="http://uwf.edu/seproject/TestDeployment/main.html">
-			<cfelse>			
-				<cfinvoke
-					component="User"
-					method="insertUser">
-				</cfinvoke>
-				<cflocation url="http://uwf.edu/seproject/TestDeployment/main.html">
-			</cfif>			
+		<cflocation url="http://uwf.edu/seproject/TestDeployment/login.cfm">
 </cfif>
 
 </body>
