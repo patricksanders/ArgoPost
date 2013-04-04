@@ -1,5 +1,8 @@
 <cfcomponent>
+	<!--- The name of the Cold Fusion datasource --->
 	<cfset theDS="seproject_argopost">
+	
+	<!--- Gets a JSON object representing Posts in the ArgoPost system --->
 	<cffunction name="getArgoPostSearchResults" access="remote" returnFormat="JSON" returnType="struct">	
 		<cfargument name="s" >
 		<cfset rtnStruct = structNew()>
@@ -45,6 +48,8 @@
 		</cfloop>
 		<cfreturn rtnStruct>
 	</cffunction>
+	
+	<!--- Gets a JSON object representing the Forums in ArgoPost --->
 	<cffunction name="getArgoPostForums" access="remote" returnFormat="JSON" returnType="struct">	
 		<cfset rtnStruct = structNew()>
 		<cftry>
@@ -69,6 +74,8 @@
 		</cfloop>
 		<cfreturn rtnStruct>
 	</cffunction>
+	
+	<!--- Gets a JSON object representing Threads belonging to a Forum in the ArgoPost system --->
 	<cffunction name="getArgoPostThreads" access="remote" returnFormat="JSON" returnType="struct">	
 		<cfargument name="f" >
 		<cfset rtnStruct = structNew()>
@@ -102,6 +109,8 @@
 		</cfloop>
 		<cfreturn rtnStruct>
 	</cffunction>
+	
+	<!--- Gets a JSON object representing Posts belong to a Thread in the ArgoPost system --->
 	<cffunction name="getArgoPostPosts" access="remote" returnFormat="JSON" returnType="struct">	
 		<cfargument name="t" >
 		<cfset rtnStruct = structNew()>
