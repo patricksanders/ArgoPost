@@ -51,7 +51,7 @@
             
 			
 			<cfset session.loggedIn = 1>
-			<cfset session.userName=#IDVarName#>
+			<cfset session.userName=#argoUserName#>
 
 			<cfinvoke
 				component="User"
