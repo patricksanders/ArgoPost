@@ -1,11 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>UWF Central Auth Service</title>	
-		<link type="text/css" rel="stylesheet" href="css/standard.css" />
-	
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<script type="text/javascript" src="/cfscripts/masks.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>UWF Login Example</title>
+
+
 <!-- 
 		Example by: Breanna Garrett
 		Date:	Feb 9 ,2012
@@ -13,137 +12,89 @@
         
         Disclaimer: Use is for software SE2 201201 ONLY. Please do not re-distribute.
  -->
-
-<script type="text/javascript">/* <![CDATA[ */
-	if (window.ColdFusion) ColdFusion.required['UWFLoginID']=true;
-/* ]]> */</script>
-
-<script type="text/javascript">/* <![CDATA[ */
-	if (window.ColdFusion) ColdFusion.required['UWFLoginKey']=true;
-/* ]]> */</script>
-<script type="text/javascript">
-<!--
-    _CF_checkUWFLoginForm = function(_CF_this)
-    {
-        //reset on submit
-        _CF_error_exists = false;
-        _CF_error_messages = new Array();
-        _CF_error_fields = new Object();
-        _CF_FirstErrorField = null;
-
-        //form element UWFLoginID required check
-        if( !_CF_hasValue(_CF_this['UWFLoginID'], "TEXT", false ) )
-        {
-            _CF_onError(_CF_this, "UWFLoginID", _CF_this['UWFLoginID'].value, "You must enter the Username.");
-            _CF_error_exists = true;
-        }
-
-        //form element UWFLoginKey required check
-        if( !_CF_hasValue(_CF_this['UWFLoginKey'], "PASSWORD", false ) )
-        {
-            _CF_onError(_CF_this, "UWFLoginKey", _CF_this['UWFLoginKey'].value, "You must enter the Password.");
-            _CF_error_exists = true;
-        }
-
-
-        //display error messages and return success
-        if( _CF_error_exists )
-        {
-            if( _CF_error_messages.length > 0 )
-            {
-                // show alert() message
-                _CF_onErrorAlert(_CF_error_messages);
-                // set focus to first form error, if the field supports js focus().
-                if( _CF_this[_CF_FirstErrorField].type == "text" )
-                { _CF_this[_CF_FirstErrorField].focus(); }
-
-            }
-            return false;
-        }else {
-            return true;
-        }
-    }
-//-->
-</script>
-
 </head>
 
-<body id="cas" class="fl-theme-iphone">
-	<!--     <div class="box"></div> -->
-	<div class="flc-screenNavigator-view-container">
-		<div class="fl-screenNavigator-view">
-			<div id="header"
-				class="flc-screenNavigator-navbar fl-navbar fl-table">
-				<!-- <h1 id="app-name" class="fl-table-cell">app-name</h1> -->
-			</div>
-			<div id="content" class="fl-screenNavigator-scroll-container">
+<body>
 
-<div class="box fl-panel" id="login">
-	<form name="UWFLoginForm" id="UWFLoginForm" class="fm-v clearfix" action="http://dev.uwf.edu/seproject/TestDeployment/index.cfm?theHost=secure.uwf.edu" method="POST" onsubmit="return _CF_checkUWFLoginForm(this)">
+<!--
+		Things to note about this code:
+        This a custom CF tag defined on the server used to autheticate user login on ArgoNet.
+        	- Normally application variables are wiped after this is called for some weird reason, so a work around was added (activateApplicate = "false").
+         Known Bugs:
+         	- When a user enters the wrong login information or does not have access, the content that shows up below the login disapears. Unfortinately, if you have
+              any content other than </body></html> after the login, it will not display unless you have the content in a seperate file and included in the footer variable as 
+              shown below. 
+         Variables:
+         	- There are several usable variables that become available after the user logs in... 
+            	- #argoUserID# - this number is very similar to the UWF ID number except the second digit is not a 7, please do not use this information for personal gain.
+       			- #argoUsername# - username
+        	  	- #argofirstname# #argolastname# - name
 
-		
+-->
 
-		<div class="row fl-controls-left">
-			<label for="username" class="fl-label"><span class="accesskey">U</span>sername:</label>
-			
-
-			<input name="UWFLoginID" id="UWFLoginID" class="required" type="text" size="40"  />
-							
-		</div>
-		<div class="row fl-controls-left">
-			<label for="password" class="fl-label"><span class="accesskey">P</span>assword:</label>
-			
+<!-- defined session variable: This variable is defined in applications.cfc. It is created when the session begins.  -->
+<cfif session.loggedIn eq 0>
+        <cfsavecontent variable="footer"><cfinclude template ="index_login_foot.cfm"></cfsavecontent>
+     	<cf_uwfLogin loginTimeout="30"
+			loginWelcome="<div align = 'center'><strong>Login</strong></div>"
+			logoutMessage="You have logged out of the system."
+			logoutURL="login.cfm"
+			loginIDName="Username"
+			loginKeyName="Password"
+            numericidname = "argoUserID"
+			IDVarName="argoUsername"
+			firstnamevarname="argofirstname"
+            lastnamevarname="argolastname"
+            loginfailuremessage = "<p style = 'font-size: 12px;'>You could not be logged in with the information provided. Please <a href = 'index.cfm'>try again.</a></p>"
+            activateApplication = "false"
+    		footer="#footer#">
             
-			<input name="UWFLoginKey" id="UWFLoginKey" class="required" type="password" size="40"  />
 			
-		</div>
-		
+			<cfset session.loggedIn = 1>
+			<cfset session.userName=#IDVarName#>
 
-		 
-		<div class="row btn-row">
-		
-			<input type="hidden" name="lt" value="LT-1069596-v4YeMYhb6ydRZGKqEZDQ6czGCTdVtY" /> <input
-				type="hidden" name="execution" value="e1s1" /> <input
-				type="hidden" name="_eventId" value="submit" /> <input
-				class="btn-submit" name="submit" 
-				accesskey="l" tabindex="4"
-				value="Log In" type="submit" />
-				
-				<br><a href="https://jetty.uwf.edu/myaccount/newuser/">First Time Users</a>
-				<br><a href="https://jetty.uwf.edu/myaccount/forgot/">Problems Logging In?</a>
-				<br><a href="http://uwf.edu/helpdesk/myuwf/policies.htm">Usage Policies</a>
-								
-				
-				
-		</div>
-	</form>
-</div>
+			<cfinvoke
+				component="User"
+				method="setUpUser">
+			</cfinvoke>
 
-<div id="sidebar">
-	<p class="fl-panel fl-note fl-bevel-white fl-font-size-80">
-		For security reasons, please Log Out and close your web browser when you are done.
-	</p>
-	
-	
-</div>
+			<cfinvoke
+				component="User"
+				method="findUser"
+				returnVariable="userExists">
+			</cfinvoke>
 
+			<cfif userExists eq true>
+				<cflocation url="http://uwf.edu/seproject/TestDeployment/main.html">
+			<cfelse>			
+				<cfinvoke
+					component="User"
+					method="insertUser">
+				</cfinvoke>
+				<cflocation url="http://uwf.edu/seproject/TestDeployment/main.html">
+			</cfif>			
+            
+<!--
+		Any additional login requirements can be done here. For example, if you had some sort of security system, one could set security status here based on user id. You can even restrict who
+        can login. Be sure to set some sort of session.loggedIn to 1 to show the user has been authenticated and can browse the site. You will need to make some code to check this condition on EVERY
+        protected page. My advise: make a cfif statement in the application.cfc function onRequestStart that will analyze the URL path to see if the user can access it. You can get the URL path of 
+        the page in the cgi scope. (cgi.path_info) 
+        
+        In ColdFusion, sessions end when they time out based on the time span created in the application.cfc or when the browser closes. Because of this, you will need to reset all session scope variables
+        on your logout page.
+        
+        To go to a different page other than this one when you login use <cflocation url="whereever.cfm" addtoken="no" /> Note: the addtoken value is nessesary, otherwise it will append session and token ids
+        to the URL which is just garbage (and kind of bad looking).
+        
+        Note: Try not to pass sensitive user information across url param (?userid=xxxx)
+        
+        When processing user input make sure you use #HTMLEditFormat(trim(form.input_var_name))# to convert all HTML/script code to a non-malicious form. Don't use this if you have a formatted input such as
+        a textarea with advanced formatting.
+        
+        
+        Good luck!
+--->
+</cfif>
 
-
-</div>
-<div id="footer" class="fl-panel fl-note fl-bevel-white fl-font-size-80">
-	<!-- <a id="jasig" href="http://www.jasig.org" title="go to Jasig home page"></a> -->
-	<div id="copyright">
-		<p>UWF Jasig CAS 3.4.11</p>
-	</div>
-</div>
-</div>
-</div>
-<script type="text/javascript"
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-<script type="text/javascript"
-	src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js"></script>
-<script type="text/javascript" src="/cas/js/cas.js;jsessionid=03E7E72232D73431DD80C991D32296DD"></script>
 </body>
 </html>
-
-
