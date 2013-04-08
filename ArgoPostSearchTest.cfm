@@ -4,7 +4,7 @@
 <title>ArgoPost Search Test</title>
 </head>
 <body>
-	<!--
+	<!---
 	<h2>getArgoPostSearchResults('test')</h2>
 	<cftry>
 		<cfinvoke component="ArgoPost" method="getArgoPostSearchResults" returnVariable="return">
@@ -15,9 +15,7 @@
 		<h2>ERROR:</h2>
 		<cfdump var="#cfcatch#">
 	</cfcatch>
-	
-	</cftry>
-	-->
+	</cftry>--->
 	<h2>getArgoPostForums()</h2>
 	<cftry>
 		<cfinvoke component="ArgoPost" method="getArgoPostForums" returnVariable="return">		
@@ -27,9 +25,8 @@
 		<h2>ERROR:</h2>
 		<cfdump var="#cfcatch#">
 	</cfcatch>
-	
 	</cftry>
-	<!--
+	<!---
 	<h2>getArgoPostThreads(1)</h2>
 	<cftry>
 		<cfinvoke component="ArgoPost" method="getArgoPostThreads" returnVariable="return">
@@ -40,7 +37,6 @@
 		<h2>ERROR:</h2>
 		<cfdump var="#cfcatch#">
 	</cfcatch>
-	
 	</cftry>
 	<h2>getArgoPostPosts(1)</h2>
 	<cftry>
@@ -52,9 +48,8 @@
 		<h2>ERROR:</h2>
 		<cfdump var="#cfcatch#">
 	</cfcatch>
-	
 	</cftry>
-	-->
+	--->
 </body>
 </html>
 </cfoutput>

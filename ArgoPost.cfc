@@ -58,9 +58,9 @@
 		<cfset rtnStruct = structNew()>
 		<cftry>
 			<cfquery name="getArgoPostForums" datasource="#theDS#">
-			select 	f.ForumID as 'Forum_ID'
-					, f.Title as 'Forum_Title'
-					, u.UWFID as 'Uwf_Id'
+			select 	f.ForumID 'Forum_ID'
+					, f.Title 'Forum_Title'
+					, u.UWFID 'Uwf_Id'
 			from Forums as f
 			inner join Users as u on u.UserID = f.UserID
 		</cfquery>
@@ -75,7 +75,7 @@
 			<cfset i = i + 1>
 			<cfset rtnStruct[i] = structNew()>
 			<cfloop list="#getArgoPostForums.columnList#" index="thisColumn">
-				<cfset rtnStruct[i][thisColumn] = #thisColumn#>
+				<cfset rtnStruct[i][thisColumn] = evaluate(thisColumn)>
 			</cfloop>
 		</cfloop>
 		<cfreturn rtnStruct>
