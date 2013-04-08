@@ -5,7 +5,7 @@ function init()
 	var pathArray = window.location.pathname.split( '/' );
  	
  	// Do something if on the searchpage.html or searchpage.cfm
- 	if(pathArray[pathArray.length-1] == "searchpage.cfm")
+ 	if(pathArray[pathArray.length-1] == "searchpage.cfm" || pathArray[pathArray.length-1] == "index_example.cfm")
  	{
  		getArgoPostForums();
  	}
@@ -60,9 +60,6 @@ function getArgoPostPosts(threadId)
 	 });
 }
 
-
-
-
 // Shows/hides the details of an ArgoPost
 function showArgoPostDetails(argoPostItem)
 {
@@ -79,8 +76,6 @@ function showArgoPostDetails(argoPostItem)
     });
 }
 
-
-
 // Handles a successful response from the getSearchResults function
 function getArgoPostSearchResultsSuccess(response)
 {
@@ -89,22 +84,30 @@ function getArgoPostSearchResultsSuccess(response)
 	
 	$('#searchResults').empty();
 	
-	$('#searchResults').append("<p><span style='font: italic 12px Helvetica, Arial, sans-serif;color:#333;'>"
+	$('#resultsTitle').empty();
+	$('#resultsTitle').append("Posts");
+	$('#resultsTitle').append("&nbsp;&nbsp;&nbsp;&nbsp;<span style='font: italic 12px Helvetica, Arial, sans-serif;color:white;'>"
 			+ "Search results for '" + document.getElementById('searchInputText').value + "'"
-			+ "</span></p>"
+			+ "</span>"
 		);
 	
 	if(count <= 0)
 	{
 
-		$('#searchResults').append("<span style='font: italic 12px Helvetica, Arial, sans-serif;color:red;'>No results found. Please try again.</span>");	
+		//$('#resultsTitle').append();	
+		
+		$('#searchResults').append(
+				"<tr id='searchResultsImage'>"
+				+ "<td class='photo'>"
+				+ "<img src='images/smallPic.png' width='50' height='50' align='top'></img>"
+				+ "</td>"
+				+ "<td class='text'>"
+				+ "<span style='font: italic 12px Helvetica, Arial, sans-serif;color:black;'>No results found. Please try again.</span>"
+				+ "</td>"
+				+ "</tr>");
 	}
 	else
 	{
-		$('#searchResults').append("<p><span id='threadTitle' style='font: italic 14px Helvetica, Arial, sans-serif;color:#333;text-decoration:underline;'>Posts</span></p>"
-		);
-		
-
 		$.each(response, function(index, result)
 		{  
 			var postId = result.POST_ID;
@@ -134,10 +137,13 @@ function getArgoPostSearchResultsSuccess(response)
 				postDescription = "N/A"
 			}
 			
-			$('#searchResults').append("<p>");
-			
 			$('#searchResults').append(
-				"<a style='font: bold 14px Helvetica, Arial, sans-serif;color:navy;text-decoration:none;' href='javascript:showArgoPostDetails(postIdContent"+postId+");'>"
+				"<tr id='searchResultsImage'>"
+				+ "<td class='photo'>"
+				+ "<img src='images/smallPic.png' width='50' height='50' align='top'></img>"
+				+ "</td>"
+				+ "<td class='text'>"
+				+ "<a style='font: bold 14px Helvetica, Arial, sans-serif;color:navy;text-decoration:none;' href='javascript:showArgoPostDetails(postIdContent"+postId+");'>"
 				+ postTitle
 				+ "</a>"
 				+ "&nbsp;&nbsp;"
@@ -155,14 +161,11 @@ function getArgoPostSearchResultsSuccess(response)
 				+ "<span style='font: 12px Helvetica, Arial, sans-serif;color:black;'>"
 				+ postDescription
 				+ "</span></div>"
-			);
-			
-			$('#searchResults').append("</p>");
-			
+				+ "</td>"
+				+ "</tr>");			
 		});
 	}
 }
-
 
 // Handles a successful response from the getArgoPostForums function
 function getArgoPostForumsSuccess(response)
@@ -174,14 +177,21 @@ function getArgoPostForumsSuccess(response)
 	
 	if(count <= 0)
 	{
-		$('#searchResults').append("<span style='font: italic 12px Helvetica, Arial, sans-serif;color:red;'>No Forums found. Please try again later.</span>");	
+		$('#searchResults').append(
+			
+				"<tr id='searchResultsImage'>"
+				+ "<td class='photo'>"
+				+ "<img src='images/smallPic.png' width='50' height='50' align='top'></img>"
+				+ "</td>"
+				+ "<td class='text'>"
+				+ "<span style='font: italic 12px Helvetica, Arial, sans-serif;color:black;'>No forums found. Please try again.</span>"
+				+ "</td>"
+				+ "</tr>");
 	}
 	else
 	{
-		$('#searchResults').append("<p><span id='threadTitle' style='font: italic 14px Helvetica, Arial, sans-serif;color:#333;text-decoration:underline;'>Forums</span></p>"
-		);
-		
-		$('#searchResults').append("<p>");
+		$('#resultsTitle').empty();
+		$('#resultsTitle').append("Forums");
 		
 		$.each(response, function(index, result)
 		{  
@@ -194,19 +204,21 @@ function getArgoPostForumsSuccess(response)
 				forumTitle = "N/A"
 			}
 			
-			$('#searchResults').append("<p>");
-			
 			$('#searchResults').append(
-				"<a style='font: bold 14px Helvetica, Arial, sans-serif;color:navy;text-decoration:none;' href='javascript:getArgoPostThreads("+forumId+");'>"
+				"<tr id='searchResultsImage'>"
+				+ "<td class='photo'>"
+				+ "<img src='images/smallPic.png' width='50' height='50' align='top'></img>"
+				+ "</td>"
+				+ "<td class='text'>"
+				+ "<a style='font: bold 14px Helvetica, Arial, sans-serif;color:navy;text-decoration:none;' href='javascript:getArgoPostThreads("+forumId+");'>"
 				+ forumTitle
 				+ "</a>"
 				+ "&nbsp;&nbsp;"
 				+ "<span style='font: italic 10px Helvetica, Arial, sans-serif;color:gray;'>Created by "
 				+ userUwfId
 				+ "</span>"
-			);
-			
-			$('#searchResults').append("</p>");
+				+ "</td>"
+				+ "</tr>");
 		});
 	}
 }
@@ -219,18 +231,22 @@ function getArgoPostThreadsSuccess(response)
 	
 	$('#searchResults').empty();
 	
-	$('#searchResults').append("<p><span id='forumTitle' style='font: italic 14px Helvetica, Arial, sans-serif;color:#333;'></span></p>"
-		);
-	
 	if(count <= 0)
 	{
-		$('#searchResults').append("<span style='font: italic 12px Helvetica, Arial, sans-serif;color:red;'>No Threads found. Please try again.</span>");	
+		$('#searchResults').append(
+			
+				"<tr id='searchResultsImage'>"
+				+ "<td class='photo'>"
+				+ "<img src='images/smallPic.png' width='50' height='50' align='top'></img>"
+				+ "</td>"
+				+ "<td class='text'>"
+				+ "<span style='font: italic 12px Helvetica, Arial, sans-serif;color:black;'>No threads found. Please try again.</span>"
+				+ "</td>"
+				+ "</tr>");
 	}
 	else
 	{
 		var forumTitle = "";
-		
-
 		
 		$.each(response, function(index, result)
 		{  
@@ -245,27 +261,28 @@ function getArgoPostThreadsSuccess(response)
 				postTitle = "N/A"
 			}
 			
-			$('#searchResults').append("<p>");
-			
 			$('#searchResults').append(
-				"<a style='font: bold 14px Helvetica, Arial, sans-serif;color:navy;text-decoration:none;' href='javascript:getArgoPostPosts("+threadId+");'>"
+				"<tr id='searchResultsImage'>"
+				+ "<td class='photo'>"
+				+ "<img src='images/smallPic.png' width='50' height='50' align='top'></img>"
+				+ "</td>"
+				+ "<td class='text'>"
+				+ "<a style='font: bold 14px Helvetica, Arial, sans-serif;color:navy;text-decoration:none;' href='javascript:getArgoPostPosts("+threadId+");'>"
 				+ threadTitle
 				+ "</a>"
 				+ "&nbsp;&nbsp;"
 				+ "<span style='font: italic 10px Helvetica, Arial, sans-serif;color:gray;'>Created by "
 				+ userUwfId
 				+ "</span>"
-			);
-				
-			$('#searchResults').append("</p>");
-			
-			
+				+ "</td>"
+				+ "</tr>"
+			);		
 		});
 		
-		$('#forumTitle').append("Forum: " + forumTitle);
+		$('#resultsTitle').empty();
+		$('#resultsTitle').append("Forum: " + forumTitle);
 	}
 }
-
 
 // Handles a successful response from the getArgoPostPosts function
 function getArgoPostPostsSuccess(response)
@@ -275,20 +292,23 @@ function getArgoPostPostsSuccess(response)
 	
 	$('#searchResults').empty();
 	
-	$('#searchResults').append("<p><span id='threadTitle' style='font: italic 14px Helvetica, Arial, sans-serif;color:#333;'></span></p>"
-		);
-	
 	if(count <= 0)
 	{
 
-		$('#searchResults').append("<span style='font: italic 12px Helvetica, Arial, sans-serif;color:red;'>No Posts found. Please try again.</span>");	
+		$('#searchResults').append(
+			
+				"<tr id='searchResultsImage'>"
+				+ "<td class='photo'>"
+				+ "<img src='images/smallPic.png' width='50' height='50' align='top'></img>"
+				+ "</td>"
+				+ "<td class='text'>"
+				+ "<span style='font: italic 12px Helvetica, Arial, sans-serif;color:black;'>No posts found. Please try again.</span>"
+				+ "</td>"
+				+ "</tr>");
 	}
 	else
 	{
 		var threadTitle = "";
-		
-		$('#searchResults').append("<p><span id='threadTitle' style='font: italic 14px Helvetica, Arial, sans-serif;color:#333;text-decoration:underline;'>Posts</span></p>"
-		);
 		
 		$.each(response, function(index, result)
 		{  
@@ -322,10 +342,13 @@ function getArgoPostPostsSuccess(response)
 				postDescription = "N/A"
 			}
 			
-			$('#searchResults').append("<p>");
-			
 			$('#searchResults').append(
-				"<a style='font: bold 14px Helvetica, Arial, sans-serif;color:navy;text-decoration:none;' href='javascript:showArgoPostDetails(postIdContent"+postId+");'>"
+				"<tr id='searchResultsImage'>"
+				+ "<td class='photo'>"
+				+ "<img src='images/smallPic.png' width='50' height='50' align='top'></img>"
+				+ "</td>"
+				+ "<td class='text'>"
+				+ "<a style='font: bold 14px Helvetica, Arial, sans-serif;color:navy;text-decoration:none;' href='javascript:showArgoPostDetails(postIdContent"+postId+");'>"
 				+ postTitle
 				+ "</a>"
 				+ "&nbsp;&nbsp;"
@@ -341,18 +364,15 @@ function getArgoPostPostsSuccess(response)
 				+ "<span style='font: 12px Helvetica, Arial, sans-serif;color:black;'>"
 				+ postDescription
 				+ "</span></div>"
+				+ "</td>"
+				+ "</tr>"
 			);
-			
-			$('#searchResults').append("</p>");
-			
-			
-			
 		});
-		
-		$('#threadTitle').append("Thread: " + threadTitle);
+
+		$('#resultsTitle').empty();
+		$('#resultsTitle').append("Thread: " + threadTitle);
 	}
 }
-
 
 // Handles a failed response from all ArgoPost javascript functions
 function getArgoPostFail(response)
@@ -363,7 +383,6 @@ function getArgoPostFail(response)
 	
 	$('#searchResults').append("<span style='font: italic 12px Helvetica, Arial, sans-serif;color:gray;'>"+response+"</span>");		
 }
-
 
 // Allows this javascript library to include other javascript libraries
 function IncludeJavaScript(jsFile)
