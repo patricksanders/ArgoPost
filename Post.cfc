@@ -2,7 +2,7 @@
 	
 	<!--- This name was used for testing purposes. It will need to be changed in the to the name of the database we are 
 	officially using --->
-	<cfset dataSource = "argoPost"> 
+	<cfset dataSource = "SEproject_argopost"> 
 	
 	<cffunction name="addPost" access="remote"  returnType="boolean" returnFormat="JSON">
 		<cfargument name="postTitle"  required="true" />
