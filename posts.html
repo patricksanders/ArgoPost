@@ -29,40 +29,24 @@
 			</ul>
 		</div>
 	</div>
-	<div id="body">
+	<div id="content">
 	
 	<div id="searchControls">			
-			<input id="searchInputText" type="text" size="40" value="enter keyword here" onclick="clearInput(searchInputText);">
+			<input id="searchInputText" type="text" size="30" value="enter keyword here" onclick="clearInput(searchInputText);">
 			<input type="button" class="submit" value="Search" onclick="getSearchResults();">		
 	</div>
-	
 	
 	<div class="page_title">
 		<h2>Posts</h2>
 	</div>
 	
-	<div class="ad_list">
-	
-	<!-- This table's category(s) will change once integrated with working functions. It's current purpose is for design. -->	
-	<table border="0" cellspacing="0">
-	<tbody>
-	
-	<!-- <tr> to </tr> is each row in the table -->
-	<tr id="searchResults">
-	<td class="photo">
-			<img src="images/smallPic.png" width="50" height="50"></img>
-		</td>
-	<td class="text">
-		<h3><a href="">Post Title</a></h3>
-			<p>Found out about events going on around UWF.</p>
-	</td>
-	</tr>
-	
-	</tbody>
-	</table>
+	<div id="searchResults">
+		<a href="">Item For Sale</a>
+		
+		<!-- Will display if ad belongs to user -->
+		<input type="button" value="Delete Post" onclick="getSearchResults();">		
+
 	</div>
-	
-	
 
 	</div>
 <div id="footer">
