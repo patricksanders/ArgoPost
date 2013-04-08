@@ -52,7 +52,7 @@
 
 	
 	
-	<div class="ad_list">-->
+	<div class="ad_list">
 	<!--This table's category(s) will change once integrated with working functions. It's current purpose is for design. -->
 	<table border="0" cellspacing="0">
 	<tbody>
