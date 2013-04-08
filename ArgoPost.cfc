@@ -9,17 +9,17 @@
 		<cfif len(trim(#arguments.s#))>
 			<cftry>
 				<cfquery name="getArgoPostSearchResults" datasource="#theDS#">
-				select 	p.PostID 'Post_ID'
-						, p.Title 'Post_Title'
-						, p.Description 'Post_Description'
-						, p.EnteredDate 'Post_EnteredDate'
-            			, p.ExpirationDate 'Post_ExpirationDate'
-            			, p.LastModifiedDate 'Post_LastModifiedDate'
-            			, u.UWFID 'Uwf_Id'
-						, t.ThreadID 'Thread_ID'
-						, t.Title 'Thread_Title'
-						, f.ForumID 'Forum_ID'
-						, f.Title 'Forum_Title'
+				select 	p.PostID as 'Post_ID'
+						, p.Title as 'Post_Title'
+						, p.Description as 'Post_Description'
+						, p.EnteredDate as 'Post_EnteredDate'
+            			, p.ExpirationDate as 'Post_ExpirationDate'
+            			, p.LastModifiedDate as 'Post_LastModifiedDate'
+            			, u.UWFID as 'Uwf_Id'
+						, t.ThreadID as 'Thread_ID'
+						, t.Title as 'Thread_Title'
+						, f.ForumID as 'Forum_ID'
+						, f.Title as 'Forum_Title'
 				from Posts as p
 				inner join Threads as t on t.ThreadID = p.ThreadID
 				inner join Forums as f on f.ForumID = t.ForumID
@@ -58,9 +58,9 @@
 		<cfset rtnStruct = structNew()>
 		<cftry>
 			<cfquery name="getArgoPostForums" datasource="#theDS#">
-			select 	f.ForumID 'Forum_ID'
-					, f.Title 'Forum_Title'
-					, u.UWFID 'Uwf_Id'
+			select 	f.ForumID as 'Forum_ID'
+					, f.Title as 'Forum_Title'
+					, u.UWFID as 'Uwf_Id'
 			from Forums as f
 			inner join Users as u on u.UserID = f.UserID
 		</cfquery>
@@ -88,11 +88,11 @@
 		<cfif len(trim(#arguments.f#))>
 			<cftry>
 				<cfquery name="getArgoPostThreads" datasource="#theDS#">
-				select 	t.ThreadId 'Thread_ID'
-						, t.Title 'Thread_Title'
-						, f.ForumID 'Forum_ID'
-						, f.Title 'Forum_Title'
-						, u.UWFID 'Uwf_Id'
+				select 	t.ThreadId as 'Thread_ID'
+						, t.Title as 'Thread_Title'
+						, f.ForumID as 'Forum_ID'
+						, f.Title as 'Forum_Title'
+						, u.UWFID as 'Uwf_Id'
 				from Threads as t
 				inner join Forums as f on f.ForumID = t.ForumID
 				inner join Users as u on u.UserID = t.UserID
@@ -125,17 +125,17 @@
 		<cfif len(trim(#arguments.t#))>
 			<cftry>
 				<cfquery name="getArgoPostPosts" datasource="#theDS#">
-				select 	p.PostID 'Post_ID'
-						, p.Title 'Post_Title'
-						, p.Description 'Post_Description'
-						, p.EnteredDate 'Post_EnteredDate'
-            			, p.ExpirationDate 'Post_ExpirationDate'
-            			, p.LastModifiedDate 'Post_LastModifiedDate'
-            			, u.UWFID 'Uwf_Id'
-						, t.ThreadID 'Thread_ID'
-						, t.Title 'Thread_Title'
-						, f.ForumID 'Forum_ID'
-						, f.Title 'Forum_Title'
+				select 	p.PostID as'Post_ID'
+						, p.Title as 'Post_Title'
+						, p.Description as 'Post_Description'
+						, p.EnteredDate as 'Post_EnteredDate'
+            			, p.ExpirationDate as 'Post_ExpirationDate'
+            			, p.LastModifiedDate as 'Post_LastModifiedDate'
+            			, u.UWFID as 'Uwf_Id'
+						, t.ThreadID as'Thread_ID'
+						, t.Title as'Thread_Title'
+						, f.ForumID as 'Forum_ID'
+						, f.Title as'Forum_Title'
 				from Posts as p
 				inner join Threads as t on t.ThreadID = p.ThreadID
 				inner join Forums as f on f.ForumID = t.ForumID
