@@ -88,7 +88,7 @@
 				<cfquery name="getArgoPostThreads" datasource="#theDS#">
 				select 	t.ThreadId 'Thread_ID'
 						, t.Title 'Thread_Title'
-						, f.ForumID 'Forum_ID'
+						, f.ForumId 'Forum_ID'
 						, f.Title 'Forum_Title'
 						, u.UWFID 'Uwf_Id'
 				from Threads as t
