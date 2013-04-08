@@ -33,6 +33,8 @@
 				order by p.EnteredDate desc
 			</cfquery>
 			<cfcatch type="any">
+				<cfset rtnStruct["ERROR"] = "There was an error executing the query.">
+				<cfset rtnStruct["MESSAGE"] = #cfcatch#>
 				<cfreturn rtnStruct>
 			</cfcatch>
 			</cftry>
@@ -88,7 +90,7 @@
 				<cfquery name="getArgoPostThreads" datasource="#theDS#">
 				select 	t.ThreadId 'Thread_ID'
 						, t.Title 'Thread_Title'
-						, f.ForumId 'Forum_ID'
+						, f.ForumID 'Forum_ID'
 						, f.Title 'Forum_Title'
 						, u.UWFID 'Uwf_Id'
 				from Threads as t
@@ -97,6 +99,8 @@
 				where t.ForumId = <cfqueryparam value = "#arguments.f#" cfsqltype = "cf_sql_int">
 			</cfquery>
 			<cfcatch type="any">
+				<cfset rtnStruct["ERROR"] = "There was an error executing the query.">
+				<cfset rtnStruct["MESSAGE"] = #cfcatch#>
 				<cfreturn rtnStruct>
 			</cfcatch>
 			</cftry>
@@ -140,6 +144,8 @@
 				and IsExpired = 0
 			</cfquery>
 			<cfcatch type="any">
+				<cfset rtnStruct["ERROR"] = "There was an error executing the query.">
+				<cfset rtnStruct["MESSAGE"] = #cfcatch#>
 				<cfreturn rtnStruct>
 			</cfcatch>
 			</cftry>
