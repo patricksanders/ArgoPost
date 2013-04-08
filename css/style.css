@@ -75,8 +75,8 @@ a img {
 .page_title { width:882px; padding:10px; background:#006fad; clear:both;}
 .page_title h2{ margin:0; color:#FFFFFF;}
 
-#content form { padding:0 15px; margin-top:20px;}
-#content table td { padding:10px; }
+#body form { padding:0 15px; margin-top:20px;}
+#body table td { padding:10px; }
 #deleteAll {float:left; margin:15px 0 0 5px; }
 
 /*------------------- Search Box ----------------------*/
@@ -97,7 +97,15 @@ a img {
 #searchControls .submit:active { background:#7bae04; }
 	
 /*------------------- Search Results ----------------------*/
-#searchResults{
+
+.ad_list table { background:#eef1f8; border: 1px solid #006fad; clear:both; width:100%; }
+.ad_list table td { border-bottom:1px solid #006fad; }
+.ad_list table td.photo { border-right: 1px solid #006fad; width:50px; padding-top:10px; vertical-align:top;}
+.ad_list table td.text h3 { font-size:22px; font-weight:normal; margin-left:10px; }
+.ad_list table td.text p { margin-left:10px;}
+
+
+/*#searchResults{
 	padding:25px 20px 25px 65px; 
 	background:#eef1f8 url(../images/smallPic.png) no-repeat left; 
 	border-left: 1px solid #006fad; 
@@ -105,7 +113,7 @@ a img {
 	border-bottom: 1px solid #006fad;
 	}
 #searchResults a { font-size:22px; font-weight:normal; padding-right:15px; }
-
+*/
 /*------------------------- Footer ------------------------*/
 #footer {
 	background:url(../images/bg-footer.png) repeat-x;
