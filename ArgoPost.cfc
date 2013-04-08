@@ -9,17 +9,17 @@
 		<cfif len(trim(#arguments.s#))>
 			<cftry>
 			<cfquery name="getArgoPostSearchResults" datasource="#theDS#">
-				select 	Posts.PostID as Post_Id
-						, Posts.Title <!--- as 'Post_Title'--->
-						, Posts.Description <!--- as 'Post_Description'--->
-						, Posts.EnteredDate <!--- as 'Post_EnteredDate'--->
-            			, Posts.ExpirationDate <!--- as 'Post_ExpirationDate'--->
-            			, Posts.LastModifiedDate <!--- as 'Post_LastModifiedDate'--->
-            			, Users.UWFID <!--- as 'Uwf_Id'--->
-						, Threads.ThreadID <!--- as 'Thread_ID'--->
-						, Threads.Title <!--- as 'Thread_Title'--->
-						, Forums.ForumID <!--- as 'Forum_ID'--->
-						, Forums.Title <!--- as 'Forum_Title'--->
+				select 	Posts.PostID as Post_ID
+						, Posts.Title as Post_Title
+						, Posts.Description as Post_Description
+						, Posts.EnteredDate as Post_EnteredDate
+            			, Posts.ExpirationDate as Post_ExpirationDate
+            			, Posts.LastModifiedDate as Post_LastModifiedDate
+            			, Users.UWFID as Uwf_Id
+						, Threads.ThreadID as Thread_ID
+						, Threads.Title as Thread_Title
+						, Forums.ForumID as Forum_ID
+						, Forums.Title as Forum_Title
 				from 
 				((Posts inner join Threads on Threads.ThreadID = Posts.ThreadID)
 				inner join Forums on Forums.ForumID = Threads.ForumID)
@@ -32,33 +32,6 @@
 				and IsExpired = 0
 				order by Posts.EnteredDate desc;
 			</cfquery>
-			
-			<!---
-				<cfquery name="getArgoPostSearchResults" datasource="#theDS#">
-				select 	p.PostID as 'Post_ID'
-						, p.Title as 'Post_Title'
-						, p.Description as 'Post_Description'
-						, p.EnteredDate as 'Post_EnteredDate'
-            			, p.ExpirationDate as 'Post_ExpirationDate'
-            			, p.LastModifiedDate as 'Post_LastModifiedDate'
-            			, u.UWFID as 'Uwf_Id'
-						, t.ThreadID as 'Thread_ID'
-						, t.Title as 'Thread_Title'
-						, f.ForumID as 'Forum_ID'
-						, f.Title as 'Forum_Title'
-				from Posts as p
-				inner join Threads as t on t.ThreadID = p.ThreadID
-				inner join Forums as f on f.ForumID = t.ForumID
-				inner join Users as u on u.UserID = p.UserID
-				where (LOWER(p.Title) like LOWER(<cfqueryparam value = "%#arguments.s#%" cfsqltype = "cf_sql_char" maxLength = "40">)
-				or LOWER(p.Description) like LOWER(<cfqueryparam value = "%#arguments.s#%" cfsqltype = "cf_sql_char" maxLength = "40">)
-				or LOWER(t.Title) like LOWER(<cfqueryparam value = "%#arguments.s#%" cfsqltype = "cf_sql_char" maxLength = "40">)
-				or LOWER(f.Title) like LOWER(<cfqueryparam value = "%#arguments.s#%" cfsqltype = "cf_sql_char" maxLength = "40">)
-				or LOWER(u.UWFID) like LOWER(<cfqueryparam value = "%#arguments.s#%" cfsqltype = "cf_sql_char" maxLength = "40">))
-				and IsExpired = 0
-				order by p.EnteredDate desc
-			</cfquery>
-			--->
 			<cfcatch type="any">
 				<cfset rtnStruct["ERROR"] = "There was an error executing the query.">
 				<cfset rtnStruct["MESSAGE"] = #cfcatch#>
