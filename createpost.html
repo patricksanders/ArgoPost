@@ -5,8 +5,11 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>ArgoPost</title>
 	<link rel="stylesheet" href="css/style.css" type="text/css">
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="createPost.js"></script>
+	<script type="text/javascript" src="ArgoPost.js"></script>
 </head>
-<body>
+<body onload="checkLoggedInStatus();">
 	<div id="header">
 		<div>
 			<a href="main.html" id="logo"><img src="images/logo.png" alt="logo"></a>
@@ -33,18 +36,18 @@
 		<h2>Create Post</h2>		
 	</div>
 
-	<form name="aPost" action="" method="post">
+	<form name="aPost" action="javascript:createPost.js" method="post">
 	<table>
 		<tr>
 			<td>
 				<label for="forum">Forum:</label>
 			</td>
 			<td>
-				<select name="sForum">
+				<select name="sForum" id="forums" onchange="getThreadTitles()">
 					<option>Select a forum</option>
-					<option value="forumId">Forum Title</option>
 				</select>
 			</td>
+			<td id="forumsErrorMsg">&nbsp;</td>
 		</tr>
 	
 		<tr>
@@ -52,19 +55,20 @@
 				<label for="thread">Thread:</label>
 			</td>
 			<td>
-				<select name="sThread">
+				<select name="sThread" id="threads">
 					<option>Select a thread</option>
-					<option value="threadId">Thread Title</option>
 				</select>
 			</td>
+			<td id="threadsErrorMsg">&nbsp;</td>
 		</tr>
 		<tr>
 			<td>
 				<label for="title">Title:</label>
 			</td>
 			<td>
-				<input type="text" name="title" size="40">
+				<input type="text" name="title" id="title" size="40">
 			</td>
+			<td id="titleErrorMsg">&nbsp;</td>
 		</tr>		
 
 		<tr>
@@ -72,14 +76,16 @@
 				<label for="description">Description:</label>
 			</td>
 			<td>
-				<textarea name="description" rows="4" cols="50">Enter post content here.</textarea> 
+				<textarea name="description" id="description" rows="4" cols="50"></textarea> 
 			</td>
+			<td id="descriptionErrorMsg">&nbsp;</td>
 		</tr>
 	
 		<tr>
 			<td>
-				<button type="submit">Create</button> 
+				<input type="button" onclick="createPost();" value="Create"> 
 			</td>
+			<td id="addPostFailure">&nbsp;</td>
 		</tr>
 	</table>
 	</form>
