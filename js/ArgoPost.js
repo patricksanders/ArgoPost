@@ -170,6 +170,8 @@ function getArgoPostForumsSuccess(response)
 	var count = 0;
 	$.each(response, function(k, v) { count++; });
 	
+	console.log("Forums found: " + count);
+	
 	$('#searchResults').empty();
 	
 	if(count <= 0)
