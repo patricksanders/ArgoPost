@@ -30,7 +30,7 @@
 				or LCase(f.Title) like LCase(<cfqueryparam value = "%#arguments.s#%" cfsqltype = "cf_sql_char" maxLength = "40">)
 				or LCase(u.UWFID) like LCase(<cfqueryparam value = "%#arguments.s#%" cfsqltype = "cf_sql_char" maxLength = "40">))
 				and IsExpired = 0
-				order by Posts.EnteredDate desc;
+				order by p.EnteredDate desc;
 			</cfquery>
 			<cfcatch type="any">
 				<cfset rtnStruct["ERROR"] = "There was an error executing the query.">
