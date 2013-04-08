@@ -97,8 +97,14 @@ function getArgoPostSearchResultsSuccess(response)
 		//$('#resultsTitle').append();	
 		
 		$('#searchResults').append(
-				"<span style='font: italic 12px Helvetica, Arial, sans-serif;color:black;'>No results found. Please try again.</span>"
-				);
+				"<tr id='searchResultsImage'>"
+				+ "<td class='photo'>"
+				+ "<img src='images/smallPic.png' width='50' height='50' align='top'></img>"
+				+ "</td>"
+				+ "<td class='text'>"
+				+ "<span style='font: italic 12px Helvetica, Arial, sans-serif;color:black;'>No results found. Please try again.</span>"
+				+ "</td>"
+				+ "</tr>");
 	}
 	else
 	{
@@ -132,7 +138,12 @@ function getArgoPostSearchResultsSuccess(response)
 			}
 			
 			$('#searchResults').append(
-				"<a style='font: bold 14px Helvetica, Arial, sans-serif;color:navy;text-decoration:none;' href='javascript:showArgoPostDetails(postIdContent"+postId+");'>"
+				"<tr id='searchResultsImage'>"
+				+ "<td class='photo'>"
+				+ "<img src='images/smallPic.png' width='50' height='50' align='top'></img>"
+				+ "</td>"
+				+ "<td class='text'>"
+				+ "<a style='font: bold 14px Helvetica, Arial, sans-serif;color:navy;text-decoration:none;' href='javascript:showArgoPostDetails(postIdContent"+postId+");'>"
 				+ postTitle
 				+ "</a>"
 				+ "&nbsp;&nbsp;"
@@ -150,7 +161,8 @@ function getArgoPostSearchResultsSuccess(response)
 				+ "<span style='font: 12px Helvetica, Arial, sans-serif;color:black;'>"
 				+ postDescription
 				+ "</span></div>"
-				);			
+				+ "</td>"
+				+ "</tr>");			
 		});
 	}
 }
@@ -166,8 +178,15 @@ function getArgoPostForumsSuccess(response)
 	if(count <= 0)
 	{
 		$('#searchResults').append(
-				"<span style='font: italic 12px Helvetica, Arial, sans-serif;color:black;'>No forums found. Please try again.</span>"
-				);
+			
+				"<tr id='searchResultsImage'>"
+				+ "<td class='photo'>"
+				+ "<img src='images/smallPic.png' width='50' height='50' align='top'></img>"
+				+ "</td>"
+				+ "<td class='text'>"
+				+ "<span style='font: italic 12px Helvetica, Arial, sans-serif;color:black;'>No forums found. Please try again.</span>"
+				+ "</td>"
+				+ "</tr>");
 	}
 	else
 	{
@@ -186,6 +205,11 @@ function getArgoPostForumsSuccess(response)
 			}
 			
 			$('#searchResults').append(
+				"<tr id='searchResultsImage'>"
+				+ "<td class='photo'>"
+				+ "<img src='images/smallPic.png' width='50' height='50' align='top'></img>"
+				+ "</td>"
+				+ "<td class='text'>"
 				+ "<a style='font: bold 14px Helvetica, Arial, sans-serif;color:navy;text-decoration:none;' href='javascript:getArgoPostThreads("+forumId+");'>"
 				+ forumTitle
 				+ "</a>"
@@ -193,7 +217,8 @@ function getArgoPostForumsSuccess(response)
 				+ "<span style='font: italic 10px Helvetica, Arial, sans-serif;color:gray;'>Created by "
 				+ userUwfId
 				+ "</span>"
-				);
+				+ "</td>"
+				+ "</tr>");
 		});
 	}
 }
@@ -210,8 +235,14 @@ function getArgoPostThreadsSuccess(response)
 	{
 		$('#searchResults').append(
 			
-				"<span style='font: italic 12px Helvetica, Arial, sans-serif;color:black;'>No threads found. Please try again.</span>"
-				);
+				"<tr id='searchResultsImage'>"
+				+ "<td class='photo'>"
+				+ "<img src='images/smallPic.png' width='50' height='50' align='top'></img>"
+				+ "</td>"
+				+ "<td class='text'>"
+				+ "<span style='font: italic 12px Helvetica, Arial, sans-serif;color:black;'>No threads found. Please try again.</span>"
+				+ "</td>"
+				+ "</tr>");
 	}
 	else
 	{
@@ -231,13 +262,20 @@ function getArgoPostThreadsSuccess(response)
 			}
 			
 			$('#searchResults').append(
-				"<a style='font: bold 14px Helvetica, Arial, sans-serif;color:navy;text-decoration:none;' href='javascript:getArgoPostPosts("+threadId+");'>"
+				"<tr id='searchResultsImage'>"
+				+ "<td class='photo'>"
+				+ "<img src='images/smallPic.png' width='50' height='50' align='top'></img>"
+				+ "</td>"
+				+ "<td class='text'>"
+				+ "<a style='font: bold 14px Helvetica, Arial, sans-serif;color:navy;text-decoration:none;' href='javascript:getArgoPostPosts("+threadId+");'>"
 				+ threadTitle
 				+ "</a>"
 				+ "&nbsp;&nbsp;"
 				+ "<span style='font: italic 10px Helvetica, Arial, sans-serif;color:gray;'>Created by "
 				+ userUwfId
 				+ "</span>"
+				+ "</td>"
+				+ "</tr>"
 			);		
 		});
 		
@@ -258,8 +296,15 @@ function getArgoPostPostsSuccess(response)
 	{
 
 		$('#searchResults').append(
-				"<span style='font: italic 12px Helvetica, Arial, sans-serif;color:black;'>No posts found. Please try again.</span>"
-				);
+			
+				"<tr id='searchResultsImage'>"
+				+ "<td class='photo'>"
+				+ "<img src='images/smallPic.png' width='50' height='50' align='top'></img>"
+				+ "</td>"
+				+ "<td class='text'>"
+				+ "<span style='font: italic 12px Helvetica, Arial, sans-serif;color:black;'>No posts found. Please try again.</span>"
+				+ "</td>"
+				+ "</tr>");
 	}
 	else
 	{
@@ -298,7 +343,12 @@ function getArgoPostPostsSuccess(response)
 			}
 			
 			$('#searchResults').append(
-				"<a style='font: bold 14px Helvetica, Arial, sans-serif;color:navy;text-decoration:none;' href='javascript:showArgoPostDetails(postIdContent"+postId+");'>"
+				"<tr id='searchResultsImage'>"
+				+ "<td class='photo'>"
+				+ "<img src='images/smallPic.png' width='50' height='50' align='top'></img>"
+				+ "</td>"
+				+ "<td class='text'>"
+				+ "<a style='font: bold 14px Helvetica, Arial, sans-serif;color:navy;text-decoration:none;' href='javascript:showArgoPostDetails(postIdContent"+postId+");'>"
 				+ postTitle
 				+ "</a>"
 				+ "&nbsp;&nbsp;"
@@ -314,6 +364,8 @@ function getArgoPostPostsSuccess(response)
 				+ "<span style='font: 12px Helvetica, Arial, sans-serif;color:black;'>"
 				+ postDescription
 				+ "</span></div>"
+				+ "</td>"
+				+ "</tr>"
 			);
 		});
 
