@@ -63,7 +63,8 @@
 			inner join Users as u on u.UserID = f.UserID
 		</cfquery>
 		<cfcatch type="any">
-			<cfreturn rtnStruct>
+			<cfreturn #cfcatch#>
+			<!---<cfreturn rtnStruct>--->
 		</cfcatch>
 		</cftry>
 		<cfset i = 0>
