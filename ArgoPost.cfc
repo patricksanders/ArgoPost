@@ -24,11 +24,11 @@
 				((Posts inner join Threads on Threads.ThreadID = Posts.ThreadID)
 				inner join Forums on Forums.ForumID = Threads.ForumID)
 				inner join Users on Users.UserID = Posts.UserID
-				where (LOWER(Posts.Title) like LOWER(<cfqueryparam value = "%#arguments.s#%" cfsqltype = "cf_sql_char" maxLength = "40">)
-				or LOWER(Posts.Description) like LOWER(<cfqueryparam value = "%#arguments.s#%" cfsqltype = "cf_sql_char" maxLength = "40">)
-				or LOWER(Threads.Title) like LOWER(<cfqueryparam value = "%#arguments.s#%" cfsqltype = "cf_sql_char" maxLength = "40">)
-				or LOWER(Forums.Title) like LOWER(<cfqueryparam value = "%#arguments.s#%" cfsqltype = "cf_sql_char" maxLength = "40">)
-				or LOWER(Users.UWFID) like LOWER(<cfqueryparam value = "%#arguments.s#%" cfsqltype = "cf_sql_char" maxLength = "40">))
+				where (LCase(Posts.Title) like LCase(<cfqueryparam value = "%#arguments.s#%" cfsqltype = "cf_sql_char" maxLength = "40">)
+				or LCase(Posts.Description) like LCase(<cfqueryparam value = "%#arguments.s#%" cfsqltype = "cf_sql_char" maxLength = "40">)
+				or LCase(Threads.Title) like LCase(<cfqueryparam value = "%#arguments.s#%" cfsqltype = "cf_sql_char" maxLength = "40">)
+				or LCase(Forums.Title) like LCase(<cfqueryparam value = "%#arguments.s#%" cfsqltype = "cf_sql_char" maxLength = "40">)
+				or LCase(Users.UWFID) like LCase(<cfqueryparam value = "%#arguments.s#%" cfsqltype = "cf_sql_char" maxLength = "40">))
 				and IsExpired = 0
 				order by Posts.EnteredDate desc;
 			</cfquery>
