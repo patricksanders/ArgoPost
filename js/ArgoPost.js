@@ -113,6 +113,15 @@ function getArgoPostSearchResultsSuccess(response)
 			var userUwfId = result.UWF_ID;
 			var forumId = result.FORUM_ID;
 			var threadId = result.THREAD_ID;
+			var loggedInUser = result.LOGGEDINUSER;
+			
+			var deleteBtn = "&nbsp;";
+			
+			if(loggedInUser == userUwfId)
+			{
+				deleteBtn = "<a style='font: bold 10px Helvetica, Arial, sans-serif;color:#333333;text-decoration:none;' href='javascript:deleteArgoPost("+postId+");'>[Delete]</a>"
+				
+			}
 			
 			if(postTitle == "")
 			{
@@ -134,6 +143,8 @@ function getArgoPostSearchResultsSuccess(response)
 				+ "<a style='font: bold 10px Helvetica, Arial, sans-serif;color:#333333;text-decoration:none;' href='javascript:getArgoPostThreads("+forumId+");'>[Forum]</a>"
 				+ "&nbsp;&nbsp;"
 				+ "<a style='font: bold 10px Helvetica, Arial, sans-serif;color:#333333;text-decoration:none;' href='javascript:getArgoPostPosts("+threadId+");'>[Thread]</a>"
+				+ "&nbsp;&nbsp;"
+				+ deleteBtn
 				+ "&nbsp;&nbsp;"
 				+ "<span style='font: italic 10px Helvetica, Arial, sans-serif;color:gray;'>Created by "
 				+ userUwfId + " on " + createdDate
