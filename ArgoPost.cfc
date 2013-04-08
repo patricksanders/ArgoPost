@@ -47,7 +47,7 @@
 			<cfset rtnStruct[i] = structNew()>
 			<cfset rtnStruct[i]["LOGGED_IN_USER"] = #session.userName#>
 			<cfloop list="#getArgoPostSearchResults.columnList#" index="thisColumn">
-				<cfset rtnStruct[i][thisColumn] = #thisColumn#>
+				<cfset rtnStruct[i][thisColumn] = evaluate(thisColumn)>
 			</cfloop>
 		</cfloop>
 		<cfreturn rtnStruct>
@@ -112,7 +112,7 @@
 			<cfset i = i + 1>
 			<cfset rtnStruct[i] = structNew()>
 			<cfloop list="#getArgoPostThreads.columnList#" index="thisColumn">
-				<cfset rtnStruct[i][thisColumn] = #thisColumn#>
+				<cfset rtnStruct[i][thisColumn] = evaluate(thisColumn)>
 			</cfloop>
 		</cfloop>
 		<cfreturn rtnStruct>
@@ -158,7 +158,7 @@
 			<cfset rtnStruct[i] = structNew()>
 			<cfset rtnStruct[i]["LOGGED_IN_USER"] = #session.userName#>
 			<cfloop list="#getArgoPostPosts.columnList#" index="thisColumn">
-				<cfset rtnStruct[i][thisColumn] = #thisColumn#>
+				<cfset rtnStruct[i][thisColumn] = evaluate(thisColumn)>
 			</cfloop>
 		</cfloop>
 		<cfreturn rtnStruct>
