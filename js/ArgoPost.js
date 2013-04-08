@@ -5,7 +5,7 @@ function init()
 	var pathArray = window.location.pathname.split( '/' );
  	
  	// Do something if on the searchpage.html or searchpage.cfm
- 	if(pathArray[pathArray.length-1] == "searchpage.html" || pathArray[pathArray.length-1] == "searchpage.cfm")
+ 	if(pathArray[pathArray.length-1] == "searchpage.cfm")
  	{
  		getArgoPostForums();
  	}
@@ -104,6 +104,7 @@ function getArgoPostSearchResultsSuccess(response)
 		$('#searchResults').append("<p><span id='threadTitle' style='font: italic 14px Helvetica, Arial, sans-serif;color:#333;text-decoration:underline;'>Posts</span></p>"
 		);
 		
+
 		$.each(response, function(index, result)
 		{  
 			var postId = result.POST_ID;
@@ -113,13 +114,13 @@ function getArgoPostSearchResultsSuccess(response)
 			var userUwfId = result.UWF_ID;
 			var forumId = result.FORUM_ID;
 			var threadId = result.THREAD_ID;
-			var loggedInUser = result.LOGGEDINUSER;
-			
+			var loggedInUser = result.LOGGED_IN_USER;
+
 			var deleteBtn = "&nbsp;";
 			
 			if(loggedInUser == userUwfId)
 			{
-				deleteBtn = "<a style='font: bold 10px Helvetica, Arial, sans-serif;color:#333333;text-decoration:none;' href='javascript:deleteArgoPost("+postId+");'>[Delete]</a>"
+				deleteBtn = "<a style='font: bold 10px Helvetica, Arial, sans-serif;color:red;text-decoration:none;' href='javascript:deleteArgoPost("+postId+");'>[Delete]</a>"
 				
 			}
 			
@@ -301,6 +302,16 @@ function getArgoPostPostsSuccess(response)
 			
 			threadTitle = result.THREAD_TITLE;
 			
+			var loggedInUser = result.LOGGED_IN_USER;
+
+			var deleteBtn = "&nbsp;";
+			
+			if(loggedInUser == userUwfId)
+			{
+				deleteBtn = "<a style='font: bold 10px Helvetica, Arial, sans-serif;color:red;text-decoration:none;' href='javascript:deleteArgoPost("+postId+");'>[Delete]</a>"
+				
+			}
+			
 			if(postTitle == "")
 			{
 				postTitle = "N/A"
@@ -319,6 +330,8 @@ function getArgoPostPostsSuccess(response)
 				+ "</a>"
 				+ "&nbsp;&nbsp;"
 				+ "<a style='font: bold 10px Helvetica, Arial, sans-serif;color:#333333;text-decoration:none;' href='javascript:getArgoPostThreads("+forumId+");'>[Forum]</a>"
+				+ "&nbsp;&nbsp;"
+				+ deleteBtn
 				+ "&nbsp;&nbsp;"
 				+ "<span style='font: italic 10px Helvetica, Arial, sans-serif;color:gray;'>Created by "
 				+ userUwfId + " on " + createdDate

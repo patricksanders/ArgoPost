@@ -1,7 +1,7 @@
 <cfcomponent>
 	<!--- The name of the Cold Fusion datasource --->
 	<cfset theDS="seproject_argopost">
-	
+
 	<!--- Gets a JSON object representing Posts in the ArgoPost system --->
 	<cffunction name="getArgoPostSearchResults" access="remote" returnFormat="JSON" returnType="struct">	
 		<cfargument name="s" >
@@ -43,7 +43,7 @@
 		<cfloop query="getArgoPostSearchResults">
 			<cfset i = i + 1>
 			<cfset rtnStruct[i] = structNew()>
-			<cfset rtnStruct[i][loggedInUser] = session.userName>
+			<cfset rtnStruct[i]["LOGGED_IN_USER"] = #session.userName#>
 			<cfloop list="#getArgoPostSearchResults.columnList#" index="thisColumn">
 				<cfset rtnStruct[i][thisColumn] = evaluate(thisColumn) >
 			</cfloop>
@@ -148,6 +148,7 @@
 		<cfloop query="getArgoPostPosts">
 			<cfset i = i + 1>
 			<cfset rtnStruct[i] = structNew()>
+			<cfset rtnStruct[i]["LOGGED_IN_USER"] = #session.userName#>
 			<cfloop list="#getArgoPostPosts.columnList#" index="thisColumn">
 				<cfset rtnStruct[i][thisColumn] = evaluate(thisColumn) >
 			</cfloop>
