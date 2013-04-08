@@ -75,7 +75,7 @@
 			<cfset i = i + 1>
 			<cfset rtnStruct[i] = structNew()>
 			<cfloop list="#getArgoPostForums.columnList#" index="thisColumn">
-				<cfset rtnStruct[i][thisColumn] = #thisColumn#>
+				<cfset rtnStruct[i][thisColumn] = thisColumn>
 			</cfloop>
 		</cfloop>
 		<cfreturn rtnStruct>
