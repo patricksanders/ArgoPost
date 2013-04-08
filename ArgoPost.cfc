@@ -9,7 +9,7 @@
 		<cfif len(trim(#arguments.s#))>
 			<cftry>
 			<cfquery name="getArgoPostSearchResults" datasource="#theDS#">
-				select 	Posts.PostID <!--- as 'Post_Id'--->
+				select 	Posts.PostID as 'PostId'
 						, Posts.Title <!--- as 'Post_Title'--->
 						, Posts.Description <!--- as 'Post_Description'--->
 						, Posts.EnteredDate <!--- as 'Post_EnteredDate'--->
