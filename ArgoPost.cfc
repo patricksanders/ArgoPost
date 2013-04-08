@@ -20,7 +20,7 @@
 						, Threads.Title as 'Thread_Title'
 						, Forums.ForumID as 'Forum_ID'
 						, Forums.Title as 'Forum_Title'
-				from (Posts inner join Threads on Threads.ThreadID = Posts.ThreadID) inner join Forums on Forums.ForumID = Threads.ForumID inner join Users on Users.UserID = Posts.UserID	where (LOWER(Posts.Title) like LOWER(<cfqueryparam value = "%#arguments.s#%" cfsqltype = "cf_sql_char" maxLength = "40">)
+				from (Posts inner join Threads on Threads.ThreadID = Posts.ThreadID) and (inner join Forums on Forums.ForumID = Threads.ForumID) and (inner join Users on Users.UserID = Posts.UserID) where (LOWER(Posts.Title) like LOWER(<cfqueryparam value = "%#arguments.s#%" cfsqltype = "cf_sql_char" maxLength = "40">)
 				or LOWER(Posts.Description) like LOWER(<cfqueryparam value = "%#arguments.s#%" cfsqltype = "cf_sql_char" maxLength = "40">)
 				or LOWER(Threads.Title) like LOWER(<cfqueryparam value = "%#arguments.s#%" cfsqltype = "cf_sql_char" maxLength = "40">)
 				or LOWER(Forums.Title) like LOWER(<cfqueryparam value = "%#arguments.s#%" cfsqltype = "cf_sql_char" maxLength = "40">)
