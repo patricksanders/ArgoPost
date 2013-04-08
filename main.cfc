@@ -29,7 +29,7 @@
 			</ul>
 		</div>
 	</div>
-	<div id="content">
+	<div id="body">
 	
 	<!-- Will display if faculty is logged in -->
 	<div id="deleteAll">
@@ -45,20 +45,20 @@
 		<h2 id="resultsTitle">Forums</h2>		
 	</div>
 	
-	<div id="searchResults">
+	<!-- <div id="searchResults">
 <a href="threads.html">Events</a>
 
-	</div>
+	</div> -->
 
 	
-	<!--
+	
 	<div class="ad_list">-->
 	<!--This table's category(s) will change once integrated with working functions. It's current purpose is for design. -->
-	<!--<table border="0" cellspacing="0">
-	<tbody>-->
+	<table border="0" cellspacing="0">
+	<tbody>
 	
 		<!--<tr> to </tr> is each row in the table -->
-		<!--<tr id="searchResults">
+		<tr id="searchResults">
 		<td class="photo">
 			<img src="images/smallPic.png" width="50" height="50" align="top"></img>
 		</td>
@@ -70,7 +70,7 @@
 	</tbody>
 	</table>
 	
-	</div>-->
+	</div>
 	</div>
 	<div id="footer">
 		<div>
