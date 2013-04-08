@@ -15,6 +15,17 @@
 	</cfcatch>
 	
 	</cftry>
+	
+	<cftry>
+		<cfinvoke component="ArgoPost" method="getArgoPostForums" returnVariable="return">		
+		</cfinvoke>
+		<cfdump var="#return#">
+	<cfcatch type="any">
+		<h2>ERROR:</h2>
+		<cfdump var="#cfcatch#">
+	</cfcatch>
+	
+	</cftry>
 </body>
 </html>
 </cfoutput>
