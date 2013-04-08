@@ -29,6 +29,7 @@
 	</cfcatch>
 	
 	</cftry>
+	<!--
 	<h2>getArgoPostThreads(1)</h2>
 	<cftry>
 		<cfinvoke component="ArgoPost" method="getArgoPostThreads" returnVariable="return">
@@ -41,7 +42,6 @@
 	</cfcatch>
 	
 	</cftry>
-	<!--
 	<h2>getArgoPostPosts(1)</h2>
 	<cftry>
 		<cfinvoke component="ArgoPost" method="getArgoPostPosts" returnVariable="return">
