@@ -63,8 +63,9 @@
 			inner join Users as u on u.UserID = f.UserID
 		</cfquery>
 		<cfcatch type="any">
-			<cfreturn #cfcatch#>
-			<!---<cfreturn rtnStruct>--->
+			<cfset rtnStruct["ERROR"] = "There was an error executing the query.">
+			<cfset rtnStruct["MESSAGE"] = #cfcatch#>
+			<cfreturn rtnStruct>
 		</cfcatch>
 		</cftry>
 		<cfset i = 0>
