@@ -8,6 +8,32 @@
 		<cfset rtnStruct = structNew()>
 		<cfif len(trim(#arguments.s#))>
 			<cftry>
+			<cfquery name="getArgoPostSearchResults" datasource="#theDS#">
+				select 	Posts.PostID as 'Post_Id'
+						, Posts.Title as 'Post_Title'
+						, Posts.Description as 'Post_Description'
+						, Posts.EnteredDate as 'Post_EnteredDate'
+            			, Posts.ExpirationDate as 'Post_ExpirationDate'
+            			, Posts.LastModifiedDate as 'Post_LastModifiedDate'
+            			, Users.UWFID as 'Uwf_Id'
+						, Threads.ThreadID as 'Thread_ID'
+						, Threads.Title as 'Thread_Title'
+						, Forums.ForumID as 'Forum_ID'
+						, Forums.Title as 'Forum_Title'
+				from Posts
+				inner join Threads on Threads.ThreadID = Posts.ThreadID
+				inner join Forums on Forums.ForumID = Threads.ForumID
+				inner join Users on Users.UserID = Posts.UserID
+				where (LOWER(Posts.Title) like LOWER(<cfqueryparam value = "%#arguments.s#%" cfsqltype = "cf_sql_char" maxLength = "40">)
+				or LOWER(Posts.Description) like LOWER(<cfqueryparam value = "%#arguments.s#%" cfsqltype = "cf_sql_char" maxLength = "40">)
+				or LOWER(Threads.Title) like LOWER(<cfqueryparam value = "%#arguments.s#%" cfsqltype = "cf_sql_char" maxLength = "40">)
+				or LOWER(Forums.Title) like LOWER(<cfqueryparam value = "%#arguments.s#%" cfsqltype = "cf_sql_char" maxLength = "40">)
+				or LOWER(Users.UWFID) like LOWER(<cfqueryparam value = "%#arguments.s#%" cfsqltype = "cf_sql_char" maxLength = "40">))
+				and IsExpired = 0
+				order by Posts.EnteredDate desc
+			</cfquery>
+			
+			<!---
 				<cfquery name="getArgoPostSearchResults" datasource="#theDS#">
 				select 	p.PostID as 'Post_ID'
 						, p.Title as 'Post_Title'
@@ -32,6 +58,7 @@
 				and IsExpired = 0
 				order by p.EnteredDate desc
 			</cfquery>
+			--->
 			<cfcatch type="any">
 				<cfset rtnStruct["ERROR"] = "There was an error executing the query.">
 				<cfset rtnStruct["MESSAGE"] = #cfcatch#>
