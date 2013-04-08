@@ -24,11 +24,12 @@
 				inner join Threads as t on t.ThreadID = p.ThreadID
 				inner join Forums as f on f.ForumID = t.ForumID
 				inner join Users as u on u.UserID = p.UserID
-				where LOWER(p.Title) like LOWER(<cfqueryparam value = "%#arguments.s#%" cfsqltype = "cf_sql_char" maxLength = "40">)
+				where (LOWER(p.Title) like LOWER(<cfqueryparam value = "%#arguments.s#%" cfsqltype = "cf_sql_char" maxLength = "40">)
 				or LOWER(p.Description) like LOWER(<cfqueryparam value = "%#arguments.s#%" cfsqltype = "cf_sql_char" maxLength = "40">)
 				or LOWER(t.Title) like LOWER(<cfqueryparam value = "%#arguments.s#%" cfsqltype = "cf_sql_char" maxLength = "40">)
 				or LOWER(f.Title) like LOWER(<cfqueryparam value = "%#arguments.s#%" cfsqltype = "cf_sql_char" maxLength = "40">)
-				or LOWER(u.UWFID) like LOWER(<cfqueryparam value = "%#arguments.s#%" cfsqltype = "cf_sql_char" maxLength = "40">)
+				or LOWER(u.UWFID) like LOWER(<cfqueryparam value = "%#arguments.s#%" cfsqltype = "cf_sql_char" maxLength = "40">))
+				and IsExpired = 0
 				order by p.EnteredDate desc
 			</cfquery>
 			<cfcatch type="any">
@@ -42,6 +43,7 @@
 		<cfloop query="getArgoPostSearchResults">
 			<cfset i = i + 1>
 			<cfset rtnStruct[i] = structNew()>
+			<cfset rtnStruct[i][loggedInUser] = session.userName>
 			<cfloop list="#getArgoPostSearchResults.columnList#" index="thisColumn">
 				<cfset rtnStruct[i][thisColumn] = evaluate(thisColumn) >
 			</cfloop>
@@ -132,7 +134,8 @@
 				inner join Threads as t on t.ThreadID = p.ThreadID
 				inner join Forums as f on f.ForumID = t.ForumID
 				inner join Users as u on u.UserID = p.UserID
-				where p.ThreadId = <cfqueryparam value = "#arguments.t#" cfsqltype = "cf_sql_int">
+				where (p.ThreadId = <cfqueryparam value = "#arguments.t#" cfsqltype = "cf_sql_int">)
+				and IsExpired = 0
 			</cfquery>
 			<cfcatch type="any">
 				<cfreturn rtnStruct>
