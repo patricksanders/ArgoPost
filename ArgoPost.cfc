@@ -163,41 +163,4 @@
 		</cfloop>
 		<cfreturn rtnStruct>
 	</cffunction>
-
-	<!--- Mark expired method, which will also serve as the 'deletePost' function.  No posts will actually be deleted until the 'flushExpired' function is called.
-	<cffunction name="markExpired" access="remote" returnFormat="JSON" returnType="numeric">
-		<cftry>
-			<cfargument name="postID" type="numeric" required="true">
-			<cfset rtnValue = 0 >
-			<cfset thisUserId = getUserName() >
-			<cfset boolOkToDelete = false >
-
-			<cfif getIsFaculty() >
-				<cfset boolOkToDelete = true >
-			<cfelse>
-				<cfquery name="qGetUserId" datasource="#theDS#">
-					select userID FROM Posts 
-					WHERE postID = <cfqueryparam value="#arguments.postID#" cfsqltype="CF_SQL_INTEGER" >
-				</cfquery>
-				<cfif thisUserID EQ qGetUserId.userID >
-					<cfset boolOkToDelete = true >
-				<cfelse>
-					<cfset rtnValue = 1 >
-				</cfif>
-			</cfif>
-			
-			<cfif boolOkToDelete >
-				<cfquery name="qDeletePosts" datasource="DATASOURCENAME">
-					update Posts
-					set isExpired = false
-					WHERE postID = <cfqueryparam value="#arguments.postID#" cfsqltype="CF_SQL_INTEGER" >
-				</cfquery>
-			</cfif>	
-		<cfcatch type="any">
-			<cfset rtnValue = 10>
-		</cfcatch>
-		</cftry>
-		<cfreturn rtnValue >
-	</cffunction>
-	--->
 </cfcomponent>
