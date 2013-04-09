@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 // Executes when the page is loaded
 function init() 
 {
@@ -21,6 +23,19 @@ function getArgoPostSearchResults()
 		dataType: "json",
 		success: getArgoPostSearchResultsSuccess,
 		failure: getArgoPostFail
+	 });
+}
+
+// Expires a post
+function deleteArgoPost(postId)
+{
+	$.ajax({
+		type: "GET", url: "argopost.cfc?wsdl&method=markExpired"
+				+"&postID=" + postId,
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		success: deleteArgoPostSuccess,
+		failure: deleteArgoPostFail
 	 });
 }
 
@@ -384,6 +399,24 @@ function getArgoPostFail(response)
 	$('#searchResults').append("<span style='font: italic 12px Helvetica, Arial, sans-serif;color:gray;'>"+response+"</span>");		
 }
 
+// Handles a failed response from deleteArgoPost
+function deleteArgoPostFail(response)
+{
+	$('#searchResults').empty();
+		
+	$('#searchResults').append("<span style='font: italic 12px Helvetica, Arial, sans-serif;color:gray;'>There was an error with the server.</span><br />");
+	
+	$('#searchResults').append("<span style='font: italic 12px Helvetica, Arial, sans-serif;color:gray;'>"+response+"</span>");		
+}
+
+// Handles a successful response from deleteArgoPost
+function deleteArgoPostSuccess(response)
+{
+	var mywin = window.open("", "my_popup", "location=0,status=0,scrollbars=0,width=500,height=500");
+	var contents = "Post Deleted";
+	$(mywin.document.body).html(contents);
+}
+
 // Allows this javascript library to include other javascript libraries
 function IncludeJavaScript(jsFile)
 {
@@ -394,4 +427,5 @@ function IncludeJavaScript(jsFile)
 // Include the jQuery library hosted at Google
 IncludeJavaScript('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js');
 
+>>>>>>> Integrated delete functionality into search and filter
 window.onload = init
