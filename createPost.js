@@ -33,7 +33,7 @@
 	else {
 		$.ajax({
 			type : "GET",
-			url : "http://localhost:8500/argoPost/Post.cfc?wsdl&method=addPost&postTitle="+aTitle.value+"&postContent="+aDescription.value+"&threadID="+aThreadID.value,
+			url : "Post.cfc?wsdl&method=addPost&postTitle="+aTitle.value+"&postContent="+aDescription.value+"&threadID="+aThreadID.value,
 			contentType : "application/json; charset=utf-8",
 			dataType : "json",
 			success : postSucceeded,
@@ -180,7 +180,7 @@ function failedToGetThreadTitles(){
 function checkLoggedInStatus(){
 	$.ajax({
 			type : "GET",
-			url : "http://localhost:8500/argoPost/Post.cfc?wsdl&method=checkIfLoggedIn",
+			url : "Post.cfc?wsdl&method=checkIfLoggedIn",
 			contentType : "application/json; charset=utf-8",
 			dataType : "json",
 			success : userIsLoggedIn,
@@ -196,7 +196,7 @@ function userIsLoggedIn(response){
 		getForumTitles();
 	}
 	else{
-		window.location = "http://localhost:8500/argoPost/login.html";
+		window.location = "login.html";
 	}
 }
 
@@ -204,5 +204,5 @@ function userIsLoggedIn(response){
  * What to do if checking the users logged in status has failed. 
  */
 function loggedInStatusFailed(){
-	window.location = "http://localhost:8500/argoPost/login.html"
+	window.location = "login.html"
 }
