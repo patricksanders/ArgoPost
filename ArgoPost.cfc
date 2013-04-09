@@ -163,16 +163,15 @@
 		</cfloop>
 		<cfreturn rtnStruct>
 	</cffunction>
-	
-	<!--- Mark expired method, which will also serve as the 'deletePost' function.  No posts will actually be deleted until the 'flushExpired' function is called.--->
+
+	<!--- Mark expired method, which will also serve as the 'deletePost' function.  No posts will actually be deleted until the 'flushExpired' function is called.
 	<cffunction name="markExpired" access="remote" returnFormat="JSON" returnType="numeric">
 		<cftry>
-			<cfargument name="postID" type="numeric" required="true" >
+			<cfargument name="postID" type="numeric" required="true">
 			<cfset rtnValue = 0 >
 			<cfset thisUserId = getUserName() >
 			<cfset boolOkToDelete = false >
-			<!--- Perform series of if/else statmenets to determine if the person attempting to remove the post owns it, or is faculty
-				meaning they would have permission to remove it any way.--->
+
 			<cfif getIsFaculty() >
 				<cfset boolOkToDelete = true >
 			<cfelse>
@@ -200,4 +199,5 @@
 		</cftry>
 		<cfreturn rtnValue >
 	</cffunction>
+	--->
 </cfcomponent>
