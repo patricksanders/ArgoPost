@@ -47,9 +47,8 @@
  * of that thread that the post was created. The next action will be to direct the user to the newly created post.
  */
 function postSucceeded(response) {
-	//redirect the user to the post they just made -  not exaclty sure how to do this
-	var aThreadID = document.getElementById("threads");
-	window.location = "main.html";
+	
+	alert("Your post was successfully created!");
 }
 
 /**
