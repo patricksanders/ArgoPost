@@ -50,7 +50,6 @@ function postSucceeded(response) {
 	//redirect the user to the post they just made -  not exaclty sure how to do this
 	var aThreadID = document.getElementById("threads");
 	window.location = "main.html";
-	getArgoPostPosts(aThreadID.value);
 }
 
 /**
