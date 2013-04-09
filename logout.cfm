@@ -10,4 +10,4 @@
 <cfset url.logout = 1>
 <cf_uwflogin logoutURL="http://uwf.edu/">
 
-<cflocation url = "http://uwf.edu/seproject/TestDeployment/index.cfm" addtoken="no">
+<cflocation url = "http://uwf.edu/seproject/TestDeployment/login.html" addtoken="no">
