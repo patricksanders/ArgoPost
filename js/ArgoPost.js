@@ -24,16 +24,29 @@ function getArgoPostSearchResults()
 	 });
 }
 
-// Expires a post
-function deleteArgoPost(postId)
+// Expires a post from thread-view
+function deleteArgoPostFromThread(postId, threadId)
 {
 	$.ajax({
 		type: "GET", url: "argopost.cfc?wsdl&method=markExpired"
 				+"&postID=" + postId,
 		contentType: "application/json; charset=utf-8",
 		dataType: "json",
-		success: deleteArgoPostSuccess,
-		failure: deleteArgoPostFail
+		success: deleteArgoPostFromThreadSuccess,
+		failure: deleteArgoPostFromThreadFail
+	 });
+}
+
+// Expires a post from search-view
+function deleteArgoPostFromSearch(postId)
+{
+	$.ajax({
+		type: "GET", url: "argopost.cfc?wsdl&method=markExpired"
+				+"&postID=" + postId,
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		success: deleteArgoPostFromSearchSuccess,
+		failure: deleteArgoPostFromSearchFail
 	 });
 }
 
@@ -92,6 +105,8 @@ function showArgoPostDetails(argoPostItem)
 // Handles a successful response from the getSearchResults function
 function getArgoPostSearchResultsSuccess(response)
 {
+	var keyword = document.getElementById('searchInputText').value;
+	
 	var count = 0;
 	$.each(response, function(k, v) { count++; });
 	
@@ -136,7 +151,7 @@ function getArgoPostSearchResultsSuccess(response)
 			
 			if(loggedInUser == userUwfId)
 			{
-				deleteBtn = "<a style='font: bold 10px Helvetica, Arial, sans-serif;color:red;text-decoration:none;' href='javascript:deleteArgoPost("+postId+");'>[Delete]</a>"
+				deleteBtn = "<a style='font: bold 10px Helvetica, Arial, sans-serif;color:red;text-decoration:none;' href='javascript:deleteArgoPostFromSearch("+postId+ ");'>[Delete]</a>"
 				
 			}
 			
@@ -341,7 +356,7 @@ function getArgoPostPostsSuccess(response)
 			
 			if(loggedInUser == userUwfId)
 			{
-				deleteBtn = "<a style='font: bold 10px Helvetica, Arial, sans-serif;color:red;text-decoration:none;' href='javascript:deleteArgoPost("+postId+");'>[Delete]</a>"
+				deleteBtn = "<a style='font: bold 10px Helvetica, Arial, sans-serif;color:red;text-decoration:none;' href='javascript:deleteArgoPostFromThread("+postId+ "," + threadId + ");'>[Delete]</a>"
 				
 			}
 			
@@ -397,8 +412,8 @@ function getArgoPostFail(response)
 	$('#searchResults').append("<span style='font: italic 12px Helvetica, Arial, sans-serif;color:gray;'>"+response+"</span>");		
 }
 
-// Handles a failed response from deleteArgoPost
-function deleteArgoPostFail(response)
+// Handles a failed response from deleteArgoPostThread
+function deleteArgoPostFromThreadFail(response)
 {
 	$('#searchResults').empty();
 		
@@ -407,12 +422,33 @@ function deleteArgoPostFail(response)
 	$('#searchResults').append("<span style='font: italic 12px Helvetica, Arial, sans-serif;color:gray;'>"+response+"</span>");		
 }
 
-// Handles a successful response from deleteArgoPost
-function deleteArgoPostSuccess(response)
+// Handles a successful response from deleteArgoPostFromThread
+function deleteArgoPostFromThreadSuccess(response)
 {
 	var mywin = window.open("", "my_popup", "location=0,status=0,scrollbars=0,width=500,height=500");
 	var contents = "Post Deleted";
 	$(mywin.document.body).html(contents);
+	getArgoPostPosts(threadId);
+	
+}
+
+// Handles a failed response from deleteArgoPostFromSearch
+function deleteArgoPostFromSearchFail(response)
+{
+	$('#searchResults').empty();
+		
+	$('#searchResults').append("<span style='font: italic 12px Helvetica, Arial, sans-serif;color:gray;'>There was an error with the server.</span><br />");
+	
+	$('#searchResults').append("<span style='font: italic 12px Helvetica, Arial, sans-serif;color:gray;'>"+response+"</span>");		
+}
+
+// Handles a successful response from deleteArgoPostFromSearch
+function deleteArgoPostFromSearchSuccess(response)
+{
+	var mywin = window.open("", "my_popup", "location=0,status=0,scrollbars=0,width=500,height=500");
+	var contents = "Post Deleted";
+	$(mywin.document.body).html(contents);
+	getArgoPostSearchResults();
 }
 
 // Allows this javascript library to include other javascript libraries
