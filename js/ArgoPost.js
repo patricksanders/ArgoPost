@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 // Executes when the page is loaded
 function init() 
 {
@@ -427,5 +425,4 @@ function IncludeJavaScript(jsFile)
 // Include the jQuery library hosted at Google
 IncludeJavaScript('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js');
 
->>>>>>> Integrated delete functionality into search and filter
 window.onload = init
