@@ -11,7 +11,7 @@ Filename: Notifier.cfc
 <!--- This Query gets the IDs of the threads that are to be used for Notfication --->
 <cfquery name="getIDs" datasource="SEproject_argopost">
 	select * from subscriptions
-	where subscriptions = <cfqueryparam value="#threadID#">; 
+	where ThreadID = <cfqueryparam value="#threadID#">; 
 </cfquery>
 
 <!--- This function sends an email to the list of people who are subscribed to a forum/thread --->
