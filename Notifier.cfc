@@ -57,7 +57,7 @@ where userID= <cfqueryparam value="#UserID#">;
 		Hello, #UWFID#
 			You are recieving this message because a post was made in ArgoPost thread #Title#
 			The user #PosterName# has posted in this thread.
-			Navigate to <!--- url---> to check out the posts
+			Navigate to <!--- url---> to check out the posts >
 <cfreturn message>
 </cffunction>
 </cfcomponent>
