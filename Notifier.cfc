@@ -9,6 +9,7 @@ Filename: Notifier.cfc
 <cfset threadID="threadID"><!---need to initialize from somewhere(UI?)--->
 <cfset UWFID="UWFID">
 
+
 <!--- This Query gets the IDs of the threads that are to be used for Notfication --->
 <cfquery name="getIDs" datasource="SEproject_argopost">
 	select * from subscriptions
@@ -44,7 +45,7 @@ are subscribed to when a new post is made. --->
 	where UserID = <cfqueryparam value="#UserID#">;
 </cfquery>
 
-<cfquery name="UserName" datasource="#SEproject_argopost#">
+<cfquery name="UserName" datasource="SEproject_argopost">
 	select UWFID from Users
 	where UserID = <cfqueryparam value="#UserID#">;
 </cfquery>
@@ -62,10 +63,10 @@ where userID= <cfqueryparam value="#UserID#">;
 </cfquery>
 
 <cfset message=
-		Hello, #UWFID#
+		"Hello, ArgoPost User
 			You are recieving this message because a post was made in ArgoPost thread #Title#
 			The user #PosterName# has posted in this thread.
-			Navigate to <!--- url---> to check out the posts >
+			Navigate to <!--- url---> to check out the posts" >
 <cfreturn message>
 
 </cffunction>
