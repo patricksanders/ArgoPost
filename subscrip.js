@@ -8,7 +8,7 @@ function createSubscription() {
 			type : "GET",
 			url : "Subscriber.cfc?wsdl&method=AddToSubscriptions&threadID="+aThreadID.value,
 			contentType : "application/json; charset=utf-8",
-			dataType : "int",
+			dataType : "boolean",
 			success : postSucceeded,
 			failure : failedToAddPost
 		});

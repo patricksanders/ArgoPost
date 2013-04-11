@@ -16,14 +16,20 @@ Filename: Subscriber.cfc
 	
 <cfset userID = #userIDnum#>
 <!---Adds a Subscription to the list of the user's subscripitons. --->
-<cffunction name="AddToSubscriptions" returntype="void">
+<cffunction name="AddToSubscriptions" returntype="boolean">
 	<cfargument name="ThreadID" type="int">
 	
+	<cftry>
 	<cfquery name="Add" datasource="SEproject_argopost"> 
 			INSERT into Subscriptions(UserID,ThreadID)
 			values(<cfqueryparam value="#userID#">,
 					<cfqueryparam value="#Arguments.ThreadID#">);
 	</cfquery>
+	<cfcatch type="any">
+			<cfreturn false>
+		</cfcatch>
+		</cftry>
+	<cfreturn true>
 </cffunction>
 <!---Removes a Subscription to the list of the user's subscripitons. --->
 <cffunction name="removefromSubscriptions" returntype="void">
