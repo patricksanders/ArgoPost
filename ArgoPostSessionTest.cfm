@@ -4,10 +4,9 @@
 <title>ArgoPost Search Test</title>
 </head>
 <body>
-	<h2>markExpired('test')</h2>
+	<h2>checkSession()</h2>
 	<cftry>
-		<cfinvoke component="argoPostDelete" method="markExpired" returnVariable="return">
-			<cfinvokeargument name="postID" value="1"> 		
+		<cfinvoke component="ArgoPost" method="checkSession" returnVariable="return">	
 		</cfinvoke>
 		<cfdump var="#return#">
 	<cfcatch type="any">

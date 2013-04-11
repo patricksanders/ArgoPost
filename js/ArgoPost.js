@@ -1,13 +1,34 @@
 // Executes when the page is loaded
 function init() 
 {
+	console.log("firing init event");
+	
 	// Get the URL and split it by "/"
 	var pathArray = window.location.pathname.split( '/' );
  	
  	// Do something if on the searchpage.html or searchpage.cfm
- 	if(pathArray[pathArray.length-1] == "searchpage.cfm" || pathArray[pathArray.length-1] == "main.cfm")
+ 	if(pathArray[pathArray.length-1] == "index.cfm" || pathArray[pathArray.length-1] == "")
  	{
- 		getArgoPostForums();
+ 		$.ajax({
+			type: "GET", url: "argopost.cfc?wsdl&method=checkSession",
+			contentType: "application/json; charset=utf-8",
+			dataType: "json",
+			success: function(response)
+					{
+						if(response.sessionStatus == 1)
+						{
+							getArgoPostForums();
+						}
+						else
+						{
+							window.location = "login.html";
+						}
+					},
+			failure: function(response)
+					{
+						window.location = "login.html";	
+					}
+	 	});
  	}
 }
 

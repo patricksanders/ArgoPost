@@ -17,7 +17,8 @@ function createSubscription() {
 	//if there is an empty field send user back to post page with an error
 	//explaining that all fields must be completed
 	if (isEmptyField === true) {
-		writeAFormError(document.aSubscription);
+		alert("You must select a forum and thread.");
+
 	} 
 	else {
 		$.ajax({
@@ -39,18 +40,41 @@ function failedToAddSubscription() {
 	
 }
 
+
 /**
- *This function is used to alert the user that a field has been left empty. 
+ *This function will run when the create post page is loaded. It will fill the Forums drop down menu with the list of forum titles.
  */
-function writeAFormError(aform){
-	document.getElementById('threadsErrorMsg').innerHTML = "";
-	document.getElementById('forumsErrorMsg').innerHTML = "";
+function getForumTitles() {
+		$.ajax({
+			type : "GET",
+			url : "Subscriber.cfc?wsdl&method=getSubs",
+			contentType : "application/json; charset=utf-8",
+			dataType : "json",
+			success : populateSubsComboBox,
+			failure : failedToGetSubsTitles
+		});
+}
+
+/**
+ *This function will run when the forum titles have successfully been returned from the database. 
+ */
+function populateSubsComboBox(response) {
 	
-	if(aform.threads.value=="Select a thread"){
-		document.getElementById('threadsErrorMsg').innerHTML = "*Please select a thread.";
-	}
+	$('#forums').empty();
+	$('#forums').append("<option>Select a forum</option>");
 	
-	if(aform.forums.value=="Select a forum"){
-		document.getElementById('forumsErrorMsg').innerHTML = "*Please select a forum.";
-	}
+	$.each(response, function(index, result){
+		var threadId = result.THREADID;
+		var subTitle = result.NOTIFICATION;
+		
+		$('#forums').append("<option value='" + threadId + "'>" + subTitle + "</option>");
+	});	
+}
+
+
+/**
+ * Thi function will execute if there is an error accessing the forum titles from the webservice 
+ */
+function failedToGetSubTitles(response){
+	alert("Could not load the Subscriptions. Please refresh the page and try again.")
 }

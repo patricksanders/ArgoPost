@@ -40,4 +40,29 @@ Filename: Subscriber.cfc
 		and UserID = <cfqueryparam value="#userID#">;
 	</cfquery>
 </cffunction>
+
+<!--- Gets a JSON object representing the Forums in ArgoPost --->
+	<cffunction name="getSubs" access="remote" returnFormat="JSON" returnType="struct">	
+		<cfset rtnStruct = structNew()>
+		<cftry>
+			<cfquery name="getArgoPostSubs" datasource="SEproject_argopost">
+			select *
+			from Notifications
+			where UserID = <cfqueryparam value="#userID#">;
+		</cfquery>
+		<cfcatch type="any">
+			<cfreturn rtnStruct>
+		</cfcatch>
+		</cftry>
+		<cfset i = 0>
+		<cfloop query="getArgoPostSubs">
+			<cfset i = i + 1>
+			<cfset rtnStruct[i] = structNew()>
+			<cfloop list="#getArgoPostSubs.columnList#" index="thisColumn">
+				<cfset rtnStruct[i][thisColumn] = evaluate(thisColumn) >
+			</cfloop>
+		</cfloop>
+		<cfreturn rtnStruct>
+	</cffunction>
+
 </cfcomponent>
