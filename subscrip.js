@@ -17,7 +17,7 @@ function createSubscription() {
 	//if there is an empty field send user back to post page with an error
 	//explaining that all fields must be completed
 	if (isEmptyField === true) {
-		writeFormError(document.aPost);
+		writeFormError(document.aSubscription);
 	} 
 	else {
 		$.ajax({
