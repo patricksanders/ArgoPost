@@ -24,7 +24,7 @@
 					<a href="createpost.html">Create Post</a>
 				</li>
 				<li>
-					<a href="">Logout</a>
+					<a href="logout.cfm">Logout</a>
 				</li>
 
 			</ul>
