@@ -425,11 +425,8 @@ function deleteArgoPostFromThreadFail(response)
 // Handles a successful response from deleteArgoPostFromThread
 function deleteArgoPostFromThreadSuccess(response)
 {
-	var mywin = window.open("", "my_popup", "location=0,status=0,scrollbars=0,width=500,height=500");
-	var contents = "Post Deleted";
-	$(mywin.document.body).html(contents);
+	alert("Your post was successfully deleted");
 	getArgoPostPosts(threadId);
-	
 }
 
 // Handles a failed response from deleteArgoPostFromSearch
@@ -445,9 +442,7 @@ function deleteArgoPostFromSearchFail(response)
 // Handles a successful response from deleteArgoPostFromSearch
 function deleteArgoPostFromSearchSuccess(response)
 {
-	var mywin = window.open("", "my_popup", "location=0,status=0,scrollbars=0,width=500,height=500");
-	var contents = "Post Deleted";
-	$(mywin.document.body).html(contents);
+	alert("Your post was successfully deleted");
 	getArgoPostSearchResults();
 }
 
