@@ -7,8 +7,18 @@ function createSubscription() {
 		$.ajax({
 			type : "GET",
 			url : "Subscriber.cfc?wsdl&method=AddToSubscriptions&ThreadID="+aThreadID.value,
-			success : postSucceeded,
-			failure : failedToAddPost
+			success : subscriptionSucceeded,
+			failure : failedToAddSubscription
 		});
 
+}
+
+function subscriptionSucceeded(response) {
+	
+	alert("Your subscription was successfully created!");
+}
+
+function failedToAddSubscription() {
+	document.getElementById('addSubFailure').innerHTML = "*Subscription was not successfully created. Please try again."
+	
 }
