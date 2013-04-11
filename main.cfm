@@ -54,7 +54,7 @@
 			<img src="images/smallPic.png" width="50" height="50" align="top"></img>
 		</td>
 		<td class="text" id="searchResultsContent">
-			<h3><a href="threads.html">Events</a></h3>
+			<h3></h3>
 		</td>
 		</tr>	
 	

@@ -28,8 +28,8 @@ function getArgoPostSearchResults()
 function deleteArgoPostFromThread(postId, threadId)
 {
 	$.ajax({
-		type: "GET", url: "argopost.cfc?wsdl&method=markExpired"
-				+"&postID=" + postId,
+		type: "GET", url: "argopostdelete.cfc?wsdl&method=markExpired"
+				+"&postId=" + postId + "&threadId=" + threadId,
 		contentType: "application/json; charset=utf-8",
 		dataType: "json",
 		success: deleteArgoPostFromThreadSuccess,
@@ -41,8 +41,8 @@ function deleteArgoPostFromThread(postId, threadId)
 function deleteArgoPostFromSearch(postId)
 {
 	$.ajax({
-		type: "GET", url: "argopost.cfc?wsdl&method=markExpired"
-				+"&postID=" + postId,
+		type: "GET", url: "argopostdelete.cfc?wsdl&method=markExpired"
+				+"&postID=" + postId + "&threadId=-1",
 		contentType: "application/json; charset=utf-8",
 		dataType: "json",
 		success: deleteArgoPostFromSearchSuccess,
@@ -146,10 +146,11 @@ function getArgoPostSearchResultsSuccess(response)
 			var forumId = result.FORUM_ID;
 			var threadId = result.THREAD_ID;
 			var loggedInUser = result.LOGGED_IN_USER;
+			var isFaculty = result.IS_FACULTY;
 
 			var deleteBtn = "&nbsp;";
 			
-			if(loggedInUser == userUwfId)
+			if(loggedInUser == userUwfId || isFaculty == 1)
 			{
 				deleteBtn = "<a style='font: bold 10px Helvetica, Arial, sans-serif;color:red;text-decoration:none;' href='javascript:deleteArgoPostFromSearch("+postId+ ");'>[Delete]</a>"
 				
@@ -226,6 +227,8 @@ function getArgoPostForumsSuccess(response)
 			var forumId = result.FORUM_ID;
 			var forumTitle = result.FORUM_TITLE;
 			var userUwfId = result.UWF_ID;
+			
+			
 					
 			if(forumTitle == "")
 			{
@@ -351,10 +354,14 @@ function getArgoPostPostsSuccess(response)
 			threadTitle = result.THREAD_TITLE;
 			
 			var loggedInUser = result.LOGGED_IN_USER;
-
+			
+			var isFaculty = result.IS_FACULTY;
+			
+			console.log(result.IS_FACULTY);
+			
 			var deleteBtn = "&nbsp;";
 			
-			if(loggedInUser == userUwfId)
+			if(loggedInUser == userUwfId || isFaculty == 1)
 			{
 				deleteBtn = "<a style='font: bold 10px Helvetica, Arial, sans-serif;color:red;text-decoration:none;' href='javascript:deleteArgoPostFromThread("+postId+ "," + threadId + ");'>[Delete]</a>"
 				
@@ -415,6 +422,7 @@ function getArgoPostFail(response)
 // Handles a failed response from deleteArgoPostThread
 function deleteArgoPostFromThreadFail(response)
 {
+	
 	$('#searchResults').empty();
 		
 	$('#searchResults').append("<span style='font: italic 12px Helvetica, Arial, sans-serif;color:gray;'>There was an error with the server.</span><br />");
@@ -425,8 +433,21 @@ function deleteArgoPostFromThreadFail(response)
 // Handles a successful response from deleteArgoPostFromThread
 function deleteArgoPostFromThreadSuccess(response)
 {
-	alert("Your post was successfully deleted");
-	getArgoPostPosts(threadId);
+	if(response.deleteSuccess == 1)
+	{
+		alert("Your post was successfully deleted");
+		getArgoPostPosts(response.threadId);
+	}
+	
+	if(response.deleteSuccess == 0)
+	{
+		alert("Your post could not be deleted");
+	}
+	
+	if(response.deleteSuccess == 0)
+	{
+		alert("There was a problem with the server, please contact your system administrator.");
+	}
 }
 
 // Handles a failed response from deleteArgoPostFromSearch
@@ -442,8 +463,27 @@ function deleteArgoPostFromSearchFail(response)
 // Handles a successful response from deleteArgoPostFromSearch
 function deleteArgoPostFromSearchSuccess(response)
 {
-	alert("Your post was successfully deleted");
-	getArgoPostSearchResults();
+	if(response.deleteSuccess == 1)
+	{
+		alert("Your post was successfully deleted");
+		getArgoPostSearchResults();
+	}
+	
+	if(response.deleteSuccess == 0)
+	{
+		alert("Your post could not be deleted");
+	}
+	
+	if(response.deleteSuccess == 0)
+	{
+		alert("There was a problem with the server, please contact your system administrator.");
+	}
+}
+
+// Clears the value in an HTMLInput object 
+function clearInput(controlId)
+{
+	$(controlId).val('');
 }
 
 // Allows this javascript library to include other javascript libraries
