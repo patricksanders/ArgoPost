@@ -9,7 +9,7 @@
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script type="text/javascript" src="createPost.js"></script>
 </head>
-<body onload="checkLoggedInStatus();">
+<body>
 	<div id="header">
 		<div>
 			<a href="main.cfm" id="logo"><img src="images/logo.png" alt="logo"></a>
