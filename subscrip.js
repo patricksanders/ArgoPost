@@ -38,3 +38,19 @@ function failedToAddSubscription() {
 	document.getElementById('addSubFailure').innerHTML = "*Subscription was not successfully created. Please try again."
 	
 }
+
+/**
+ *This function is used to alert the user that a field has been left empty. 
+ */
+function writeFormError(form1){
+	document.getElementById('threadsErrorMsg').innerHTML = "";
+	document.getElementById('forumsErrorMsg').innerHTML = "";
+	
+	if(form1.threads.value=="Select a thread"){
+		document.getElementById('threadsErrorMsg').innerHTML = "*Please select a thread.";
+	}
+	
+	if(form1.forums.value=="Select a forum"){
+		document.getElementById('forumsErrorMsg').innerHTML = "*Please select a forum.";
+	}
+}
