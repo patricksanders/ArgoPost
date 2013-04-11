@@ -46,7 +46,7 @@ Filename: Subscriber.cfc
 		<cfset rtnStruct = structNew()>
 		<cftry>
 			<cfquery name="getArgoPostSubs" datasource="SEproject_argopost">
-			select *
+			select Notification, ThreadID
 			from Notifications
 			where UserID = <cfqueryparam value="#userID#">;
 		</cfquery>
