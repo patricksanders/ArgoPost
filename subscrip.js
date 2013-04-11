@@ -14,6 +14,11 @@ function createSubscription() {
 	if(aForumTitle.value == "Select a forum"){
 		isEmptyField = true;
 	}
+	//if there is an empty field send user back to post page with an error
+	//explaining that all fields must be completed
+	if (isEmptyField === true) {
+		writeFormError(document.aPost);
+	} 
 	else {
 		$.ajax({
 			type : "GET",
