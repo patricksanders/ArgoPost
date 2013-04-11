@@ -7,7 +7,31 @@ function init()
  	// Do something if on the searchpage.html or searchpage.cfm
  	if(pathArray[pathArray.length-1] == "index.cfm")
  	{
- 		getArgoPostForums();
+ 		console.log("testing session");
+ 		
+ 		$.ajax({
+			type: "GET", url: "argopost.cfc?wsdl&method=checkSession",
+			contentType: "application/json; charset=utf-8",
+			dataType: "json",
+			success: function(response)
+					{
+						console.log(response);
+						
+						if(response.sessionStatus == 1)
+						{
+							getArgoPostForums();
+						}
+						else
+						{
+							window.location = "login.html";
+						}
+					},
+			failure: function(response)
+					{
+						console.log(response);
+						window.location = "login.html";	
+					}
+	 	});
  	}
 }
 

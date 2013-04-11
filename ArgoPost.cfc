@@ -165,4 +165,15 @@
 		</cfloop>
 		<cfreturn rtnStruct>
 	</cffunction>
+	
+	<!--- Gets a JSON object representing the current session status --->
+	<cffunction name="checkSession" access="remote" returnFormat="JSON" returnType="struct">	
+		<cfset rtnStruct = structNew()>
+		<cfif #session.loggedIn# == 1>
+			<cfset rtnStruct["sessionStatus"] = 1>
+		<cfelse>
+			<cfset rtnStruct["sessionStatus"] = 0>
+		</cfif>
+		<cfreturn rtnStruct>
+	</cffunction>
 </cfcomponent>
