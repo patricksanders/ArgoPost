@@ -17,7 +17,7 @@ function createSubscription() {
 	//if there is an empty field send user back to post page with an error
 	//explaining that all fields must be completed
 	if (isEmptyField === true) {
-		writeFormError(document.aSubscription);
+		writeAFormError(document.aSubscription);
 	} 
 	else {
 		$.ajax({
@@ -42,15 +42,15 @@ function failedToAddSubscription() {
 /**
  *This function is used to alert the user that a field has been left empty. 
  */
-function writeFormError(form1){
+function writeAFormError(aform){
 	document.getElementById('threadsErrorMsg').innerHTML = "";
 	document.getElementById('forumsErrorMsg').innerHTML = "";
 	
-	if(form1.threads.value=="Select a thread"){
+	if(aform.threads.value=="Select a thread"){
 		document.getElementById('threadsErrorMsg').innerHTML = "*Please select a thread.";
 	}
 	
-	if(form1.forums.value=="Select a forum"){
+	if(aform.forums.value=="Select a forum"){
 		document.getElementById('forumsErrorMsg').innerHTML = "*Please select a forum.";
 	}
 }
