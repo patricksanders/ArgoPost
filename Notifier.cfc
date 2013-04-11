@@ -17,7 +17,7 @@ Filename: Notifier.cfc
 <cfquery name="getIDs" datasource="SEproject_argopost">
 	select * 
 	from subscriptions
-	where ThreadID = <cfqueryparam value="#arguments.threadTitle#">; 
+	where ThreadID = <cfqueryparam value="#arguments.threadID#">; 
 </cfquery>	
 <cfset threadID="#getIDs.ThreadID#">
 <cfreturn "#threadID#">
