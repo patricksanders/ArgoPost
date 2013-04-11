@@ -6,9 +6,7 @@ function createSubscription() {
 	
 		$.ajax({
 			type : "GET",
-			url : "Subscriber.cfc?wsdl&method=AddToSubscriptions&threadID="+aThreadID.value,
-			contentType : "application/json; charset=utf-8",
-			dataType : "boolean",
+			url : "Subscriber.cfc?wsdl&method=AddToSubscriptions&ThreadID="+aThreadID.value,
 			success : postSucceeded,
 			failure : failedToAddPost
 		});
