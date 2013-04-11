@@ -47,7 +47,7 @@ function clearInput(controlId)
 // Allows this javascript library to include other javascript libraries
 function IncludeJavaScript(jsFile)
 {
-  document.write('<script type="text/javascript" src="'
+  document.write('<script type="text/javascript" src="js/'
     + jsFile + '"></scr' + 'ipt>'); 
 }
 

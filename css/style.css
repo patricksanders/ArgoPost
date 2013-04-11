@@ -1,0 +1,141 @@
+/*------------------------- UI Group - CSS -----------------------*/
+/*------------------------- Layout styles ------------------------*/
+body {
+	margin:0;
+	background:url(../images/bg-body.jpg);
+	font-size:16px;
+}
+a {
+	outline:none;
+	color:#006fad;
+}
+.selected a, a:hover {
+	color:#c6d500;
+}
+a img {
+	border:0;
+	display:block;
+}
+
+
+/*------------------------- Header ------------------------*/
+#header {
+	background:url(../images/bg-header.jpg) repeat-x;
+	height:130px;
+}
+#header div {
+	margin:0 auto;
+	overflow:hidden;
+	padding:0 0 0 29px;
+	width:931px;
+}
+#header div a#logo {
+	display:block;
+	float:left;
+	margin:25px 0 0;
+}
+#header div ul {
+	float:right;
+	list-style:none;
+	margin:0;
+	overflow:hidden;
+	padding:0;
+}
+#header div ul li {
+	float:left;
+	height:130px;
+	text-align:center;
+	width:130px;
+}
+#header div ul li a {
+	color:#ffffff;
+	display:block;
+	height:130px;
+	letter-spacing:.075em;
+	line-height:150px;
+	text-align:center;
+	text-decoration:none;
+	width:130px;
+}
+#header div ul li.selected a {
+	color:#c6d500;
+}
+#header div ul li.selected a, #header div ul li a:hover {
+	color:#c6d500;
+}
+/*------------------------- Body ------------------------*/
+#content{
+	margin:0 auto 97px;
+	min-height:505px;
+	padding:20px 20px 0;
+	width:902px;
+}
+
+/*------------------------- Page Header ------------------------*/
+.page_title { width:882px; padding:10px; background:#006fad; clear:both;}
+.page_title h2{ margin:0; color:#FFFFFF;}
+
+#content form { padding:0 15px; margin-top:20px;}
+#content table td { padding:10px; }
+#deleteAll {float:left; margin:15px 0 0 5px; }
+
+/*------------------- Search Box ----------------------*/
+#searchControls {float:right; padding:15px; margin-bottom:20px; border:1px solid #CCCCCC; background:#f0f0f0;}
+#searchControls .submit{
+	margin-left: 5px;
+	background-color:#9dce2c;
+	border:1px solid #83c41a;
+	display:inline-block;
+	color:#ffffff;
+	font-weight:bold;
+	min-height:21px;
+	padding:3px 5px;
+	text-decoration:none;
+	}
+
+#searchControls .submit:hover { background:#89be0f; }
+#searchControls .submit:active { background:#7bae04; }
+	
+/*------------------- Search Results ----------------------*/
+#searchResults{
+	padding:25px 20px 25px 65px; 
+	background:#eef1f8 url(../images/smallPic.png) no-repeat left; 
+	border-left: 1px solid #006fad; 
+	border-right: 1px solid #006fad;
+	border-bottom: 1px solid #006fad;
+	}
+#searchResults a { font-size:22px; font-weight:normal; padding-right:15px; }
+
+/*------------------------- Footer ------------------------*/
+#footer {
+	background:url(../images/bg-footer.png) repeat-x;
+	height:130px;
+}
+#footer div {
+	margin:0 auto;
+	padding:0 10px;
+	width:911px;
+}
+#footer div p {
+	color:#FFFFFF;
+	display:block;
+	float:left;
+	margin:20px 0;
+}
+
+#footer div .connect {
+	float:right;
+	padding:14px 0 0;
+	width:auto;
+}
+#footer div .connect a {
+	display:block;
+	float:left;
+	height:30px;
+	margin:0 0 0 28px;
+	color:#FFFFFF;
+	text-decoration:none;
+}
+#footer div .connect selected a, #footer div .connect a:hover {
+	color:#c6d500;
+}
