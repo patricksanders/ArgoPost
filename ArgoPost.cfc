@@ -45,6 +45,7 @@
 		<cfloop query="getArgoPostSearchResults">
 			<cfset i = i + 1>
 			<cfset rtnStruct[i] = structNew()>
+			<cfset rtnStruct[i]["IS_FACULTY"] = #session.isFaculty#>
 			<cfset rtnStruct[i]["LOGGED_IN_USER"] = #session.userName#>
 			<cfloop list="#getArgoPostSearchResults.columnList#" index="thisColumn">
 				<cfset rtnStruct[i][thisColumn] = evaluate(thisColumn)>
@@ -156,6 +157,7 @@
 		<cfloop query="getArgoPostPosts">
 			<cfset i = i + 1>
 			<cfset rtnStruct[i] = structNew()>
+			<cfset rtnStruct[i]["IS_FACULTY"] = #session.isFaculty#>
 			<cfset rtnStruct[i]["LOGGED_IN_USER"] = #session.userName#>
 			<cfloop list="#getArgoPostPosts.columnList#" index="thisColumn">
 				<cfset rtnStruct[i][thisColumn] = evaluate(thisColumn)>
