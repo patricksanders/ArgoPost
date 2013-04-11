@@ -18,7 +18,7 @@ Filename: Notifier.cfc
 <!--- This Query gets the IDs of the threads that are to be used for Notfication --->	
 <cfquery name="getIDs" datasource="SEproject_argopost">
 	select * from subscriptions
-	where ThreadID = <cfqueryparam value="#threadID#">; 
+	where ThreadID = <cfqueryparam value="threadID">; 
 </cfquery>	
 
 <cfloop index="count" list="#getIDs#">
@@ -44,34 +44,36 @@ are subscribed to when a new post is made. --->
 	<cfargument name="PosterName" type="string">
 	
 <!--- This query gets the email from the user for the Notifcation to be sent to.--->	
-<cfquery name="email" datasource="SEproject_argopost">
+<cfquery name="getEmail" datasource="SEproject_argopost">
 	select Email from users
 	where UserID = <cfqueryparam value="#UserID#">;
 </cfquery>
 
-<cfquery name="UserName" datasource="SEproject_argopost">
+<cfquery name="getUserName" datasource="SEproject_argopost">
 	select UWFID from Users
 	where UserID = <cfqueryparam value="#UserID#">;
 </cfquery>
 
-<cfquery name="ThreadName" datasource="SEproject_argopost">
+<cfquery name="getThreadName" datasource="SEproject_argopost">
 select Title from Threads
 where ThreadID= <cfqueryparam value="#ThreadID#">;
 </cfquery>
 
 <!---query to get poster name--->
-<cfquery name="UWFID"  datasource="SEproject_argopost">
+<cfquery name="getUWFID"  datasource="SEproject_argopost">
 select UWFID
 from users
 where userID= <cfqueryparam value="#UserID#">;
 </cfquery>
 
 <cfset message=
-		"Hello, ArgoPost User
-			You are recieving this message because a post was made in ArgoPost thread #Title#
+		"Hello, ArgoPost User,
+			You are recieving this message because a post was made in ArgoPost thread #Title#.
 			The user #PosterName# has posted in this thread.
 			Navigate to <!--- url---> to check out the posts" >
 <cfreturn message>
 
 </cffunction>
 </cfcomponent>
+
+
