@@ -39,3 +39,41 @@ function failedToAddSubscription() {
 	document.getElementById('addSubFailure').innerHTML = "*Subscription was not successfully created. Please try again."
 	
 }
+
+/**
+ *This function will run when the create post page is loaded. It will fill the Forums drop down menu with the list of forum titles.
+ */
+function getSubsTitles() {
+		$.ajax({
+			type : "GET",
+			url : "Subscriber.cfc?wsdl&method=getSubs",
+			contentType : "application/json; charset=utf-8",
+			dataType : "json",
+			success : populateSubComboBox,
+			failure : failedToGetSubTitles
+		});
+}
+
+/**
+ *This function will run when the forum titles have successfully been returned from the database. 
+ */
+function populateSubComboBox(response) {
+	
+	$('#subscrips').empty();
+	$('#subscrips').append("<option>Select a forum</option>");
+	
+	$.each(response, function(index, result){
+		var threadId = result.THREADID;
+		var subTitle = result.NOTIFICATION;
+		
+		$('#subscrips).append("<option value='" + threadId + "'>" + subTitle + "</option>");
+	});	
+}
+
+
+/**
+ * Thi function will execute if there is an error accessing the forum titles from the webservice 
+ */
+function failedToGetSubTitles(response){
+	alert("Could not load the Subscriptions. Please refresh the page and try again.")
+}
