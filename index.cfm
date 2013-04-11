@@ -71,7 +71,7 @@
 			<div class="connect">
 
 
-					<a href="main.html">Home</a>
+					<a href="index.cfm">Home</a>
 
 					<a href="subscriptions.html">Subscriptions</a>
 
