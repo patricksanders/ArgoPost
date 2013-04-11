@@ -76,5 +76,5 @@ function populateSubsComboBox(response) {
  * Thi function will execute if there is an error accessing the forum titles from the webservice 
  */
 function failedToGetSubTitles(response){
-	alert("Could not load the Subscriptions. Please refresh the page and try again.")
+	alert("Could not load the Subscriptions. Please refresh the page and try again.");
 }

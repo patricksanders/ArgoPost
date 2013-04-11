@@ -1,15 +1,7 @@
 // Executes when the page is loaded
 function init() 
 {
-	console.log("firing init event");
-	
-	// Get the URL and split it by "/"
-	var pathArray = window.location.pathname.split( '/' );
- 	
- 	// Do something if on the searchpage.html or searchpage.cfm
- 	if(pathArray[pathArray.length-1] == "index.cfm" || pathArray[pathArray.length-1] == "")
- 	{
- 		$.ajax({
+	$.ajax({
 			type: "GET", url: "argopost.cfc?wsdl&method=checkSession",
 			contentType: "application/json; charset=utf-8",
 			dataType: "json",
@@ -28,8 +20,7 @@ function init()
 					{
 						window.location = "login.html";	
 					}
-	 	});
- 	}
+	 });
 }
 
 // Sends a query to the getArgoPostSearchResults method in tier 2
