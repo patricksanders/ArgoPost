@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- ArgoPost UI Team Version 1.0 -->
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>ArgoPost</title>
+	<link rel="stylesheet" href="css/style.css" type="text/css">
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="createPost.js"></script>
+	<script type="text/javascript" src="subscrip.js"></script>
+	<script type="text/javascript" src="js/ArgoPost.js"></script>
+</head>
+<body onload="checkLoggedInStatus();">
+
+	<div id="header">
+		<div>
+			<a href="main.cfm" id="logo"><img src="images/logo.png" alt="logo"></a>
+			<ul>
+				<li>
+					<a href="main.cfm">Home</a>
+				</li>
+				<li class="selected">
+					<a href="subscriptions.html">Subscriptions</a>
+				</li>
+				<li>
+					<a href="createpost.html">Create Post</a>
+				</li>
+				<li>
+					<a href="logout.cfm">Logout</a>
+				</li>
+
+			</ul>
+		</div>
+	</div>
+	<div id="body">
+	
+	<div class="page_title">
+		<h2>Manage Subscriptions</h2>		
+	</div>
+	
+	<form name="aSubscription" id="aSubscription" action="javascript:createSubscription()" method="post">
+	<table>
+	<tr>
+		<td>
+			<label for="addSubscription">Add Subscription: </label>
+		</td>
+		<td>
+			<select name="aSubscription" id="forums" onchange="getThreadTitles()">
+				<option>Select a forum</option>
+			</select>
+		</td>
+		<td id="forumsErrorMsg">&nbsp;</td>
+	</tr>
+	<tr>
+		<td colspan="2" align="right">
+			<select name="sThread" id="threads">
+				<option>Select a thread</option>
+			</select>
+		</td>
+		<td id="threadsErrorMsg">&nbsp;</td>
+	</tr>
+	<tr>
+		<td colspan="2" align="right">
+			<button type="submit">Add Subscription</button> 
+		</td>
+					<td id="addSubFailure">&nbsp;</td>
+	</tr>
+	</table>
+	</form>
+	
+	<form name="aSubscription" id="aSubscription" action="" method="post">
+	<table>
+	<tr>
+		<td>
+			Remove Subscription:
+		</td>
+		<td>
+			<select name="aSubcription">
+				<option>Select a subscription</option>
+				<option value="threadId">Thread Title</option>
+			</select>
+		</td>
+		<td>
+			<button type="submit">Remove</button> 
+		</td>
+	</tr>
+	</table>
+	</form>
+	
+	</div>
+	<div id="footer">
+		<div>
+			<p>
+				&#169; UWF ArgoPost. All Rights Reserved.
+			</p>
+			<div class="connect">
+
+
+					<a href="index.html">Home</a>
+
+					<a href="subscriptions.html">Subscriptions</a>
+
+					<a href="createpost.html">Create Post</a>
+
+					<a href="logout.cfm">Logout</a>
+	
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>
