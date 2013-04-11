@@ -5,7 +5,7 @@ function init()
 	var pathArray = window.location.pathname.split( '/' );
  	
  	// Do something if on the searchpage.html or searchpage.cfm
- 	if(pathArray[pathArray.length-1] == "searchpage.cfm" || pathArray[pathArray.length-1] == "main.cfm")
+ 	if(pathArray[pathArray.length-1] == "searchpage.cfm" || pathArray[pathArray.length-1] == "main.html")
  	{
  		getArgoPostForums();
  	}
