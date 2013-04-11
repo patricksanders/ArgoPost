@@ -64,13 +64,13 @@
 			</cfinvoke>
 
 			<cfif userExists eq true>
-				<cflocation url="http://uwf.edu/seproject/TestDeployment/index.cfm">
+				<cflocation url="index.cfm">
 			<cfelse>			
 				<cfinvoke
 					component="User"
 					method="insertUser">
 				</cfinvoke>
-				<cflocation url="http://uwf.edu/seproject/TestDeployment/index.cfm">
+				<cflocation url="index.cfm">
 			</cfif>			
             
 <!--
