@@ -12,7 +12,7 @@ Filename: Notifier.cfc
 
 
 <cffunction name="getIDs" access="remote" returnType="numeric">
-	<cfargument name="threadTitle" required="true">
+	<cfargument name="threadID" required="true">
 <!--- This Query gets the IDs of the threads that are to be used for Notfication --->	
 <cfquery name="getIDs" datasource="SEproject_argopost">
 	select * 

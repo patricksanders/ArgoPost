@@ -6,7 +6,7 @@
 	<h2>getIDs('1')</h2>
 	<cftry>
 	<cfinvoke component="Notifier" method="getIDs" returnVariable="return">
-	<cfinvokeargument name="t" value="1">
+	<cfinvokeargument name="threadID" value="1">
 	</cfinvoke>
 	<cfdump var="#return#">
 	<cfcatch type="any">
