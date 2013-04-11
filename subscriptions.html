@@ -5,6 +5,8 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>ArgoPost</title>
 	<link rel="stylesheet" href="css/style.css" type="text/css">
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
 </head>
 <body>
 	<div id="header">
@@ -12,7 +14,7 @@
 			<a href="main.html" id="logo"><img src="images/logo.png" alt="logo"></a>
 			<ul>
 				<li>
-					<a href="index.html">Home</a>
+					<a href="main.html">Home</a>
 				</li>
 				<li class="selected">
 					<a href="subscriptions.html">Subscriptions</a>
@@ -37,16 +39,22 @@
 	<table>
 	<tr>
 		<td>
-			Add Subscription: 
+			<label for="addSubscription">Add Subscription: </label>
 		</td>
 		<td>
-			<select name="aSubscription">
-				<option>Select a subscription</option>
-				<option value="threadId">Thread Title</option>
+			<select name="aSubscription" id="forums" onchange="getThreadTitles()">
+				<option>Select a forum</option>
 			</select>
 		</td>
+		<td id="forumsErrorMsg">&nbsp;</td>
 		<td>
-		<button type="submit">Add</button> 
+			<select name="sThread" id="threads">
+				<option>Select a thread</option>
+			</select>
+		</td>
+		<td id="threadsErrorMsg">&nbsp;</td>
+		<td>
+			<button type="submit">Add Subscription</button> 
 		</td>
 	</tr>
 	</table>
