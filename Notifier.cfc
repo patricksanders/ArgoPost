@@ -10,15 +10,17 @@ Filename: Notifier.cfc
 <cfset UWFID="UWFID">
 
 
-<!--- This Query gets the IDs of the threads that are to be used for Notfication --->
-<cfquery name="getIDs" datasource="SEproject_argopost">
-	select * from subscriptions
-	where ThreadID = <cfqueryparam value="#threadID#">; 
-</cfquery>
 
 
 <!--- This function sends an email to the list of people who are subscribed to a forum/thread --->
 <cffunction name="sendTosubscribersofaCategory" returntype="void">
+
+<!--- This Query gets the IDs of the threads that are to be used for Notfication --->	
+<cfquery name="getIDs" datasource="SEproject_argopost">
+	select * from subscriptions
+	where ThreadID = <cfqueryparam value="#threadID#">; 
+</cfquery>	
+
 <cfloop index="count" list="#getIDs#">
 <cfmail to="#email#" from="argopost@uwf.edu" subject="ArgoPost Notification">
 #CreateEmailMessage#
@@ -38,6 +40,8 @@ Filename: Notifier.cfc
 are subscribed to when a new post is made. --->
 <cffunction name="CreateEmailMessage" returntype="string">
 	<cfargument name="UserID" type="numeric">
+	<cfargument name="Title" type="string">
+	<cfargument name="PosterName" type="string">
 	
 <!--- This query gets the email from the user for the Notifcation to be sent to.--->	
 <cfquery name="email" datasource="SEproject_argopost">
