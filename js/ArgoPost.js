@@ -9,8 +9,10 @@ function init()
  	// Do something if on the searchpage.html or searchpage.cfm
  	if(pathArray[pathArray.length-1] == "index.cfm")
  	{
+ 		console.log("firing init event on index.cfm");
+ 		
  		$.ajax({
-			type: "GET", url: "argopost.cfc?wsdl&method=checkSession",
+			type: "GET", url: "./argopost.cfc?wsdl&method=checkSession",
 			contentType: "application/json; charset=utf-8",
 			dataType: "json",
 			success: function(response)
