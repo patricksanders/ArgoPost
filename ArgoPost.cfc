@@ -169,7 +169,7 @@
 	<!--- Gets a JSON object representing the current session status --->
 	<cffunction name="checkSession" access="remote" returnFormat="JSON" returnType="struct">	
 		<cfset rtnStruct = structNew()>
-		<cfif #session.loggedIn# EQ 1>
+		<cfif #session.loggedIn#>
 			<cfset rtnStruct["sessionStatus"] = 1>
 		<cfelse>
 			<cfset rtnStruct["sessionStatus"] = 0>
