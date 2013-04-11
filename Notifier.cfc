@@ -12,27 +12,34 @@ Filename: Notifier.cfc
 
 
 <cffunction name="getIDs" access="remote" returnType="numeric">
+	<cfargument name="threadTitle" required="true">
 <!--- This Query gets the IDs of the threads that are to be used for Notfication --->	
 <cfquery name="getIDs" datasource="SEproject_argopost">
 	select * 
 	from subscriptions
-	where ThreadID = <cfqueryparam value="threadID">; 
+	where ThreadID = <cfqueryparam value="#arguments.threadTitle#">; 
 </cfquery>	
-<cfset tID="#getIDs.ThreadID#">
-<cfreturn "#tID#">
+<cfset threadID="#getIDs.ThreadID#">
+<cfreturn "#threadID#">
 </cffunction>
 
-<cffunction name="getEmail" access="remote" returnFormat="JSON" returnType="struct">
+<cffunction name="getEmail" access="remote"  returnType="string">
+	<cfquery name="getEmail" datasource="SEproject_argopost">
+	select Email from users
+	where UserID = <cfqueryparam value="#UserID#">;
+</cfquery>
+<cfset email="#getEmail.UserID#">
+<cfreturn "#email#">
 </cffunction>
+<!--- Next three functions are placeholder query functions. --->
+<!--- <cffunction name="getUserName" access="remote"  returnType="string">
+</cffunction> --->
 
-<cffunction name="getUserName" access="remote" returnFormat="JSON" returnType="struct">
-</cffunction>
+<!--- <cffunction name="getThreadName" access="remote"  returnType="string">
+</cffunction> --->
 
-<cffunction name="getThreadName" access="remote" returnFormat="JSON" returnType="struct">
-</cffunction>
-
-<cffunction name="getUWFID" access="remote" returnFormat="JSON" returnType="struct">
-</cffunction>
+<!--- <cffunction name="getUWFID" access="remote" returnType="numeric">
+</cffunction> --->
 <!--- This function sends an email to the list of people who are subscribed to a forum/thread --->
 <cffunction name="sendTosubscribersofaCategory" returntype="void">
 #getIDs#
@@ -57,11 +64,11 @@ are subscribed to when a new post is made. --->
 	<cfargument name="PosterName" type="string">
 	
 <!--- This query gets the email from the user for the Notifcation to be sent to.--->	
-<cfquery name="getEmail" datasource="SEproject_argopost">
+<!--- <cfquery name="getEmail" datasource="SEproject_argopost">
 	select Email from users
 	where UserID = <cfqueryparam value="#UserID#">;
-</cfquery>
-
+</cfquery> --->
+#getEmail#
 <cfquery name="getUserName" datasource="SEproject_argopost">
 	select UWFID from Users
 	where UserID = <cfqueryparam value="#UserID#">;
