@@ -1,6 +1,8 @@
 // Executes when the page is loaded
 function init() 
 {
+	console.log("firing init event");
+	
 	// Get the URL and split it by "/"
 	var pathArray = window.location.pathname.split( '/' );
  	
