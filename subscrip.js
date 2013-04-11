@@ -66,7 +66,7 @@ function populateSubComboBox(response) {
 		var threadId = result.THREADID;
 		var subTitle = result.NOTIFICATION;
 		
-		$('#subscrips).append("<option value='" + threadId + "'>" + subTitle + "</option>");
+		$('#subscrips').append("<option value='" + threadId + "'>" + subTitle + "</option>");
 	});	
 }
 
