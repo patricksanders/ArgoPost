@@ -46,7 +46,7 @@
 	<!--- Flush expired allows a faculty member to delete all expired posts from the database.  --->
 	<cffunction name="flushExpired" access="remote" returnType="void">
 			<!---  Verify that individual is actually a faculty member.--->
-		<cfif #session.isFaculty# = "1">
+		<cfif #session.isFaculty# EQ 1>
 		<cfquery name="qDeletePosts" datasource="#dataSource#">
 			DELETE FROM Posts WHERE IsExpired = '1';
 		</cfquery>
