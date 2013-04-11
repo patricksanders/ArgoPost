@@ -11,17 +11,27 @@ Filename: Notifier.cfc
 
 
 
+<cffunction name="getIDs" access="remote" returnFormat="JSON" returnType="struct">
+<cfset rtnStruct = structNew()>
+<!--- This Query gets the IDs of the threads that are to be used for Notfication --->	
+<cfquery name="getIDs" datasource="SEproject_argopost">
+	select * 
+	from subscriptions
+	where ThreadID = <cfqueryparam value="threadID">; 
+</cfquery>	
+<cfset i = 0>
+<cfloop query="getIDs">
+<cfset i = i + 1>
+<cfset rtnStruct[i] = structNew()>
+<cfloop list="#getIDs.columnList#" index="thisColumn">
+				<cfset rtnStruct[i][thisColumn] = evaluate(thisColumn)>
+</cfloop>
+ <cfreturn rtnStruct>
+</cffunction>
 
 <!--- This function sends an email to the list of people who are subscribed to a forum/thread --->
 <cffunction name="sendTosubscribersofaCategory" returntype="void">
-
-<!--- This Query gets the IDs of the threads that are to be used for Notfication --->	
-<cfquery name="getIDs" datasource="SEproject_argopost">
-	select * from subscriptions
-	where ThreadID = <cfqueryparam value="threadID">; 
-</cfquery>	
-
-<cfloop index="count" list="#getIDs#">
+#getIDs#
 <cfmail to="#email#" from="argopost@uwf.edu" subject="ArgoPost Notification">
 #CreateEmailMessage#
 </cfmail>
