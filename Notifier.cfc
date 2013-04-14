@@ -5,94 +5,55 @@ Team Members: Christopher Marco, Matthew Neau, Phillp Byram
 Filename: Notifier.cfc
 --->
 
-<cfset name="posterID"><!--- need to initialize from somewhere--->
-<cfset threadID="threadID"><!---need to initialize from somewhere(UI?)--->
-<cfset UWFID="UWFID">
 
+<cfset threadID>
+<cfset userIDs>
+<cfset email>
 
+<!--- This function is the constructor of the Notifier Class --->
+<cffunction name="Notifier" returntype="void">
+<cfargument name="ThreadID" type="numeric" required="true">
+#sendToSubscribersOfACategory(#Arguments.ThreadID#)#
+</cffunction>
 
-<cffunction name="getIDs" access="remote" returnType="numeric">
+<!--- This function sends an email to the list of people who are subscribed to a thread --->
+<cffunction name="sendTosubscribersofaCategory" returntype="void">
+	<cfargument name="threadID">
+#setIDs(#Arguments.threadID#)#
+<cfset item>
+<cfloop list="#userIDs#" index="item">
+	#setEmail(#item##)#
+	<cfmail to="#email#" from="seproject@uwf.edu" subject="ArgoPost Notification">
+#CreateEmailMessage()#</cfmail>
+</cfloop>
+</cffunction>
+
+<cffunction name="setIDs" access="remote">
 	<cfargument name="threadID" required="true">
-<!--- This Query gets the IDs of the threads that are to be used for Notfication --->	
+<!--- This Query gets the IDs of the user that are subscribed to a thread--->	
 <cfquery name="getIDs" datasource="SEproject_argopost">
 	select * 
 	from subscriptions
 	where ThreadID = <cfqueryparam value="#arguments.threadID#">; 
 </cfquery>	
-<cfset threadID="#getIDs.ThreadID#">
-<cfreturn "#threadID#">
+<cfset userIDs="#getIDs.UserID#"><!---gets list of userIDs based on the threadID--->
 </cffunction>
 
-<cffunction name="getEmail" access="remote"  returnType="string">
+<!---this function sets the email address based on the userID--->
+<cffunction name="setEmail" access="remote">
+	<cfargument name ="UserID" required="true">
 	<cfquery name="getEmail" datasource="SEproject_argopost">
 	select Email from users
-	where UserID = <cfqueryparam value="#UserID#">;
+	where UserID = <cfqueryparam value="#arguments.UserID#">;
 </cfquery>
-<cfset email="#getEmail.UserID#">
-<cfreturn "#email#">
+<cfset email="#getEmail#">
 </cffunction>
-<!--- Next three functions are placeholder query functions. --->
-<!--- <cffunction name="getUserName" access="remote"  returnType="string">
-</cffunction> --->
-
-<!--- <cffunction name="getThreadName" access="remote"  returnType="string">
-</cffunction> --->
-
-<!--- <cffunction name="getUWFID" access="remote" returnType="numeric">
-</cffunction> --->
-<!--- This function sends an email to the list of people who are subscribed to a forum/thread --->
-<cffunction name="sendTosubscribersofaCategory" returntype="void">
-#getIDs#
-<cfmail to="#email#" from="argopost@uwf.edu" subject="ArgoPost Notification">
-#CreateEmailMessage#
-</cfmail>
-</cffunction>
-
-<!--- This function is the constructor of the Notifier Class --->
-<cffunction name="Notifier" returntype="void">
-<cfargument name="category" type="string">
-#sendToSubscribersOfACategory()#
-</cffunction>
-
-
 
 <!--- This Function creates the email message that is sent to users of a thread that they 
 are subscribed to when a new post is made. --->
 <cffunction name="CreateEmailMessage" returntype="string">
-	<cfargument name="UserID" type="numeric">
-	<cfargument name="Title" type="string">
-	<cfargument name="PosterName" type="string">
-	
-<!--- This query gets the email from the user for the Notifcation to be sent to.--->	
-<!--- <cfquery name="getEmail" datasource="SEproject_argopost">
-	select Email from users
-	where UserID = <cfqueryparam value="#UserID#">;
-</cfquery> --->
-#getEmail#
-<cfquery name="getUserName" datasource="SEproject_argopost">
-	select UWFID from Users
-	where UserID = <cfqueryparam value="#UserID#">;
-</cfquery>
-
-<cfquery name="getThreadName" datasource="SEproject_argopost">
-select Title from Threads
-where ThreadID= <cfqueryparam value="#ThreadID#">;
-</cfquery>
-
-<!---query to get poster name--->
-<cfquery name="getUWFID"  datasource="SEproject_argopost">
-select UWFID
-from users
-where userID= <cfqueryparam value="#UserID#">;
-</cfquery>
-
-<cfset message=
-		"Hello, ArgoPost User,
-			You are recieving this message because a post was made in ArgoPost thread #Title#.
-			The user #PosterName# has posted in this thread.
-			Navigate to <!--- url---> to check out the posts" >
+<cfset message="Hello, ArgoPost User, \nYou are recieving this message because a post was made in an ArgoPost thread you are subscribed to.\nNavigate to uwf.edu/ArgoPost to check out the post!" >
 <cfreturn message>
-
 </cffunction>
 </cfcomponent>
 
