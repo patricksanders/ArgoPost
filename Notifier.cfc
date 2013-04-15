@@ -8,17 +8,21 @@ Filename: Notifier.cfc
 <!--- This function is the constructor of the Notifier Class --->
 <cffunction name="Notifier" returntype="void">
 <cfargument name="ThreadID" type="numeric" required="true">
-sendToSubscribersOfACategory(Arguments.ThreadID)
+<cfinvoke method="sendToSubscribersOfACategory">
+<cfinvokeargument name="ThreadID" value="Arguments.ThreadID">
+</cfinvoke>
 </cffunction>
 
 <!--- This function sends an email to the list of people who are subscribed to a thread --->
 <cffunction name="sendTosubscribersofaCategory" returntype="void" access="remote">
 	<cfargument name="threadID">
-setIDs(Arguments.threadID)
+
+<cfinvoke method="setIDS">
+<Cfinvokeargument name="ThreadID" value="Arguments.threadID">
 <cfloop list="attributes.userIDs" index="item">
 	setEmail(item)
 	<cfmail to="attributes.email" from="seproject@uwf.edu" subject="ArgoPost Notification">
-#CreateEmailMessage()#</cfmail>
+<cfinvoke method="CreateEmailMessage"></cfmail>
 </cfloop>
 </cffunction>
 
@@ -28,7 +32,7 @@ setIDs(Arguments.threadID)
 <cfquery name="getIDs" datasource="SEproject_argopost">
 	select * 
 	from subscriptions
-	where ThreadID = <cfqueryparam value="#arguments.threadID#">; 
+	where ThreadID = <cfqueryparam value="arguments.threadID">; 
 </cfquery>
 
 <cfset attributes.userIDs=ArrayToList(getIDs["UserID"], ",")><!---gets list of userIDs based on the threadID--->
