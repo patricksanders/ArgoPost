@@ -20,7 +20,9 @@ Filename: Notifier.cfc
 <cfinvoke method="setIDS">
 <Cfinvokeargument name="ThreadID" value="Arguments.threadID">
 <cfloop list="attributes.userIDs" index="item">
-	setEmail(item)
+	<cfinvoke method="setEmail">
+	<cfinvokeargument name="item" value="item">
+	</cfinvoke>
 	<cfmail to="attributes.email" from="seproject@uwf.edu" subject="ArgoPost Notification">
 <cfinvoke method="CreateEmailMessage"></cfmail>
 </cfloop>
