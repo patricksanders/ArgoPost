@@ -18,7 +18,8 @@ Filename: Notifier.cfc
 	<cfargument name="threadID">
 
 <cfinvoke method="setIDS">
-<Cfinvokeargument name="ThreadID" value="Arguments.threadID">
+<cfinvokeargument name="ThreadID" value="Arguments.threadID">
+</cfinvoke>
 <cfloop list="attributes.userIDs" index="item">
 	<cfinvoke method="setEmail">
 	<cfinvokeargument name="item" value="item">
