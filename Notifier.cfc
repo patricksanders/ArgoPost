@@ -54,8 +54,9 @@ Filename: Notifier.cfc
 <!--- This Function creates the email message that is sent to users of a thread that they 
 are subscribed to when a new post is made. --->
 <cffunction name="CreateEmailMessage" returntype="string">
-<cfset message="Hello, ArgoPost User, <br> 
-You are recieving this message because a post was made in an ArgoPost thread you are subscribed to.<br>
+<cfset br="#chr(13)##chr(10#">
+<cfset message="Hello, ArgoPost User, #br#
+You are recieving this message because a post was made in an ArgoPost thread you are subscribed to. #br#
 Navigate to uwf.edu/ArgoPost to check out the post!" >
 <cfreturn message>
 </cffunction>
