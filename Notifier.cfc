@@ -16,9 +16,9 @@ Filename: Notifier.cfc
 	<cfargument name="threadID">
 #setIDs(#Arguments.threadID#)#
 <cfset item>
-<cfloop list="#userIDs#" index="item">
+<cfloop list="#attributes.userIDs#" index="item">
 	#setEmail(#item##)#
-	<cfmail to="#email#" from="seproject@uwf.edu" subject="ArgoPost Notification">
+	<cfmail to="#attributes.email#" from="seproject@uwf.edu" subject="ArgoPost Notification">
 #CreateEmailMessage()#</cfmail>
 </cfloop>
 </cffunction>
@@ -31,7 +31,7 @@ Filename: Notifier.cfc
 	from subscriptions
 	where ThreadID = <cfqueryparam value="#arguments.threadID#">; 
 </cfquery>	
-<cfset userIDs="#getIDs.UserID#"><!---gets list of userIDs based on the threadID--->
+<cfset attributes.userIDs="#getIDs.UserID#"><!---gets list of userIDs based on the threadID--->
 </cffunction>
 
 <!---this function sets the email address based on the userID--->
@@ -41,7 +41,7 @@ Filename: Notifier.cfc
 	select Email from users
 	where UserID = <cfqueryparam value="#arguments.UserID#">;
 </cfquery>
-<cfset email="#getEmail#">
+<cfset attributes.email="#getEmail#">
 </cffunction>
 
 <!--- This Function creates the email message that is sent to users of a thread that they 
