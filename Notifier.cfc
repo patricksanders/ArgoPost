@@ -30,8 +30,9 @@ Filename: Notifier.cfc
 	select * 
 	from subscriptions
 	where ThreadID = <cfqueryparam value="#arguments.threadID#">; 
-</cfquery>	
-<cfset attributes.userIDs="#getIDs.UserID#"><!---gets list of userIDs based on the threadID--->
+</cfquery>
+
+<cfset attributes.userIDs=ArrayToList(getIDs["UserID"], ",")><!---gets list of userIDs based on the threadID--->
 </cffunction>
 
 <!---this function sets the email address based on the userID--->
