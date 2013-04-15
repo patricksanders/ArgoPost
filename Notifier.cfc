@@ -5,11 +5,6 @@ Team Members: Christopher Marco, Matthew Neau, Phillp Byram
 Filename: Notifier.cfc
 --->
 
-
-<cfset threadID>
-<cfset userIDs>
-<cfset email>
-
 <!--- This function is the constructor of the Notifier Class --->
 <cffunction name="Notifier" returntype="void">
 <cfargument name="ThreadID" type="numeric" required="true">
@@ -52,7 +47,9 @@ Filename: Notifier.cfc
 <!--- This Function creates the email message that is sent to users of a thread that they 
 are subscribed to when a new post is made. --->
 <cffunction name="CreateEmailMessage" returntype="string">
-<cfset message="Hello, ArgoPost User, \nYou are recieving this message because a post was made in an ArgoPost thread you are subscribed to.\nNavigate to uwf.edu/ArgoPost to check out the post!" >
+<cfset message="Hello, ArgoPost User, 
+You are recieving this message because a post was made in an ArgoPost thread you are subscribed to.
+Navigate to uwf.edu/ArgoPost to check out the post!" >
 <cfreturn message>
 </cffunction>
 </cfcomponent>
