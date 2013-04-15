@@ -12,7 +12,7 @@ Filename: Notifier.cfc
 </cffunction>
 
 <!--- This function sends an email to the list of people who are subscribed to a thread --->
-<cffunction name="sendTosubscribersofaCategory" returntype="void">
+<cffunction name="sendTosubscribersofaCategory" returntype="void" access="remote">
 	<cfargument name="threadID">
 #setIDs(Arguments.threadID)#
 <cfloop list="#attributes.userIDs#" index="item">
