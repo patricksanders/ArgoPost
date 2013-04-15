@@ -8,16 +8,16 @@ Filename: Notifier.cfc
 <!--- This function is the constructor of the Notifier Class --->
 <cffunction name="Notifier" returntype="void">
 <cfargument name="ThreadID" type="numeric" required="true">
-#sendToSubscribersOfACategory(Arguments.ThreadID)#
+sendToSubscribersOfACategory(Arguments.ThreadID)
 </cffunction>
 
 <!--- This function sends an email to the list of people who are subscribed to a thread --->
 <cffunction name="sendTosubscribersofaCategory" returntype="void" access="remote">
 	<cfargument name="threadID">
-#setIDs(Arguments.threadID)#
-<cfloop list="#attributes.userIDs#" index="item">
-	#setEmail(#item##)#
-	<cfmail to="#attributes.email#" from="seproject@uwf.edu" subject="ArgoPost Notification">
+setIDs(Arguments.threadID)
+<cfloop list="attributes.userIDs" index="item">
+	setEmail(item)
+	<cfmail to="attributes.email" from="seproject@uwf.edu" subject="ArgoPost Notification">
 #CreateEmailMessage()#</cfmail>
 </cfloop>
 </cffunction>
@@ -39,9 +39,9 @@ Filename: Notifier.cfc
 	<cfargument name ="UserID" required="true">
 	<cfquery name="getEmail" datasource="SEproject_argopost">
 	select Email from users
-	where UserID = <cfqueryparam value="#arguments.UserID#">;
+	where UserID = <cfqueryparam value="arguments.UserID">;
 </cfquery>
-<cfset attributes.email="#getEmail#">
+<cfset attributes.email="getEmail">
 </cffunction>
 
 <!--- This Function creates the email message that is sent to users of a thread that they 
