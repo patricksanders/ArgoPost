@@ -7,9 +7,9 @@ Filename: Notifier.cfc
 
 <!--- This function is the constructor of the Notifier Class --->
 <cffunction name="Notifier" returntype="void">
-<cfargument name="ThreadID" type="numeric" required="true">
+<cfargument name="threadID" type="numeric" required="true">
 <cfinvoke method="sendToSubscribersOfACategory">
-<cfinvokeargument name="ThreadID" value="Arguments.ThreadID">
+<cfinvokeargument name="threadID" value="Arguments.threadID">
 </cfinvoke>
 </cffunction>
 
@@ -18,7 +18,7 @@ Filename: Notifier.cfc
 	<cfargument name="threadID">
 
 <cfinvoke method="setIDS">
-<cfinvokeargument name="ThreadID" value="Arguments.threadID">
+<cfinvokeargument name="threadID" value="Arguments.threadID">
 </cfinvoke>
 <cfloop list="attributes.userIDs" index="item">
 	<cfinvoke method="setEmail">
@@ -54,9 +54,9 @@ Filename: Notifier.cfc
 <!--- This Function creates the email message that is sent to users of a thread that they 
 are subscribed to when a new post is made. --->
 <cffunction name="CreateEmailMessage" returntype="string">
-<cfset message="Hello, ArgoPost User, 
-You are recieving this message because a post was made in an ArgoPost thread you are subscribed to.
-Navigate to uwf.edu/ArgoPost to check out the post!" >
+<cfset message="Hello, ArgoPost User,"+ <br>+
+"You are recieving this message because a post was made in an ArgoPost thread you are subscribed to."+<br>+
+"Navigate to uwf.edu/ArgoPost to check out the post!" >
 <cfreturn message>
 </cffunction>
 </cfcomponent>
