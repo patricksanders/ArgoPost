@@ -117,7 +117,7 @@ function showArgoPostDetails(argoPostItem)
 // Handles a successful response from the getSearchResults function
 function getArgoPostSearchResultsSuccess(response)
 {
-	clearInput(document.getElementById('searchInputText'));
+	
 	
 	var keyword = document.getElementById('searchInputText').value;
 	
@@ -204,6 +204,8 @@ function getArgoPostSearchResultsSuccess(response)
 				+ "</tr>");			
 		});
 	}
+	
+	clearInput(document.getElementById('searchInputText'));
 }
 
 // Handles a successful response from the getArgoPostForums function
