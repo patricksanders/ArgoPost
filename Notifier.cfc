@@ -9,7 +9,7 @@ Filename: Notifier.cfc
 <cffunction name="Notifier" returntype="void">
 <cfargument name="threadID" type="numeric" required="true">
 <cfinvoke method="sendToSubscribersOfACategory">
-<cfinvokeargument name="threadID" value="Arguments.threadID">
+<cfinvokeargument name="threadID" value="#Arguments.threadID#">
 </cfinvoke>
 </cffunction>
 
@@ -18,13 +18,13 @@ Filename: Notifier.cfc
 	<cfargument name="threadID">
 
 <cfinvoke method="setIDS">
-<cfinvokeargument name="threadID" value="Arguments.threadID">
+<cfinvokeargument name="threadID" value="#Arguments.threadID#">
 </cfinvoke>
-<cfloop list="attributes.UserIDs" index="item">
+<cfloop list="#attributes.UserIDs#" index="item">
 	<cfinvoke method="setEmail">
-	<cfinvokeargument name="UserID" value="item">
+	<cfinvokeargument name="UserID" value="#item#">
 	</cfinvoke>
-	<cfmail to="attributes.email" from="seproject@uwf.edu" subject="ArgoPost Notification">
+	<cfmail to="#attributes.email#" from="seproject@uwf.edu" subject="ArgoPost Notification">
 <cfinvoke method="CreateEmailMessage"></cfmail>
 </cfloop>
 </cffunction>
