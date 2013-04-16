@@ -314,6 +314,8 @@ function getArgoPostThreadsSuccess(response)
 				+ threadTitle
 				+ "</a>"
 				+ "&nbsp;&nbsp;"
+				+ "<a style='font: bold 10px Helvetica, Arial, sans-serif;color:#333333;text-decoration:none;' href='javascript:getArgoPostForums();'>[Forum]</a>"
+				+ "&nbsp;&nbsp;"
 				+ "<span style='font: italic 10px Helvetica, Arial, sans-serif;color:gray;'>Created by "
 				+ userUwfId
 				+ "</span>"
