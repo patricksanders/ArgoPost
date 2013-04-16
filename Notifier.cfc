@@ -48,7 +48,7 @@ Filename: Notifier.cfc
 	select Email from Users
 	where UserID = <cfqueryparam value="arguments.UserID">;
 </cfquery>
-<cfset attributes.email="#getEmail#">
+<cfset attributes.email="#getEmail.Email#">
 </cffunction>
 
 <!--- This Function creates the email message that is sent to users of a thread that they 
