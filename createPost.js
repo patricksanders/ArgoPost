@@ -32,11 +32,11 @@
 	} 
 	else {
 		$.ajax({
-			type : "GET",
+			type : "POST",
 			url : "Post.cfc?wsdl&method=addPost",
 			contentType : "application/json; charset=utf-8",
 			processData: false,
-			data: {test: [aTitle.value, aDescription.value, aThreadID.value]},
+			data: "postTitle="+aTitle.value+"&postContent="+aDescription.value+"&threadID="+aThreadID.value,
 			dataType : "json",
 			success : postSucceeded,
 			failure : failedToAddPost

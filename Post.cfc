@@ -4,10 +4,14 @@
 	officially using --->
 	<cfset dataSource = "SEproject_argopost"> 
 	
-	<cffunction name="addPost" access="remote"  returnType="array" returnFormat="JSON">
-	<cfargument name="test" type="array" required="true">
+	<cffunction name="addPost" access="remote"  returnType="boolean" returnFormat="JSON">
+		<cfargument name="postTitle"  required="true" />
+		<cfargument name="postContent" required="true" />
+		<cfargument name="threadID" required="true" />
+	
+	<!---<cfargument name="test" type="array" required="true">
 		
-		<cfreturn arguments.test>
+		<cfreturn arguments.test>--->
 		<!---
 		<cfargument name="postTitle"  required="true" />
 		<cfargument name="postContent" required="true" />
