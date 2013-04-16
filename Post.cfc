@@ -4,10 +4,10 @@
 	officially using --->
 	<cfset dataSource = "SEproject_argopost"> 
 	
-	<cffunction name="addPost" access="remote"  returnType="struct" returnFormat="JSON">
-	<cfargument name="test" type="struct" required="true">
-		<cfset testStruct=#arguments.test#>
-		<cfreturn testStruct>
+	<cffunction name="addPost" access="remote"  returnType="array" returnFormat="JSON">
+	<cfargument name="test" type="array" required="true">
+		
+		<cfreturn arguments.test>
 		<!---
 		<cfargument name="postTitle"  required="true" />
 		<cfargument name="postContent" required="true" />
