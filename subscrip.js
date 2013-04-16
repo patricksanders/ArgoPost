@@ -33,6 +33,7 @@ function createSubscription() {
 function subscriptionSucceeded(response) {
 	
 	alert("Your subscription was successfully created!");
+	location.reload(true);
 }
 
 function failedToAddSubscription() {
@@ -59,7 +60,7 @@ function getSubTitles() {
 function populateSubComboBox(response) {
 
 	$('#subscrips').empty();
-	$('#subscrips').append("<option>Select a topic</option>");
+	$('#subscrips').append("<option>Select a subscription</option>");
 	
 	$.each(response, function(index, result){
 		var threadId = result.THREADID;
@@ -219,6 +220,7 @@ function deleteSubscription() {
 function subscriptionDeleteSucceeded(response) {
 	
 	alert("Your subscription was successfully deleted!");
+	location.reload(true);
 }
 
 function failedToDeleteSubscription() {
