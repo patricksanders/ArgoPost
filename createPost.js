@@ -48,7 +48,14 @@
  */
 function postSucceeded(response) {
 	
-	alert("Your post was successfully created!");
+	if(response === true){
+		alert("Your post was successfully created!");
+		location.reload(true);
+	}
+	else{
+		alert("Your post was not successful.\nPlease try again.");
+	}
+	
 }
 
 /**
