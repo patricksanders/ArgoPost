@@ -36,7 +36,7 @@
 <cfif session.loggedIn eq 0>
         <cfsavecontent variable="footer"><cfinclude template ="index_login_foot.cfm"></cfsavecontent>
      	<cf_uwfLogin loginTimeout="30"
-			loginWelcome="<div align = 'center'><strong>Login</strong></div>"
+			loginWelcome="<div align = 'center'><img src="../images/login_header.png"><br/><strong>Login</strong></div>"
 			logoutMessage="You have logged out of the system."
 			logoutURL="login.cfm"
 			loginIDName="Username"
