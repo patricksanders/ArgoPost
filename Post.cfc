@@ -4,10 +4,14 @@
 	officially using --->
 	<cfset dataSource = "SEproject_argopost"> 
 	
-	<cffunction name="addPost" access="remote"  returnType="boolean" returnFormat="JSON">
+	<cffunction name="addPost" access="remote"  returnType="struct" returnFormat="JSON">
+	<cfargument name="test" type="struct" required="true">
+		<cfset testStruct=#arguments.test#>
+		<cfreturn testStruct>
+		<!---
 		<cfargument name="postTitle"  required="true" />
 		<cfargument name="postContent" required="true" />
-		<cfargument name="threadID" required="true" />		
+		<cfargument name="threadID" required="true" />	--->	
 		
 		<!--- Get all the dates needed for the post --->
 		<cfset postDate = Now()>
