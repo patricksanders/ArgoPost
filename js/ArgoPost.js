@@ -492,7 +492,6 @@ function deleteArgoPostFromSearchSuccess(response)
 // Clears the value in an HTMLInput object 
 function clearInput(controlId)
 {
-	//$(controlId).val('');
 	controlId.value = '';
 }
 
