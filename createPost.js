@@ -43,6 +43,7 @@
 		}).done(function(result){
 			console.log(result)
 	});
+	}
 }
 
 /**
