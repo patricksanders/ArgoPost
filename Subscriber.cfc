@@ -68,9 +68,11 @@ Filename: Subscriber.cfc
 		<cfset rtnStruct = structNew()>
 		<cftry>
 			<cfquery name="getArgoPostSubs" datasource="SEproject_argopost">
-			select ThreadTitle, ThreadID
-			from Threads, Subscriptions
-			where UserID = <cfqueryparam value="#userID#"> and Threads.ThreadID = Subscriptions.ThreadID;
+			SELECT Threads.Title, Threads.ThreadID
+			FROM Threads 
+			INNER JOIN Subscriptions 
+			ON Threads.ThreadID = Subscriptions.ThreadID 
+			WHERE Subscriptions.UserID = <cfqueryparam value="#userID#">;
 		</cfquery>
 		<cfcatch type="any">
 			<cfreturn rtnStruct>
