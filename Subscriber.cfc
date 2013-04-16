@@ -68,7 +68,7 @@ Filename: Subscriber.cfc
 		<cfset rtnStruct = structNew()>
 		<cftry>
 			<cfquery name="getArgoPostSubs" datasource="SEproject_argopost">
-			select ThreadTitle
+			select ThreadTitle, ThreadID
 			from Threads, Subscriptions
 			where UserID = <cfqueryparam value="#userID#"> and Threads.ThreadID = Subscriptions.ThreadID;
 		</cfquery>
