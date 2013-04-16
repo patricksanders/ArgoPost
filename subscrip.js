@@ -173,7 +173,7 @@ function checkLoggedInStatus(){
 function userIsLoggedIn(response){
 	if(response === true){
 		getForumTitles();
-		getSubTites();
+		getSubTitles();
 	}
 	else{
 		window.location = "login.cfm";
