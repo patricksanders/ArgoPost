@@ -8,6 +8,6 @@
 
 
 <cfset url.logout = 1>
-<cf_uwflogin logoutURL="login.html">
+<cf_uwflogin logoutURL="login.cfm">
 
 <cflocation url = "login.html" addtoken="no">
