@@ -59,7 +59,7 @@ function getSubTitles() {
 function populateSubComboBox(response) {
 
 	$('#subscrips').empty();
-	$('#subscrips').append("<option>Select a topic</option>");
+	$('#subscrips').append("<option>Select a subscription</option>");
 	
 	$.each(response, function(index, result){
 		var threadId = result.THREADID;
