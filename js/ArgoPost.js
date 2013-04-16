@@ -493,7 +493,7 @@ function deleteArgoPostFromSearchSuccess(response)
 function clearInput(controlId)
 {
 	//$(controlId).val('');
-	document.getElementById(controlId).value = '';
+	controlId.value('');
 }
 
 // Allows this javascript library to include other javascript libraries
