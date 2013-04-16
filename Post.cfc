@@ -29,7 +29,7 @@
 				 	   <cfqueryparam value="#postDate#" cfsqltype="cf_sql_date">,
 				  	   <cfqueryparam value="#expDate#" cfsqltype="cf_sql_date">,
 				 	   <cfqueryparam value="#arguments.postTitle#" cfsqltype="cf_sql_varchar">,
-				 	   <cfqueryparam value="#arguments.postContent#" cfsqltype="cf_sql_longvarchar">)			
+				 	   <cfqueryparam value="#arguments.postContent#" cfsqltype="cf_sql_varchar">)			
 			</cfquery>
 		<cfcatch type="any">
 			<cfreturn false>
