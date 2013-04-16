@@ -41,7 +41,7 @@
 			//success : postSucceeded,
 			//failure : failedToAddPost
 		}).done(function(result){
-			console.log(result)};
+			console.log(result)}
 	}
 }
 
