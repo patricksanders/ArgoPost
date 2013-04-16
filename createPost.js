@@ -62,8 +62,7 @@ function postSucceeded(response) {
  * This function will run if there is an error adding a post to the database.
  */
 function failedToAddPost() {
-	document.getElementById('addPostFailure').innerHTML = "*Post was not successfully created. Please try again."
-	
+	alert("Something went wrong.");	
 }
 
 
