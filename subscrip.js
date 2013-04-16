@@ -41,21 +41,6 @@ function failedToAddSubscription() {
 }
 
 /**
- *This function will run when the create post page is loaded. It will fill the Forums drop down menu with the list of forum titles.
- */
-function getSubsTitles() {
-		$.ajax({
-			type : "GET",
-			url : "Subscriber.cfc?wsdl&method=getSubs",
-			contentType : "application/json; charset=utf-8",
-			dataType : "json",
-			success : populateSubComboBox,
-			failure : failedToGetSubTitles
-		});
-}
-
-
-/**
  *This function will run when the subscription page is loaded. It will fill the topics drop down menu with the list of topics.
  */
 function getSubTitles() {
@@ -90,3 +75,114 @@ function populateSubComboBox(response) {
 function failedToGetSubTitles(response){
 	alert("Could not load the Subscriptions. Please refresh the page and try again.")
 }
+/**
+ *This function will run when the create post page is loaded. It will fill the Forums drop down menu with the list of forum titles.
+ */
+function getForumTitles() {
+		$.ajax({
+			type : "GET",
+			url : "Post.cfc?wsdl&method=getForums",
+			contentType : "application/json; charset=utf-8",
+			dataType : "json",
+			success : populateForumsComboBox,
+			failure : failedToGetForumTitles
+		});
+}
+
+/**
+ *This function will run when the forum titles have successfully been returned from the database. 
+ */
+function populateForumsComboBox(response) {
+	
+	$('#forums').empty();
+	$('#forums').append("<option>Select a forum</option>");
+	
+	$.each(response, function(index, result){
+		var forumId = result.FORUMID;
+		var forumTitle = result.TITLE;
+		
+		$('#forums').append("<option value='" + forumId + "'>" + forumTitle + "</option>");
+	});	
+}
+
+
+/**
+ * Thi function will execute if there is an error accessing the forum titles from the webservice 
+ */
+function failedToGetForumTitles(response){
+	alert("Could not load the forum titles. Please refresh the page and try again.")
+}
+
+/**
+ *This function will run once the user has selected a Forum in the drop down menu. It will fill the Threads drop down menu with all the threads in the
+ * forum that the user has selected.
+ */
+function getThreadTitles() {
+	var frmID = document.getElementById("forums");
+	
+	$.ajax({
+			type : "GET",
+			url : "Post.cfc?wsdl&method=getThreads&forumID="+frmID.value,
+			contentType : "application/json; charset=utf-8",
+			dataType : "json",
+			success : populateThreadsComboBox,
+			failure : failedToGetThreadTitles
+		});
+}
+
+/**
+ * This function will populate the threads combo box based on the selection of the forums conbo box 
+ */
+function populateThreadsComboBox(response){
+	
+	$('#threads').empty();
+	$('#threads').append("<option>Select a thread</option>");
+	
+	$.each(response, function(index, result){
+		var threadId = result.THREADID;
+		var threadTitle = result.TITLE;
+		
+		$('#threads').append("<option value='" + threadId + "'>" + threadTitle + "</option>");
+	});
+}
+
+/**
+ *This function will run if there is an error getting the thread titles from the database 
+ */
+function failedToGetThreadTitles(){
+	alert("Could not load thread titles. Please refresh the page and try again.")
+}
+
+/**
+ * This function is used to check if a user is loggedIn before they are allowed to create a post. 
+ */
+function checkLoggedInStatus(){
+	$.ajax({
+			type : "GET",
+			url : "Post.cfc?wsdl&method=checkIfLoggedIn",
+			contentType : "application/json; charset=utf-8",
+			dataType : "json",
+			success : userIsLoggedIn,
+			failure : loggedInStatusFailed
+		});
+}
+
+/**
+ *What to do if a user is logged in 
+ */
+function userIsLoggedIn(response){
+	if(response === true){
+		getForumTitles();
+	}
+	else{
+		window.location = "login.cfm";
+	}
+}
+
+/**
+ * What to do if checking the users logged in status has failed. 
+ */
+function loggedInStatusFailed(){
+	window.location = "login.cfm"
+}
+
