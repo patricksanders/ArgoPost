@@ -33,15 +33,12 @@
 	else {
 		$.ajax({
 			type : "POST",
-			url : "Post.cfc?wsdl&method=addPost",
-			contentType : "application/json; charset=utf-8",
+			url : "Post.cfc?method=addPost&returnformat=json",
 			data: {postTitle: aTitle.value, postContent: aDescription.value, threadID: aThreadID.value},
 			dataType : "json"
-			//success : postSucceeded,
-			//failure : failedToAddPost
-		}).done(function(result){
-			console.log(result)
-	});
+			success : postSucceeded,
+			failure : failedToAddPost
+		});
 	}
 }
 

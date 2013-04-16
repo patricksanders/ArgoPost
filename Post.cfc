@@ -5,18 +5,10 @@
 	<cfset dataSource = "SEproject_argopost"> 
 	
 	<cffunction name="addPost" access="remote"  returnType="boolean" returnFormat="JSON">
-		<cfargument name="postTitle"  required="true" />
-		<cfargument name="postContent" required="true" />
-		<cfargument name="threadID" required="true" />
-	
-	<!---<cfargument name="test" type="array" required="true">
-		
-		<cfreturn arguments.test>--->
-		<!---
-		<cfargument name="postTitle"  required="true" />
-		<cfargument name="postContent" required="true" />
-		<cfargument name="threadID" required="true" />	--->	
-		
+		<cfargument name="postTitle"  type="string" required="true" />
+		<cfargument name="postContent" type="string" required="true" />
+		<cfargument name="threadID" type="numeric" required="true" />
+			
 		<!--- Get all the dates needed for the post --->
 		<cfset postDate = Now()>
 		<cfset postDate = DateFormat(postDate, "mm/dd/yyyy")>
@@ -37,7 +29,7 @@
 				 	   <cfqueryparam value="#postDate#" cfsqltype="cf_sql_date">,
 				  	   <cfqueryparam value="#expDate#" cfsqltype="cf_sql_date">,
 				 	   <cfqueryparam value="#arguments.postTitle#" cfsqltype="cf_sql_varchar">,
-				 	   <cfqueryparam value="#arguments.postContent#" cfsqltype="cf_sql_varchar">)			
+				 	   <cfqueryparam value="#arguments.postContent#" cfsqltype="cf_sql_longvarchar">)			
 			</cfquery>
 		<cfcatch type="any">
 			<cfreturn false>
