@@ -189,3 +189,39 @@ function loggedInStatusFailed(){
 	window.location = "login.cfm"
 }
 
+
+
+
+function deleteSubscription() {	
+	//get thread title from the dropdown menu in the post UI
+	var aThreadID = document.getElementById("subscrips");
+	//this variable is used to check if a field was left empty
+	var isEmptyField = false;
+	
+	//check that a thread has been selected
+	if(aThreadID.value == "Select a subscription"){
+		isEmptyField = true;
+	}
+	//if there is an empty field send user back to post page with an error
+	//explaining that all fields must be completed
+	if (isEmptyField === true) {
+		alert("You must select a subscription.");
+	} 
+	else {
+		$.ajax({
+			type : "GET",
+			url : "Subscriber.cfc?wsdl&method=removefromSubscriptions&ThreadID="+aThreadID.value,
+			success : subscriptionDeleteSucceeded,
+			failure : failedToDeleteSubscription
+		});
+	}
+}
+function subscriptionDeleteSucceeded(response) {
+	
+	alert("Your subscription was successfully deleted!");
+}
+
+function failedToDeleteSubscription() {
+	document.getElementById('addSubFailure').innerHTML = "*Subscription was not successfully deleted. Please try again."
+	
+}

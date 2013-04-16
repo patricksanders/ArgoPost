@@ -38,11 +38,14 @@ Filename: Subscriber.cfc
 
 <!---Removes a Subscription to the list of the user's subscripitons. --->
 <cffunction name="removefromSubscriptions" returntype="void">
+
 	<cfargument name="ThreadID" type="int">
+	<cfset currentUID = getUserID(#session.userName#)>
+
 	<cfquery name="Delete" datasource="SEproject_argopost">
 		DELETE FROM Subscriptions
 		where ThreadID = <cfqueryparam value="#Arguments.ThreadID#">
-		and UserID = <cfqueryparam value="#userID#">;
+		and UserID = <cfqueryparam value="#currentUID#" cfsqltype="cf_sql_numeric">;
 	</cfquery>
 </cffunction>
 
