@@ -41,6 +41,7 @@
 			failure : failedToAddPost
 		});
 	}
+	alert("Something went wrong");
 }
 
 /**
