@@ -35,7 +35,8 @@
 			type : "GET",
 			url : "Post.cfc?wsdl&method=addPost",
 			contentType : "application/json; charset=utf-8",
-			data: postTitle=aPostTitle.value&postContents=aPostDescription.value&threadID=aThreadID.value,
+			processData: false,
+			data: {postTitle: aPostTitle.value, postContent: aPostDescription.value, threadID: aThreadID.value},
 			dataType : "json",
 			success : postSucceeded,
 			failure : failedToAddPost
@@ -48,7 +49,7 @@
  * of that thread that the post was created. The next action will be to direct the user to the newly created post.
  */
 function postSucceeded(response) {
-	console.log("succeeded");
+	console.log(response);
 	/*
 	if(response === true){
 		alert("Your post was successfully created!");
