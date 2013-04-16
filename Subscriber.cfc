@@ -16,14 +16,16 @@ Filename: Subscriber.cfc
 	
 <cfset userID = #userIDnum#>
 <!---Adds a Subscription to the list of the user's subscripitons. --->
-<cffunction name="AddToSubscriptions" returntype="boolean">
+<cffunction name="AddToSubscriptions" access="remote" returntype="boolean">
+
 	<cfargument name="ThreadID" type="int">
+	<cfset currentUID = getUserID(#session.userName#)>
 	
 	<cftry>
 	<cfquery name="Add" datasource="SEproject_argopost"> 
 			INSERT into Subscriptions(UserID,ThreadID)
-			values(<cfqueryparam value="#userID#">,
-					<cfqueryparam value="#Arguments.ThreadID#">);
+			values(<cfqueryparam value="#currentUID#"  cfsqltype="cf_sql_numeric">>,
+					<cfqueryparam value="#Arguments.ThreadID#"  cfsqltype="cf_sql_numeric">>);
 	</cfquery>
 	<cfcatch type="any">
 			<cfreturn false>
@@ -40,6 +42,23 @@ Filename: Subscriber.cfc
 		and UserID = <cfqueryparam value="#userID#">;
 	</cfquery>
 </cffunction>
+
+<!--- This function is used to query the Users table for a UserID so that it can be stored in the database with 
+	the post that they have created. --->
+	<cffunction name="getUserID" access="remote" returnType="Numeric">
+		<cfargument name="userName" required="true" />
+		<cfquery name="getUID" dataSource="SEproject_argopost" result="r">
+			select *
+			from Users
+			where UWFID = <cfqueryparam value="#arguments.userName#" cfsqltype="cf_sql_varchar">
+		</cfquery>
+		
+		<cfset uID="#getUID.UserID#">
+		<cfreturn "#uID#">
+	</cffunction>
+
+
+
 
 <!--- Gets a JSON object representing the Forums in ArgoPost --->
 	<cffunction name="getSubs" access="remote" returnFormat="JSON" returnType="struct">	
