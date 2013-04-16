@@ -23,9 +23,9 @@ Filename: Subscriber.cfc
 	
 	<cftry>
 	<cfquery name="Add" datasource="SEproject_argopost"> 
-			INSERT into Subscriptions(UserID,ThreadID)
-			values(<cfqueryparam value="#currentUID#"  cfsqltype="cf_sql_numeric">>,
-					<cfqueryparam value="#Arguments.ThreadID#"  cfsqltype="cf_sql_numeric">>);
+			insert into Subscriptions(UserID,ThreadID)
+			values(<cfqueryparam value="#currentUID#"  cfsqltype="cf_sql_numeric">,
+					<cfqueryparam value="#Arguments.ThreadID#"  cfsqltype="cf_sql_numeric">);
 	</cfquery>
 	<cfcatch type="any">
 			<cfreturn false>
@@ -33,6 +33,9 @@ Filename: Subscriber.cfc
 		</cftry>
 	<cfreturn true>
 </cffunction>
+
+
+
 <!---Removes a Subscription to the list of the user's subscripitons. --->
 <cffunction name="removefromSubscriptions" returntype="void">
 	<cfargument name="ThreadID" type="int">
