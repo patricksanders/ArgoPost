@@ -117,6 +117,8 @@ function showArgoPostDetails(argoPostItem)
 // Handles a successful response from the getSearchResults function
 function getArgoPostSearchResultsSuccess(response)
 {
+	clearInput(document.getElementById('searchInputText'));
+	
 	var keyword = document.getElementById('searchInputText').value;
 	
 	var count = 0;
