@@ -35,6 +35,7 @@
 			type : "GET",
 			url : "Post.cfc?wsdl",
 			contentType : "application/json; charset=utf-8",
+			processData: false,
 			data: { method: "addPost", test: [aTitle.value, aDescription.value, aThreadID.value]},
 			dataType : "json",
 			success : postSucceeded,
