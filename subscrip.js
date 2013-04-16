@@ -70,8 +70,6 @@ function populateSubComboBox(response) {
 		$('#subscrips').append("<option value='" + threadId + "'>" + threadTitle + "</option>");
 	});	
 }
-
-
 /**
  * Thi function will execute if there is an error accessing the forum titles from the webservice 
  */
@@ -79,7 +77,7 @@ function failedToGetSubTitles(response){
 	alert("Could not load the Subscriptions. Please refresh the page and try again.")
 }
 /**
- *This function will run when the create post page is loaded. It will fill the Forums drop down menu with the list of forum titles.
+ *This function will run when the subscription is loaded. It will fill the Forums drop down menu with the list of forum titles.
  */
 function getForumTitles() {
 		$.ajax({
@@ -148,7 +146,6 @@ function populateThreadsComboBox(response){
 		$('#threads').append("<option value='" + threadId + "'>" + threadTitle + "</option>");
 	});
 }
-
 /**
  *This function will run if there is an error getting the thread titles from the database 
  */
@@ -169,7 +166,6 @@ function checkLoggedInStatus(){
 			failure : loggedInStatusFailed
 		});
 }
-
 /**
  *What to do if a user is logged in 
  */
@@ -182,7 +178,6 @@ function userIsLoggedIn(response){
 		window.location = "login.cfm";
 	}
 }
-
 /**
  * What to do if checking the users logged in status has failed. 
  */
