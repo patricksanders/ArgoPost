@@ -35,7 +35,7 @@ Filename: Notifier.cfc
 <cfquery name="getIDs" datasource="SEproject_argopost">
 	select * 
 	from subscriptions
-	where ThreadID = <cfqueryparam value="arguments.threadID">; 
+	where ThreadID = <cfqueryparam value="#arguments.threadID#">; 
 </cfquery>
 
 <cfset attributes.userIDs=ArrayToList(getIDs["UserID"], ",")><!---gets list of userIDs based on the threadID--->
@@ -46,7 +46,7 @@ Filename: Notifier.cfc
 	<cfargument name ="UserID" required="true">
 	<cfquery name="getEmail" datasource="SEproject_argopost">
 	select Email from Users
-	where UserID = <cfqueryparam value="arguments.UserID">;
+	where UserID = <cfqueryparam value="#arguments.UserID#">;
 </cfquery>
 <cfset attributes.email="#getEmail.Email#">
 </cffunction>
