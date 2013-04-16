@@ -41,7 +41,6 @@
 			failure : failedToAddPost
 		});
 	}
-	alert("Something went wrong");
 }
 
 /**
@@ -49,7 +48,8 @@
  * of that thread that the post was created. The next action will be to direct the user to the newly created post.
  */
 function postSucceeded(response) {
-	
+	console.log("succeeded");
+	/*
 	if(response === true){
 		alert("Your post was successfully created!");
 		location.reload(true);
@@ -57,14 +57,14 @@ function postSucceeded(response) {
 	else{
 		alert("Your post was not successful.\nPlease try again.");
 	}
-	
+	*/
 }
 
 /**
  * This function will run if there is an error adding a post to the database.
  */
 function failedToAddPost() {
-	alert("Something went wrong.");	
+	console.log("failed");	
 }
 
 
