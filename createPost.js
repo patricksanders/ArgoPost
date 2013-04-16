@@ -205,7 +205,7 @@ function userIsLoggedIn(response){
 		getForumTitles();
 	}
 	else{
-		window.location = "login.html";
+		window.location = "login.cfm";
 	}
 }
 
@@ -213,5 +213,5 @@ function userIsLoggedIn(response){
  * What to do if checking the users logged in status has failed. 
  */
 function loggedInStatusFailed(){
-	window.location = "login.html"
+	window.location = "login.cfm"
 }

@@ -45,7 +45,7 @@
 			IDVarName="argoUsername"
 			firstnamevarname="argofirstname"
             lastnamevarname="argolastname"
-            loginfailuremessage = "<p style = 'font-size: 12px;'>You could not be logged in with the information provided. Please <a href = 'login.html'>try again.</a></p>"
+            loginfailuremessage = "<p style = 'font-size: 12px;'>You could not be logged in with the information provided. Please <a href = 'login.cfm'>try again.</a></p>"
             activateApplication = "false"
     		footer="#footer#">            
 			
