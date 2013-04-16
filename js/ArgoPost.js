@@ -133,9 +133,6 @@ function getArgoPostSearchResultsSuccess(response)
 	
 	if(count <= 0)
 	{
-
-		//$('#resultsTitle').append();	
-		
 		$('#searchResults').append(
 				"<tr id='searchResultsImage'>"
 				+ "<td class='photo'>"
@@ -190,12 +187,12 @@ function getArgoPostSearchResultsSuccess(response)
 				+ "&nbsp;&nbsp;"
 				+ "<a style='font: bold 10px Helvetica, Arial, sans-serif;color:#333333;text-decoration:none;' href='javascript:getArgoPostThreads("+forumId+");'>[Forum]</a>"
 				+ "&nbsp;&nbsp;"
-				+ "<a style='font: bold 10px Helvetica, Arial, sans-serif;color:#333333;text-decoration:none;' href='javascript:getArgoPostPosts("+threadId+");'>[Thread]</a>"
+				+ "<a style='font: bold 10px Helvetica, Arial, sans-serif;color:#333333;text-decoration:none;' href='javascript:getArgoPostPosts("+threadId+");'>[Topic]</a>"
 				+ "&nbsp;&nbsp;"
 				+ deleteBtn
 				+ "&nbsp;&nbsp;"
 				+ "<span style='font: italic 10px Helvetica, Arial, sans-serif;color:gray;'>Created by "
-				+ userUwfId + " on " + createdDate
+				+ userUwfId
 				+ "</span>"
 				+ "<br />"
 				+ "<div class='posts' id='postIdContent"+postId+"' style='display:none;'>"
@@ -314,7 +311,7 @@ function getArgoPostThreadsSuccess(response)
 				+ threadTitle
 				+ "</a>"
 				+ "&nbsp;&nbsp;"
-				+ "<a style='font: bold 10px Helvetica, Arial, sans-serif;color:#333333;text-decoration:none;' href='javascript:getArgoPostForums();'>[Forum]</a>"
+				+ "<a style='font: bold 10px Helvetica, Arial, sans-serif;color:#333333;text-decoration:none;' href='javascript:getArgoPostForums();'>[All Forums]</a>"
 				+ "&nbsp;&nbsp;"
 				+ "<span style='font: italic 10px Helvetica, Arial, sans-serif;color:gray;'>Created by "
 				+ userUwfId
@@ -406,7 +403,7 @@ function getArgoPostPostsSuccess(response)
 				+ deleteBtn
 				+ "&nbsp;&nbsp;"
 				+ "<span style='font: italic 10px Helvetica, Arial, sans-serif;color:gray;'>Created by "
-				+ userUwfId + " on " + createdDate
+				+ userUwfId
 				+ "</span>"
 				+ "<br />"
 				+ "<div class='posts' id='postIdContent"+postId+"' style='display:none;'>"
@@ -419,7 +416,7 @@ function getArgoPostPostsSuccess(response)
 		});
 
 		$('#resultsTitle').empty();
-		$('#resultsTitle').append("Thread: " + threadTitle);
+		$('#resultsTitle').append("Topic: " + threadTitle);
 	}
 }
 
@@ -497,7 +494,8 @@ function deleteArgoPostFromSearchSuccess(response)
 // Clears the value in an HTMLInput object 
 function clearInput(controlId)
 {
-	$(controlId).val('');
+	//$(controlId).val('');
+	document.getElementById(controlId).value = '';
 }
 
 // Allows this javascript library to include other javascript libraries
