@@ -33,7 +33,7 @@
 	else {
 		$.ajax({
 			type : "GET",
-			url : "Post.cfc?wsdl&method=addPost",
+			url : "Post.cfc?wsdl&method=addPost&test=",
 			contentType : "application/json; charset=utf-8",
 			processData: false,
 			data: {postTitle: aTitle.value, postContent: aDescription.value, threadID: aThreadID.value},
