@@ -37,7 +37,7 @@ Filename: Subscriber.cfc
 
 
 <!---Removes a Subscription to the list of the user's subscripitons. --->
-<cffunction name="removefromSubscriptions" returntype="void">
+<cffunction name="removefromSubscriptions" access="remote" returntype="void">
 
 	<cfargument name="ThreadID" type="int">
 	<cfset currentUID = getUserID(#session.userName#)>
