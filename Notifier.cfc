@@ -45,7 +45,7 @@ Filename: Notifier.cfc
 <cffunction name="setEmail" access="remote">
 	<cfargument name ="UserID" required="true">
 	<cfquery name="getEmail" datasource="SEproject_argopost">
-	select Email from users
+	select Email from Users
 	where UserID = <cfqueryparam value="arguments.UserID">;
 </cfquery>
 <cfset attributes.email="getEmail">
