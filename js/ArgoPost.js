@@ -161,7 +161,7 @@ function getArgoPostSearchResultsSuccess(response)
 			
 			if(loggedInUser == userUwfId || isFaculty == 1)
 			{
-				deleteBtn = "<a style='font: bold 10px Helvetica, Arial, sans-serif;color:red;text-decoration:none;' href='javascript:deleteArgoPostFromSearch("+postId+ ");'>[Delete]</a>"
+				deleteBtn = "&nbsp;&nbsp;<a style='font: bold 10px Helvetica, Arial, sans-serif;color:red;text-decoration:none;' href='javascript:deleteArgoPostFromSearch("+postId+ ");'>[Delete]</a>"
 				
 			}
 			
@@ -188,7 +188,6 @@ function getArgoPostSearchResultsSuccess(response)
 				+ "<a style='font: bold 10px Helvetica, Arial, sans-serif;color:#333333;text-decoration:none;' href='javascript:getArgoPostThreads("+forumId+");'>[Forum]</a>"
 				+ "&nbsp;&nbsp;"
 				+ "<a style='font: bold 10px Helvetica, Arial, sans-serif;color:#333333;text-decoration:none;' href='javascript:getArgoPostPosts("+threadId+");'>[Topic]</a>"
-				+ "&nbsp;&nbsp;"
 				+ deleteBtn
 				+ "&nbsp;&nbsp;"
 				+ "<span style='font: italic 10px Helvetica, Arial, sans-serif;color:gray;'>Created by "
@@ -374,7 +373,7 @@ function getArgoPostPostsSuccess(response)
 			
 			if(loggedInUser == userUwfId || isFaculty == 1)
 			{
-				deleteBtn = "<a style='font: bold 10px Helvetica, Arial, sans-serif;color:red;text-decoration:none;' href='javascript:deleteArgoPostFromThread("+postId+ "," + threadId + ");'>[Delete]</a>"
+				deleteBtn = "&nbsp;&nbsp;<a style='font: bold 10px Helvetica, Arial, sans-serif;color:red;text-decoration:none;' href='javascript:deleteArgoPostFromThread("+postId+ "," + threadId + ");'>[Delete]</a>"
 				
 			}
 			
@@ -399,7 +398,6 @@ function getArgoPostPostsSuccess(response)
 				+ "</a>"
 				+ "&nbsp;&nbsp;"
 				+ "<a style='font: bold 10px Helvetica, Arial, sans-serif;color:#333333;text-decoration:none;' href='javascript:getArgoPostThreads("+forumId+");'>[Forum]</a>"
-				+ "&nbsp;&nbsp;"
 				+ deleteBtn
 				+ "&nbsp;&nbsp;"
 				+ "<span style='font: italic 10px Helvetica, Arial, sans-serif;color:gray;'>Created by "
