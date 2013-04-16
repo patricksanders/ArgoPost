@@ -49,7 +49,7 @@ function getSubTitles() {
 			url : "Subscriber.cfc?wsdl&method=getSubs",
 			contentType : "application/json; charset=utf-8",
 			dataType : "json",
-			success : populateForumsComboBox,
+			success : populateSubComboBox,
 			failure : failedToGetSubTitles
 		});
 }
@@ -57,7 +57,7 @@ function getSubTitles() {
  *This function will run when the forum titles have successfully been returned from the database. 
  */
 function populateSubComboBox(response) {
-	
+
 	$('#subscrips').empty();
 	$('#subscrips').append("<option>Select a topic</option>");
 	
