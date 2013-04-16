@@ -93,6 +93,8 @@
         
         Good luck!
 --->
+<cfelse>
+	<cflocation url="index.cfm">
 </cfif>
 
 </body>
