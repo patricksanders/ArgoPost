@@ -13,12 +13,12 @@ function init()
 						}
 						else
 						{
-							window.location = "login.html";
+							window.location = "login.cfm";
 						}
 					},
 			failure: function(response)
 					{
-						window.location = "login.html";	
+						window.location = "login.cfm";	
 					}
 	 });
 }
