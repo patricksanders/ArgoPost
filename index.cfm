@@ -2,7 +2,7 @@
 <!-- ArgoPost UI Team Version 1.0 -->
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Type" content="text/html" charset=utf-8" />
 	<title>ArgoPost</title>
 	<link rel="stylesheet" href="css/style.css" type="text/css">
 	<script type="text/javascript" src="js/ArgoPost.js"></script>
@@ -51,7 +51,7 @@
 		<!--<tr> to </tr> is each row in the table -->
 		<tr id="searchResultsImage">
 		<td class="photo">
-			<img src="images/smallPic.png" width="50" height="50" align="top"></img>
+			<img src="images/smallPic.png" width="50" height="50" align="top" />
 		</td>
 		<td class="text" id="searchResultsContent">
 			<h3></h3>
