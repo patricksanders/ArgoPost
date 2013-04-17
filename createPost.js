@@ -35,7 +35,7 @@
 			type : "POST",
 			url : "Post.cfc?method=addPost&returnformat=json",
 			data: {postTitle: aTitle.value, postContent: aDescription.value, threadID: aThreadID.value},
-			dataType : "json"
+			dataType : "json",
 			success : postSucceeded,
 			failure : failedToAddPost
 		});
