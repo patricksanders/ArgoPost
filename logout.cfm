@@ -1,4 +1,4 @@
-<cfif session.loggedin = 1>
+<cfif session.loggedin eq 1>
 	<!-- Clear/reset session scope -->
 	<cfset session.loggedIn = 0>
 	<cfset session.security = 0>
