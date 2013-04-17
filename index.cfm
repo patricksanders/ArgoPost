@@ -1,8 +1,8 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- ArgoPost UI Team Version 1.0 -->
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset="utf-8" />
 	<title>ArgoPost</title>
 	<link rel="stylesheet" href="css/style.css" type="text/css">
 	<script type="text/javascript" src="js/ArgoPost.js"></script>
@@ -51,7 +51,7 @@
 		<!--<tr> to </tr> is each row in the table -->
 		<tr id="searchResultsImage">
 		<td class="photo">
-			<img src="images/smallPic.png" width="50" height="50" align="top"></img>
+			<img src="images/smallPic.png" alt=" " width="50" height="50" align="top" />
 		</td>
 		<td class="text" id="searchResultsContent">
 			<h3></h3>

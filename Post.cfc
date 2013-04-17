@@ -35,6 +35,15 @@
 			<cfreturn false>
 		</cfcatch>
 		</cftry>
+		
+		<!--- notify subscribers a new post has been added --->
+		<cfinvoke
+			component="Notifier"
+			method="Notifier">
+			<cfinvokeargument name="threadID" value="#arguments.threadID#">
+		</cfinvoke>
+		
+		<!--- return true if post was successful --->
 		<cfreturn true>
 	</cffunction>
 	

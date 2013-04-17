@@ -11,7 +11,7 @@
 	var isEmptyField = false;
 	
 	//check if the title or description is null and set isError if needed
-	if (isEmpty(title.value) === true || isEmpty(aDescription.value) === true) {
+	if (isEmpty(aTitle.value) === true || isEmpty(aDescription.value) === true) {
 		isEmptyField = true;
 	}
 	
