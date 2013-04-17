@@ -48,7 +48,7 @@
  */
 function postSucceeded(response) {
 	console.log(response);
-	/*
+	
 	if(response === true){
 		alert("Your post was successfully created!");
 		location.reload(true);
@@ -56,14 +56,15 @@ function postSucceeded(response) {
 	else{
 		alert("Your post was not successful.\nPlease try again.");
 	}
-	*/
+	
 }
 
 /**
  * This function will run if there is an error adding a post to the database.
  */
 function failedToAddPost() {
-	console.log("failed");	
+	console.log("failed");
+	alert("Something went wrong.\nPlease try to create a post again.");
 }
 
 
