@@ -36,45 +36,14 @@
 	<div class="page_title">
 		<h2>Manage Subscriptions</h2>		
 	</div>
-	
-	<form name="aSubscription" id="aSubscription" action="javascript:createSubscription()" method="post">
-	<table>
-	<tr>
-		<td>
-			<label for="addSubscription">Add Subscription: </label>
-		</td>
-		<td>
-			<select name="aSubscription" id="forums" onchange="getThreadTitles()">
-				<option>Select a forum</option>
-			</select>
-		</td>
-		<td id="forumsErrorMsg">&nbsp;</td>
-	</tr>
-	<tr>
-		<td colspan="2" align="right">
-			<select name="sThread" id="threads">
-				<option>Select a thread</option>
-			</select>
-		</td>
-		<td id="threadsErrorMsg">&nbsp;</td>
-	</tr>
-	<tr>
-		<td colspan="2" align="right">
-			<button type="submit">Add Subscription</button> 
-		</td>
-			<td id="addSubFailure">&nbsp;</td>
-	</tr>
-	</table>
-	</form>
-	
-	<form name="delSubscription" id="delSubscription" action="javascript:deleteSubscription()" method="post">
+	<form name="delSubscription" id="delSubscription" action="javascript:createSubscription()" method="post">
 	<table>
 	<tr>
 		<td>
 			Remove Subscription:
 		</td>
 		<td>
-			<select name="remSubscription" id="subscrips">
+			<select name="remSubscription" id="forums">
 				<option>Select a subscription</option>
 			</select>
 		</td>

@@ -13,12 +13,12 @@ function init()
 						}
 						else
 						{
-							window.location = "login.html";
+							window.location = "login.cfm";
 						}
 					},
 			failure: function(response)
 					{
-						window.location = "login.html";	
+						window.location = "login.cfm";	
 					}
 	 });
 }
@@ -117,6 +117,8 @@ function showArgoPostDetails(argoPostItem)
 // Handles a successful response from the getSearchResults function
 function getArgoPostSearchResultsSuccess(response)
 {
+	
+	
 	var keyword = document.getElementById('searchInputText').value;
 	
 	var count = 0;
@@ -133,9 +135,6 @@ function getArgoPostSearchResultsSuccess(response)
 	
 	if(count <= 0)
 	{
-
-		//$('#resultsTitle').append();	
-		
 		$('#searchResults').append(
 				"<tr id='searchResultsImage'>"
 				+ "<td class='photo'>"
@@ -164,7 +163,7 @@ function getArgoPostSearchResultsSuccess(response)
 			
 			if(loggedInUser == userUwfId || isFaculty == 1)
 			{
-				deleteBtn = "<a style='font: bold 10px Helvetica, Arial, sans-serif;color:red;text-decoration:none;' href='javascript:deleteArgoPostFromSearch("+postId+ ");'>[Delete]</a>"
+				deleteBtn = "&nbsp;&nbsp;<a style='font: bold 10px Helvetica, Arial, sans-serif;color:red;text-decoration:none;' href='javascript:deleteArgoPostFromSearch("+postId+ ");'>[Delete]</a>"
 				
 			}
 			
@@ -190,12 +189,11 @@ function getArgoPostSearchResultsSuccess(response)
 				+ "&nbsp;&nbsp;"
 				+ "<a style='font: bold 10px Helvetica, Arial, sans-serif;color:#333333;text-decoration:none;' href='javascript:getArgoPostThreads("+forumId+");'>[Forum]</a>"
 				+ "&nbsp;&nbsp;"
-				+ "<a style='font: bold 10px Helvetica, Arial, sans-serif;color:#333333;text-decoration:none;' href='javascript:getArgoPostPosts("+threadId+");'>[Thread]</a>"
-				+ "&nbsp;&nbsp;"
+				+ "<a style='font: bold 10px Helvetica, Arial, sans-serif;color:#333333;text-decoration:none;' href='javascript:getArgoPostPosts("+threadId+");'>[Topic]</a>"
 				+ deleteBtn
 				+ "&nbsp;&nbsp;"
 				+ "<span style='font: italic 10px Helvetica, Arial, sans-serif;color:gray;'>Created by "
-				+ userUwfId + " on " + createdDate
+				+ userUwfId
 				+ "</span>"
 				+ "<br />"
 				+ "<div class='posts' id='postIdContent"+postId+"' style='display:none;'>"
@@ -206,6 +204,8 @@ function getArgoPostSearchResultsSuccess(response)
 				+ "</tr>");			
 		});
 	}
+	
+	clearInput(document.getElementById('searchInputText'));
 }
 
 // Handles a successful response from the getArgoPostForums function
@@ -314,6 +314,8 @@ function getArgoPostThreadsSuccess(response)
 				+ threadTitle
 				+ "</a>"
 				+ "&nbsp;&nbsp;"
+				+ "<a style='font: bold 10px Helvetica, Arial, sans-serif;color:#333333;text-decoration:none;' href='javascript:getArgoPostForums();'>[All Forums]</a>"
+				+ "&nbsp;&nbsp;"
 				+ "<span style='font: italic 10px Helvetica, Arial, sans-serif;color:gray;'>Created by "
 				+ userUwfId
 				+ "</span>"
@@ -375,7 +377,7 @@ function getArgoPostPostsSuccess(response)
 			
 			if(loggedInUser == userUwfId || isFaculty == 1)
 			{
-				deleteBtn = "<a style='font: bold 10px Helvetica, Arial, sans-serif;color:red;text-decoration:none;' href='javascript:deleteArgoPostFromThread("+postId+ "," + threadId + ");'>[Delete]</a>"
+				deleteBtn = "&nbsp;&nbsp;<a style='font: bold 10px Helvetica, Arial, sans-serif;color:red;text-decoration:none;' href='javascript:deleteArgoPostFromThread("+postId+ "," + threadId + ");'>[Delete]</a>"
 				
 			}
 			
@@ -400,11 +402,10 @@ function getArgoPostPostsSuccess(response)
 				+ "</a>"
 				+ "&nbsp;&nbsp;"
 				+ "<a style='font: bold 10px Helvetica, Arial, sans-serif;color:#333333;text-decoration:none;' href='javascript:getArgoPostThreads("+forumId+");'>[Forum]</a>"
-				+ "&nbsp;&nbsp;"
 				+ deleteBtn
 				+ "&nbsp;&nbsp;"
 				+ "<span style='font: italic 10px Helvetica, Arial, sans-serif;color:gray;'>Created by "
-				+ userUwfId + " on " + createdDate
+				+ userUwfId
 				+ "</span>"
 				+ "<br />"
 				+ "<div class='posts' id='postIdContent"+postId+"' style='display:none;'>"
@@ -417,7 +418,7 @@ function getArgoPostPostsSuccess(response)
 		});
 
 		$('#resultsTitle').empty();
-		$('#resultsTitle').append("Thread: " + threadTitle);
+		$('#resultsTitle').append("Topic: " + threadTitle);
 	}
 }
 
@@ -495,7 +496,7 @@ function deleteArgoPostFromSearchSuccess(response)
 // Clears the value in an HTMLInput object 
 function clearInput(controlId)
 {
-	$(controlId).val('');
+	controlId.value = '';
 }
 
 // Allows this javascript library to include other javascript libraries

@@ -16,14 +16,16 @@ Filename: Subscriber.cfc
 	
 <cfset userID = #userIDnum#>
 <!---Adds a Subscription to the list of the user's subscripitons. --->
-<cffunction name="AddToSubscriptions" returntype="boolean">
+<cffunction name="AddToSubscriptions" access="remote" returntype="boolean">
+
 	<cfargument name="ThreadID" type="int">
+	<cfset currentUID = getUserID(#session.userName#)>
 	
 	<cftry>
 	<cfquery name="Add" datasource="SEproject_argopost"> 
-			INSERT into Subscriptions(UserID,ThreadID)
-			values(<cfqueryparam value="#userID#">,
-					<cfqueryparam value="#Arguments.ThreadID#">);
+			insert into Subscriptions(UserID,ThreadID)
+			values(<cfqueryparam value="#currentUID#"  cfsqltype="cf_sql_numeric">,
+					<cfqueryparam value="#Arguments.ThreadID#"  cfsqltype="cf_sql_numeric">);
 	</cfquery>
 	<cfcatch type="any">
 			<cfreturn false>
@@ -31,24 +33,49 @@ Filename: Subscriber.cfc
 		</cftry>
 	<cfreturn true>
 </cffunction>
+
+
+
 <!---Removes a Subscription to the list of the user's subscripitons. --->
-<cffunction name="removefromSubscriptions" returntype="void">
+<cffunction name="removefromSubscriptions" access="remote" returntype="void">
+
 	<cfargument name="ThreadID" type="int">
+	<cfset currentUID = getUserID(#session.userName#)>
+
 	<cfquery name="Delete" datasource="SEproject_argopost">
 		DELETE FROM Subscriptions
 		where ThreadID = <cfqueryparam value="#Arguments.ThreadID#">
-		and UserID = <cfqueryparam value="#userID#">;
+		and UserID = <cfqueryparam value="#currentUID#" cfsqltype="cf_sql_numeric">;
 	</cfquery>
 </cffunction>
+
+<!--- This function is used to query the Users table for a UserID so that it can be stored in the database with 
+	the post that they have created. --->
+	<cffunction name="getUserID" access="remote" returnType="Numeric">
+		<cfargument name="userName" required="true" />
+		<cfquery name="getUID" dataSource="SEproject_argopost" result="r">
+			select *
+			from Users
+			where UWFID = <cfqueryparam value="#arguments.userName#" cfsqltype="cf_sql_varchar">
+		</cfquery>
+		
+		<cfset uID="#getUID.UserID#">
+		<cfreturn "#uID#">
+	</cffunction>
+
+
+
 
 <!--- Gets a JSON object representing the Forums in ArgoPost --->
 	<cffunction name="getSubs" access="remote" returnFormat="JSON" returnType="struct">	
 		<cfset rtnStruct = structNew()>
 		<cftry>
 			<cfquery name="getArgoPostSubs" datasource="SEproject_argopost">
-			select ThreadID
-			from Subscriptions
-			where UserID = <cfqueryparam value="#userID#">;
+			SELECT Threads.Title, Threads.ThreadID
+			FROM Threads 
+			INNER JOIN Subscriptions 
+			ON Threads.ThreadID = Subscriptions.ThreadID 
+			WHERE Subscriptions.UserID = <cfqueryparam value="#userID#">;
 		</cfquery>
 		<cfcatch type="any">
 			<cfreturn rtnStruct>

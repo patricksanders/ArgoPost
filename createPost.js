@@ -32,9 +32,9 @@
 	} 
 	else {
 		$.ajax({
-			type : "GET",
-			url : "Post.cfc?wsdl&method=addPost&postTitle="+aTitle.value+"&postContent="+aDescription.value+"&threadID="+aThreadID.value,
-			contentType : "application/json; charset=utf-8",
+			type : "POST",
+			url : "Post.cfc?method=addPost&returnformat=json",
+			data: {postTitle: aTitle.value, postContent: aDescription.value, threadID: aThreadID.value},
 			dataType : "json",
 			success : postSucceeded,
 			failure : failedToAddPost
@@ -47,16 +47,24 @@
  * of that thread that the post was created. The next action will be to direct the user to the newly created post.
  */
 function postSucceeded(response) {
+	console.log(response);
 	
-	alert("Your post was successfully created!");
+	if(response === true){
+		alert("Your post was successfully created!");
+		location.reload(true);
+	}
+	else{
+		alert("Your post was not successful.\nPlease try again.");
+	}
+	
 }
 
 /**
  * This function will run if there is an error adding a post to the database.
  */
 function failedToAddPost() {
-	document.getElementById('addPostFailure').innerHTML = "*Post was not successfully created. Please try again."
-	
+	console.log("failed");
+	alert("Something went wrong.\nPlease try to create a post again.");
 }
 
 
@@ -195,7 +203,7 @@ function userIsLoggedIn(response){
 		getForumTitles();
 	}
 	else{
-		window.location = "login.html";
+		window.location = "login.cfm";
 	}
 }
 
@@ -203,5 +211,5 @@ function userIsLoggedIn(response){
  * What to do if checking the users logged in status has failed. 
  */
 function loggedInStatusFailed(){
-	window.location = "login.html"
+	window.location = "login.cfm"
 }
