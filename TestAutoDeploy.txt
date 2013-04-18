@@ -1,3 +1,0 @@
-Testing auto-deployment to test folder
-Still testing
-And again
