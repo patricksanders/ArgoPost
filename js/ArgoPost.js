@@ -15,7 +15,7 @@ function init()
 			
 							if(isFaculty == 1)
 							{
-								deleteBtn = "&nbsp;&nbsp;<a style='font: bold 14px Helvetica, Arial, sans-serif;color:red;text-decoration:none;' href='argopostdelete.cfc?wsdl&method=flushExpired'>[Delete All Expired Posts]</a>"
+								deleteBtn = "&nbsp;&nbsp;<a style='font: bold 14px Helvetica, Arial, sans-serif;color:red;text-decoration:none;' href='javascript:deleteAllExpiredPosts();'>[Delete All Expired Posts]</a>"
 								
 								$('#faculty_only').append(deleteBtn);
 							}
@@ -501,6 +501,30 @@ function deleteArgoPostFromSearchSuccess(response)
 	{
 		alert("There was a problem with the server, please contact your system administrator.");
 	}
+}
+
+// Deletes all expired posts
+function deleteAllExpiredPosts()
+{
+	$.ajax({
+		type: "GET", url: "argopostdelete.cfc?wsdl&method=flushExpired",
+		success: deleteAllExpiredPostsSuccess,
+		failure: deleteAllExpiredPostsFail
+	 });
+}
+
+// Handles a successful response from deleteAllExpiredPosts
+function deleteAllExpiredPostsSuccess(response) {
+	
+	alert("All expired posts were deleted!");
+	location.reload(true);
+}
+
+// Handles a failed response from deleteAllExpiredPosts
+function deleteAllExpiredPostsFail(response) {
+	
+	alert("There was a problem deleting all expired posts! Try again.");
+	location.reload(true);
 }
 
 // Clears the value in an HTMLInput object 
