@@ -35,7 +35,7 @@ Filename: Notifier.cfc
 <!--- This Query gets the IDs of the user that are subscribed to a thread--->	
 <cfquery name="getIDs" datasource="SEproject_argopost">
 	select * 
-	from subscriptions
+	from Notifications
 	where ThreadID = <cfqueryparam value="#arguments.threadID#">; 
 </cfquery>
 

@@ -23,7 +23,7 @@ Filename: Subscriber.cfc
 	
 	<cftry>
 	<cfquery name="Add" datasource="SEproject_argopost"> 
-			insert into Subscriptions(UserID,ThreadID)
+			insert into Notifications(UserID,ThreadID)
 			values(<cfqueryparam value="#currentUID#"  cfsqltype="cf_sql_numeric">,
 					<cfqueryparam value="#Arguments.ThreadID#"  cfsqltype="cf_sql_numeric">);
 	</cfquery>
@@ -43,7 +43,7 @@ Filename: Subscriber.cfc
 	<cfset currentUID = getUserID(#session.userName#)>
 
 	<cfquery name="Delete" datasource="SEproject_argopost">
-		DELETE FROM Subscriptions
+		DELETE FROM Notifications
 		where ThreadID = <cfqueryparam value="#Arguments.ThreadID#">
 		and UserID = <cfqueryparam value="#currentUID#" cfsqltype="cf_sql_numeric">;
 	</cfquery>
@@ -73,9 +73,9 @@ Filename: Subscriber.cfc
 			<cfquery name="getArgoPostSubs" datasource="SEproject_argopost">
 			SELECT Threads.Title, Threads.ThreadID
 			FROM Threads 
-			INNER JOIN Subscriptions 
-			ON Threads.ThreadID = Subscriptions.ThreadID 
-			WHERE Subscriptions.UserID = <cfqueryparam value="#userID#">;
+			INNER JOIN Notifications 
+			ON Threads.ThreadID = Notifications.ThreadID 
+			WHERE Notifications.UserID = <cfqueryparam value="#userID#">;
 		</cfquery>
 		<cfcatch type="any">
 			<cfreturn rtnStruct>
