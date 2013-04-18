@@ -77,7 +77,7 @@ a img {
 
 #body form { padding:0 15px; margin-top:20px;}
 #body table td { padding:10px; }
-#deleteAll {float:left; margin:15px 0 0 5px; }
+#faculty_only {float:left; margin:15px 0 0 5px; }
 
 /*------------------- Search Box ----------------------*/
 #searchControls {float:right; padding:15px; margin-bottom:20px; border:1px solid #CCCCCC; background:#f0f0f0;}
