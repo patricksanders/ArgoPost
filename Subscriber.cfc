@@ -22,7 +22,7 @@ Filename: Subscriber.cfc
 	<cfset currentUID = getUserID(#session.userName#)>
 	
 	<cftry>
-	<cfquery name="Add" datasource="SEproject_argopost"> 
+	<cfquery name="Add" datasource="ArgoPost_ArgoPost"> 
 			insert into Notifications(UserID,ThreadID)
 			values(<cfqueryparam value="#currentUID#"  cfsqltype="cf_sql_numeric">,
 					<cfqueryparam value="#Arguments.ThreadID#"  cfsqltype="cf_sql_numeric">);
@@ -42,7 +42,7 @@ Filename: Subscriber.cfc
 	<cfargument name="ThreadID" type="int">
 	<cfset currentUID = getUserID(#session.userName#)>
 
-	<cfquery name="Delete" datasource="SEproject_argopost">
+	<cfquery name="Delete" datasource="ArgoPost_ArgoPost">
 		DELETE FROM Notifications
 		where ThreadID = <cfqueryparam value="#Arguments.ThreadID#">
 		and UserID = <cfqueryparam value="#currentUID#" cfsqltype="cf_sql_numeric">;
@@ -53,7 +53,7 @@ Filename: Subscriber.cfc
 	the post that they have created. --->
 	<cffunction name="getUserID" access="remote" returnType="Numeric">
 		<cfargument name="userName" required="true" />
-		<cfquery name="getUID" dataSource="SEproject_argopost" result="r">
+		<cfquery name="getUID" dataSource="ArgoPost_ArgoPost" result="r">
 			select *
 			from Users
 			where UWFID = <cfqueryparam value="#arguments.userName#" cfsqltype="cf_sql_varchar">
@@ -70,7 +70,7 @@ Filename: Subscriber.cfc
 	<cffunction name="getSubs" access="remote" returnFormat="JSON" returnType="struct">	
 		<cfset rtnStruct = structNew()>
 		<cftry>
-			<cfquery name="getArgoPostSubs" datasource="SEproject_argopost">
+			<cfquery name="getArgoPostSubs" datasource="ArgoPost_ArgoPost">
 			SELECT Threads.Title, Threads.ThreadID
 			FROM Threads 
 			INNER JOIN Notifications 
