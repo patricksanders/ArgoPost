@@ -9,8 +9,11 @@
 		Example by: Breanna Garrett
 		Date:	Feb 9 ,2012
         Contact: bgarrett1@uwf.edu
+		
+		Edited by: Andy Milbeck
+		Date: Apr 19, 2013
+		Contact: ajm46@students.uwf.edu
         
-        Disclaimer: Use is for software SE2 201201 ONLY. Please do not re-distribute.
  -->
 </head>
 
