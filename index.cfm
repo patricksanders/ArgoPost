@@ -36,11 +36,11 @@
     <div id="body" style="background-color: #0000ff;">
         <table width="100%" style="background-color: #ffffff;">
             <tr>
-                <td>
+                <td width="50%" style="background-color: #CCCCCC;">
                     <div id="faculty_only" style="background-color: #ff0000;"></div>
                 </td>
 
-                <td>
+                <td width="50%" style="background-color: #999999;">
                     <div id="searchControls" style="background-color: #00ff00;">
                         <input id="searchInputText" type="text" size="30" value="enter keyword here" onkeydown="if (event.keyCode == 13) document.getElementById('searchButton').click()" onclick="clearInput(searchInputText);" /><input type="button" class="submit" id="searchButton" value="Search" onclick="getArgoPostSearchResults();" />
                     </div>
