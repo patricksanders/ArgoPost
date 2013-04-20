@@ -97,9 +97,10 @@ a img {
 #searchControls .submit:active { background:#7bae04; }
 
 /*------------------- Delete All Expired Posts Button ----------------------*/
-/*#faculty_only {float:left; padding:15px; margin-bottom:0px; border:1px solid #CCCCCC; background:#f0f0f0; vertical-align: top;}*/
+#faculty_only {float:left; margin-left: 0px; vertical-align: top;}
 #faculty_only .deleteAll{
-	/*margin-left: 0px;*/
+	margin-left: 0px;
+	float: left;
 	background-color: #e70038;
 	border:1px solid #e70038;
 	display:inline-block;
