@@ -12,10 +12,12 @@ function init()
 							if(response.isFaculty == 1)
 							{	
 
+								// The line below is the old delete expired posts button
 								/*
 								$('#faculty_only').append("<a style='font: bold 14px Helvetica, Arial, sans-serif;color:red;text-decoration:none;' href='javascript:deleteAllExpiredPosts();'>[Delete All Expired Posts]</a>");
 								*/
 								
+								// This is the new delete expired posts button
 								$('#faculty_only').append("<input type='button' class='deleteAll' id='deleteAllButton' value='Delete All Expired Posts' onclick='deleteAllExpiredPosts();'>");
 
 							}
@@ -191,12 +193,12 @@ function getArgoPostSearchResultsSuccess(response)
 			
 			if(postTitle == "")
 			{
-				postTitle = "N/A"
+				postTitle = "N/A";
 			}
 			
 			if(postDescription == "")
 			{
-				postDescription = "N/A"
+				postDescription = "N/A";
 			}
 			
 			$('#searchResults').append(
