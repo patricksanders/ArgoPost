@@ -32,9 +32,9 @@
 	</div>
 	<div id="body">
 	
-	<div id="faculty_only"></div>
+	<div id="faculty_only" style="background-color: #ff0000;"></div>
 	
-	<div id="searchControls">			
+	<div id="searchControls" style="background-color: #00ff00;">			
 			<input id="searchInputText" type="text" size="30" value="enter keyword here" onkeydown="if (event.keyCode == 13) document.getElementById('searchButton').click()" onclick="clearInput(searchInputText);">
 			<input type="button" class="submit" id="searchButton" value="Search" onclick="getArgoPostSearchResults();">		
 	</div>
