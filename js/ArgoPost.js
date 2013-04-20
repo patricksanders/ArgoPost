@@ -11,10 +11,9 @@ function init()
 						{
 							if(response.isFaculty == 1)
 							{	
-								if(isFaculty == 1)
-								{
-									$('#faculty_only').append("&nbsp;&nbsp;<a style='font: bold 14px Helvetica, Arial, sans-serif;color:red;text-decoration:none;' href='javascript:deleteAllExpiredPosts();'>[Delete All Expired Posts]</a>");
-								}
+
+								$('#faculty_only').append("&nbsp;&nbsp;<a style='font: bold 14px Helvetica, Arial, sans-serif;color:red;text-decoration:none;' href='javascript:deleteAllExpiredPosts();'>[Delete All Expired Posts]</a>");
+
 							}
 							
 							var tempThreadId = GetQueryString("threadId");
