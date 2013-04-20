@@ -470,6 +470,8 @@ function deleteArgoPostFromThreadFail(response)
 // Handles a successful response from deleteArgoPostFromThread
 function deleteArgoPostFromThreadSuccess(response)
 {
+	console.log("response: " + response);
+	
 	if(response.deleteSuccess == 1)
 	{
 		alert("Your post was successfully deleted");
@@ -479,11 +481,8 @@ function deleteArgoPostFromThreadSuccess(response)
 	if(response.deleteSuccess == 0)
 	{
 		alert("Your post could not be deleted");
-	}
-	
-	if(response.deleteSuccess == 0)
-	{
 		alert("There was a problem with the server, please contact your system administrator.");
+
 	}
 }
 
