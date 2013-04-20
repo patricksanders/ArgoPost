@@ -32,14 +32,19 @@
 	</div>
 	<div id="body" style="background-color: #0000ff;">
 	
-	<div id="faculty_only" style="background-color: #ff0000;"></div>
-	
-	<div id="searchControls" style="background-color: #00ff00;">			
-			<input id="searchInputText" type="text" size="30" value="enter keyword here" onkeydown="if (event.keyCode == 13) document.getElementById('searchButton').click()" onclick="clearInput(searchInputText);">
-			<input type="button" class="submit" id="searchButton" value="Search" onclick="getArgoPostSearchResults();">		
-	</div>
-	
-	
+	<table>
+	<tr>
+		<td><div id="faculty_only" style="background-color: #ff0000;"></div></td>
+		
+		<td>
+			<div id="searchControls" style="background-color: #00ff00;">			
+				<input id="searchInputText" type="text" size="30" value="enter keyword here" onkeydown="if (event.keyCode == 13) document.getElementById('searchButton').click()" onclick="clearInput(searchInputText);">
+				<input type="button" class="submit" id="searchButton" value="Search" onclick="getArgoPostSearchResults();">		
+			</div>
+		</td>
+	</tr>
+	</table>
+
 	<div class="page_title">
 		<h2 id="resultsTitle">Forums</h2>		
 	</div>
