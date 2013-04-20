@@ -304,7 +304,7 @@ function getArgoPostThreadsSuccess(response)
 				+ "<img src='images/smallPic.png' width='50' height='50' align='top'></img>"
 				+ "</td>"
 				+ "<td class='text'>"
-				+ "<span style='font: italic 12px Helvetica, Arial, sans-serif;color:black;'>No threads found. Please try again.</span>"
+				+ "<span style='font: italic 12px Helvetica, Arial, sans-serif;color:black;'>No topics found. Please try again.</span>"
 				+ "</td>"
 				+ "</tr>");
 	}
