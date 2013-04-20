@@ -21,8 +21,25 @@ function init()
 								$('#faculty_only').append(deleteBtn);
 							}
 							*/
+							if($.QueryString())
+							{
+								if($.QueryString("threadId") > 0)
+								{
+									var threadId = $.QueryString("threadId");
+									getArgoPostPosts(threadId);
+								}
+								else
+								{
+									getArgoPostForums();
+
+								}
+							}
+							else
+							{
+								getArgoPostForums();
+							}
+							 
 							
-							getArgoPostForums();
 						}
 						else
 						{
@@ -538,6 +555,19 @@ function IncludeJavaScript(jsFile)
 {
   document.write('<script type="text/javascript" src="'
     + jsFile + '"></scr' + 'ipt>'); 
+}
+
+// Gets the value of a query string parameter by name
+function getParameterByName(name)
+{
+  name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+  var regexS = "[\\?&]" + name + "=([^&#]*)";
+  var regex = new RegExp(regexS);
+  var results = regex.exec(window.location.search);
+  if(results == null)
+    return "";
+  else
+    return decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
 // Include the jQuery library hosted at Google

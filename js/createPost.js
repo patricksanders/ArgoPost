@@ -54,7 +54,7 @@ function postSucceeded(response) {
 		alert("Your post was successfully created!");
 		// redirect here
 		//location.reload(true);
-		window.location = "index.cfm";
+		window.location = "index.cfm?threadId=" + response;
 		getArgoPostPosts(response);
 	}
 	else{
