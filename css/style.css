@@ -100,8 +100,8 @@ a img {
 /*#faculty_only {float:left; padding:15px; margin-bottom:0px; border:1px solid #CCCCCC; background:#f0f0f0; vertical-align: top;}*/
 #faculty_only .deleteAll{
 	margin-left: 0px;
-	background-color: #bd002d;
-	border:1px solid #bd002d;
+	background-color: #e70038;
+	border:1px solid #e70038;
 	display:inline-block;
 	color:#ffffff;
 	font-weight:bold;
@@ -110,8 +110,8 @@ a img {
 	text-decoration:none;
 	}
 
-#faculty_only .deleteAll:hover { background:#89be0f; }
-#faculty_only .deleteAll:active { background:#7bae04; }
+#faculty_only .deleteAll:hover { background:#bd002e; }
+#faculty_only .deleteAll:active { background:#bd002d; }
 
 	
 /*------------------- Search Results ----------------------*/
