@@ -21,22 +21,16 @@ function init()
 								$('#faculty_only').append(deleteBtn);
 							}
 							*/
-							if($.QueryString() != null)
-							{
-								if($.QueryString("threadId") > 0)
-								{
-									var threadId = $.QueryString("threadId");
-									getArgoPostPosts(threadId);
-								}
-								else
-								{
-									getArgoPostForums();
 
-								}
+							if($.QueryString("threadId") && $.QueryString("threadId") > 0)
+							{
+								var threadId = $.QueryString("threadId");
+								getArgoPostPosts(threadId);
 							}
 							else
 							{
 								getArgoPostForums();
+
 							}
 							 
 							
