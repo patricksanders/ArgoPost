@@ -9,6 +9,8 @@ function init()
 					{
 						if(response.sessionStatus == 1)
 						{
+							console.log("isFaculty: " + response.isFaculty);
+							
 							if(response.isFaculty == 1)
 							{	
 
