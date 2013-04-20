@@ -10,7 +10,6 @@
 			<cfset thisUserId = #session.userName#>
 			<cfset boolOkToDelete = false >
 			<cftry>
-				
 				<!--- Perform series of if/else statmenets to determine if the person attempting to remove the post owns it, or is faculty
 					meaning they would have permission to remove it any way.--->
 				<cfif #session.isFaculty#>
