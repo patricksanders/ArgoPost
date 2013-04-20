@@ -2,7 +2,7 @@
 	<cfset dataSource = "seproject_argopost">
 	
 	<!--- Mark expired method, which will also serve as the 'deletePost' function.  No posts will actually be deleted until the 'flushExpired' function is called.--->
-	<cffunction name="deleteArgoPost" access="remote" returnFormat="JSON" returnType="struct">
+	<cffunction name="deleteArgoPost" access="remote" returnFormat="JSON" returnType="integer">
 			<cfargument name="postId" type="numeric" required="true">
 			<cfargument name="threadId" type="numeric" required="true">
 			<cfset rtnValue = structNew()>
