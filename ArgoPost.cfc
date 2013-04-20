@@ -170,7 +170,8 @@
 	<cffunction name="checkSession" access="remote" returnFormat="JSON" returnType="struct">	
 		<cfset rtnStruct = structNew()>
 		
-		<cfset #session.isFaculty# = 1>
+		<!--- Uncommenting the line below will allow all users logged into the application to impersonate a faculty member --->
+		<!--- <cfset #session.isFaculty# = 1> --->
 		
 		<cfif #session.loggedIn#>
 			<cfset rtnStruct["sessionStatus"] = 1>
