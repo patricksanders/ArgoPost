@@ -91,7 +91,6 @@
 		<cfset session.userName = "">
 		<cfset session.isFaculty = false>
 		<cfset session.emailAddress = "">
-		<cfset session.DSN = "argoPost">
 	</cffunction>
 
 	<!--- Runs when session ends --->

@@ -1,6 +1,6 @@
 <cfcomponent>
 	<!--- The name of the Cold Fusion datasource --->
-	<cfset theDS="seproject_argopost">
+	<cfset theDS="ArgoPost_ArgoPost">
 
 	<!--- Gets a JSON object representing Posts in the ArgoPost system --->
 	<cffunction name="getArgoPostSearchResults" access="remote" returnFormat="JSON" returnType="struct">	

@@ -51,7 +51,7 @@ function getArgoPostSearchResults()
 function deleteArgoPostFromThread(postId, threadId)
 {
 	$.ajax({
-		type: "GET", url: "argopostdelete.cfc?wsdl&method=markExpired"
+		type: "GET", url: "argopostdelete.cfc?wsdl&method=deleteArgoPost"
 				+"&postId=" + postId + "&threadId=" + threadId,
 		contentType: "application/json; charset=utf-8",
 		dataType: "json",
@@ -64,7 +64,7 @@ function deleteArgoPostFromThread(postId, threadId)
 function deleteArgoPostFromSearch(postId)
 {
 	$.ajax({
-		type: "GET", url: "argopostdelete.cfc?wsdl&method=markExpired"
+		type: "GET", url: "argopostdelete.cfc?wsdl&method=deleteArgoPost"
 				+"&postID=" + postId + "&threadId=-1",
 		contentType: "application/json; charset=utf-8",
 		dataType: "json",

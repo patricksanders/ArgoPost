@@ -1,5 +1,5 @@
 <cfcomponent>
-	<cfset dataSource = "SEproject_argopost">
+	<cfset dataSource = "Argopost_Argopost">
 	
 	<!--- This function acts as the constructor for a user. It will be used to set the values of isFaculty and the email address
 	of each user --->

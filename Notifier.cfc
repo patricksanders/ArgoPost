@@ -25,7 +25,7 @@ Filename: Notifier.cfc
 	<cfinvokeargument name="UserID" value="#item#">
 	</cfinvoke>
 	<cfinvoke method="CreateEmailMessage" returnvariable="message">
-	<cfmail to="#attributes.email#" from="seproject@uwf.edu" subject="ArgoPost Notification" username="seproject@uwf.edu" password="tuuRu9A">
+	<cfmail to="#attributes.email#" from="seproject@uwf.edu" subject="ArgoPost Notification" username="argopost@uwf.edu" password="hurried296!waves">
 #message#</cfmail>
 </cfloop>
 </cffunction>
@@ -33,7 +33,7 @@ Filename: Notifier.cfc
 <cffunction name="setIDs" access="remote">
 	<cfargument name="threadID" required="true">
 <!--- This Query gets the IDs of the user that are subscribed to a thread--->	
-<cfquery name="getIDs" datasource="SEproject_argopost">
+<cfquery name="getIDs" datasource="ArgoPost_ArgoPost">
 	select * 
 	from Notifications
 	where ThreadID = <cfqueryparam value="#arguments.threadID#">; 
@@ -45,7 +45,7 @@ Filename: Notifier.cfc
 <!---this function sets the email address based on the userID--->
 <cffunction name="setEmail" access="remote">
 	<cfargument name ="UserID" required="true">
-	<cfquery name="getEmail" datasource="SEproject_argopost">
+	<cfquery name="getEmail" datasource="ArgoPost_ArgoPost">
 	select Email from Users
 	where UserID = <cfqueryparam value="#arguments.UserID#">;
 </cfquery>
