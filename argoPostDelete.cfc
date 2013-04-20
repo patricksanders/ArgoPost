@@ -30,7 +30,7 @@
 				</cfif>
 				<cfif boolOkToDelete>
 					<cfquery name="qDeletePosts" datasource="#dataSource#">
-						delete Posts
+						delete from Posts
 						where postID = <cfqueryparam value="#arguments.postId#" cfsqltype="CF_SQL_INTEGER" >
 					</cfquery>
 					<cfset rtnValue["deleteSuccess"] = 1>
