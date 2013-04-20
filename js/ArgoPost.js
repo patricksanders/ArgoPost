@@ -9,6 +9,7 @@ function init()
 					{
 						if(response.sessionStatus == 1)
 						{
+							/*
 							var isFaculty = 1
 
 							var deleteBtn = "&nbsp;";
@@ -19,6 +20,7 @@ function init()
 								
 								$('#faculty_only').append(deleteBtn);
 							}
+							*/
 							
 							getArgoPostForums();
 						}
