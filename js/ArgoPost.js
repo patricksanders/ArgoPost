@@ -393,7 +393,7 @@ function getArgoPostPostsSuccess(response)
 			
 			var isFaculty = result.IS_FACULTY;
 			
-			console.log(result.IS_FACULTY);
+			//console.log(result.IS_FACULTY);
 			
 			var deleteBtn = "&nbsp;";
 			
