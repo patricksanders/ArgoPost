@@ -205,7 +205,6 @@ function getArgoPostSearchResultsSuccess(response)
 		});
 	}
 	
-	clearInput(document.getElementById('searchInputText'));
 }
 
 // Handles a successful response from the getArgoPostForums function
