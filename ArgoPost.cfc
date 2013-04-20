@@ -169,7 +169,7 @@
 	<!--- Gets a JSON object representing the current session status --->
 	<cffunction name="checkSession" access="remote" returnFormat="JSON" returnType="struct">	
 		<!--- fake being a faculty member --->
-		<cfset session.isFaculty = 1>
+		<cfset #session.isFaculty# = 1>
 		
 		<cfset rtnStruct = structNew()>
 		<cfif #session.loggedIn#>
