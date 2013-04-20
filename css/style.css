@@ -99,14 +99,14 @@ a img {
 /*------------------- Delete All Expired Posts Button ----------------------*/
 #faculty_only {float:left; padding:15px; margin-bottom:0px; border:1px solid #CCCCCC; background:#f0f0f0;}
 #faculty_only .deleteAll{
-	margin-left: 5px;
-	background-color:#9dce2c;
-	border:1px solid #83c41a;
+	margin-left: 0px;
+	background-color: #bd002d;
+	border:1px solid #bd002d;
 	display:inline-block;
 	color:#ffffff;
 	font-weight:bold;
 	min-height:21px;
-	padding:3px 5px;
+	padding:0px 0px;
 	text-decoration:none;
 	}
 
