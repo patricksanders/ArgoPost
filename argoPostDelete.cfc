@@ -22,6 +22,11 @@
 						inner join Users as u on u.UserID = p.UserID
 						where postID = <cfqueryparam value="#arguments.postId#" cfsqltype="CF_SQL_INTEGER" >
 					</cfquery>
+					
+					<!--- forcing the component to return the uwf ID that is currently sees --->
+					<cfset rtnValue["deleteSuccess"] = qGetUserId.Uwf_Id;
+					<cfreturn rtnValue>
+					
 					<cfif thisUserID EQ qGetUserId.Uwf_Id>
 						<cfset boolOkToDelete = true >
 					<cfelse>
