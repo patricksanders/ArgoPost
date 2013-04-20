@@ -9,16 +9,12 @@ function init()
 					{
 						if(response.sessionStatus == 1)
 						{
-							
-							var isFaculty = 1
-
-							var deleteBtn = "&nbsp;";
-			
-							if(isFaculty == 1)
-							{
-								deleteBtn = "&nbsp;&nbsp;<a style='font: bold 14px Helvetica, Arial, sans-serif;color:red;text-decoration:none;' href='javascript:deleteAllExpiredPosts();'>[Delete All Expired Posts]</a>"
-								
-								$('#faculty_only').append(deleteBtn);
+							if(response.isFaculty == 1)
+							{	
+								if(isFaculty == 1)
+								{
+									$('#faculty_only').append("&nbsp;&nbsp;<a style='font: bold 14px Helvetica, Arial, sans-serif;color:red;text-decoration:none;' href='javascript:deleteAllExpiredPosts();'>[Delete All Expired Posts]</a>");
+								}
 							}
 							
 							var tempThreadId = GetQueryString("threadId");

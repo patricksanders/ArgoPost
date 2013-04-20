@@ -171,8 +171,10 @@
 		<cfset rtnStruct = structNew()>
 		<cfif #session.loggedIn#>
 			<cfset rtnStruct["sessionStatus"] = 1>
+			<cfset rtnStruct["isFaculty"] = #session.isFaculty#>
 		<cfelse>
 			<cfset rtnStruct["sessionStatus"] = 0>
+			<cfset rtnStruct["isFaculty"] = #session.isFaculty#>
 		</cfif>
 		<cfreturn rtnStruct>
 	</cffunction>
