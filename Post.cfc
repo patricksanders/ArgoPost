@@ -4,7 +4,7 @@
 	officially using --->
 	<cfset dataSource = "Argopost_Argopost"> 
 	
-	<cffunction name="addPost" access="remote"  returnType="boolean" returnFormat="JSON">
+	<cffunction name="addPost" access="remote"  returnType="integer" returnFormat="JSON">
 		<cfargument name="postTitle"  type="string" required="true" />
 		<cfargument name="postContent" type="string" required="true" />
 		<cfargument name="threadID" type="numeric" required="true" />
@@ -32,7 +32,7 @@
 				 	   <cfqueryparam value="#arguments.postContent#" cfsqltype="cf_sql_longvarchar">)			
 			</cfquery>
 		<cfcatch type="any">
-			<cfreturn false>
+			<cfreturn -1>
 		</cfcatch>
 		</cftry>
 		
@@ -44,7 +44,7 @@
 		</cfinvoke>
 		
 		<!--- return true if post was successful --->
-		<cfreturn true>
+		<cfreturn #arguments.threadID#>
 	</cffunction>
 	
 	<!--- This function is used to query the Users table for a UserID so that it can be stored in the database with 

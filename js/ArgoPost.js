@@ -102,6 +102,8 @@ function getArgoPostThreads(forumId)
 // Sends a query to the getArgoPostPosts method in tier 2
 function getArgoPostPosts(threadId)
 {
+	console.log("getArgoPostPosts(" + threadId + ")");
+	
 	$.ajax({
 		type: "GET", url: "argopost.cfc?wsdl&method=getArgoPostPosts&t=" + threadId ,
 		contentType: "application/json; charset=utf-8",

@@ -47,14 +47,18 @@
  * of that thread that the post was created. The next action will be to direct the user to the newly created post.
  */
 function postSucceeded(response) {
-	console.log(response);
 	
-	if(response === true){
+	console.log("postSucceeded: " + response);
+	
+	if(response > 0){
 		alert("Your post was successfully created!");
-		location.reload(true);
+		// redirect here
+		//location.reload(true);
+		window.location = "index.cfm";
+		getArgoPostPosts(response);
 	}
 	else{
-		alert("Your post was not successful.\nPlease try again.");
+		alert("Your post was not added successfully.\nPlease try again.");
 	}
 	
 }
@@ -64,7 +68,7 @@ function postSucceeded(response) {
  */
 function failedToAddPost() {
 	console.log("failed");
-	alert("Something went wrong.\nPlease try to create a post again.");
+	alert("Your post was not added successfully.\nPlease try again.");
 }
 
 
