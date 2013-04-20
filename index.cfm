@@ -34,7 +34,7 @@
     </div>
 
     <div id="body" style="background-color: #0000ff;">
-        <table>
+        <table width="100%" style="background-color: #ffffff;">
             <tr>
                 <td>
                     <div id="faculty_only" style="background-color: #ff0000;"></div>
