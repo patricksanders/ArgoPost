@@ -21,7 +21,7 @@ function init()
 								$('#faculty_only').append(deleteBtn);
 							}
 							*/
-							if($.QueryString())
+							if($.QueryString() != null)
 							{
 								if($.QueryString("threadId") > 0)
 								{
