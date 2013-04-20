@@ -35,11 +35,11 @@
 
     <div id="body">
 
-                    <div id="faculty_only"></div>
+                    <div id="faculty_only" align="top"></div>
             
 
             
-                    <div id="searchControls">
+                    <div id="searchControls" align="top">
                         <input id="searchInputText" type="text" size="30" value="enter keyword here" onkeydown="if (event.keyCode == 13) document.getElementById('searchButton').click()" onclick="clearInput(searchInputText);" /><input type="button" class="submit" id="searchButton" value="Search" onclick="getArgoPostSearchResults();" />
                     </div>
 
