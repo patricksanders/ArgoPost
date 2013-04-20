@@ -495,10 +495,6 @@ function deleteArgoPostFromSearchSuccess(response)
 	if(response.deleteSuccess == 0)
 	{
 		alert("Your post could not be deleted");
-	}
-	
-	if(response.deleteSuccess == 0)
-	{
 		alert("There was a problem with the server, please contact your system administrator.");
 	}
 }
