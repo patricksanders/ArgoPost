@@ -30,7 +30,7 @@
 			</ul>
 		</div>
 	</div>
-	<div id="body">
+	<div id="body" style="background-color: #0000ff;">
 	
 	<div id="faculty_only" style="background-color: #ff0000;"></div>
 	
