@@ -95,6 +95,24 @@ a img {
 
 #searchControls .submit:hover { background:#89be0f; }
 #searchControls .submit:active { background:#7bae04; }
+
+/*------------------- Delete All Expired Posts Button ----------------------*/
+#searchControls {float:right; padding:15px; margin-bottom:20px; border:1px solid #CCCCCC; background:#f0f0f0;}
+#searchControls .deleteAll{
+	margin-left: 5px;
+	background-color:#9dce2c;
+	border:1px solid #83c41a;
+	display:inline-block;
+	color:#ffffff;
+	font-weight:bold;
+	min-height:21px;
+	padding:3px 5px;
+	text-decoration:none;
+	}
+
+#searchControls .deleteAll:hover { background:#89be0f; }
+#searchControls .deleteAll:active { background:#7bae04; }
+
 	
 /*------------------- Search Results ----------------------*/
 

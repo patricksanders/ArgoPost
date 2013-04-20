@@ -12,7 +12,11 @@ function init()
 							if(response.isFaculty == 1)
 							{	
 
+								/*
 								$('#faculty_only').append("<a style='font: bold 14px Helvetica, Arial, sans-serif;color:red;text-decoration:none;' href='javascript:deleteAllExpiredPosts();'>[Delete All Expired Posts]</a>");
+								*/
+								
+								$('#faculty_only').append("<input type='button' class='deleteAll' id='deleteAllButton' value='Delete All Expired Posts' onclick='deleteAllExpiredPosts();'>");
 
 							}
 							
