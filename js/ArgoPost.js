@@ -468,7 +468,7 @@ function deleteArgoPostFromThreadFail(response)
 // Handles a successful response from deleteArgoPostFromThread
 function deleteArgoPostFromThreadSuccess(response)
 {
-	console.log("response: " + response);
+	console.log("response: " + response.deleteSuccess);
 	
 	if(response.deleteSuccess == 1)
 	{
