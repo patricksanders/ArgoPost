@@ -21,16 +21,15 @@ function init()
 								$('#faculty_only').append(deleteBtn);
 							}
 							*/
-
-							if($.QueryString("threadId") && $.QueryString("threadId") > 0)
+							var tempThreadId = GetQueryString("threadId");
+							
+							if(tempThreadId > 0)
 							{
-								var threadId = $.QueryString("threadId");
-								getArgoPostPosts(threadId);
+								getArgoPostPosts(tempThreadId);
 							}
 							else
 							{
 								getArgoPostForums();
-
 							}
 							 
 							
@@ -552,16 +551,18 @@ function IncludeJavaScript(jsFile)
 }
 
 // Gets the value of a query string parameter by name
-function getParameterByName(name)
+function GetQueryString(param) 
 {
-  name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
-  var regexS = "[\\?&]" + name + "=([^&#]*)";
-  var regex = new RegExp(regexS);
-  var results = regex.exec(window.location.search);
-  if(results == null)
-    return "";
-  else
-    return decodeURIComponent(results[1].replace(/\+/g, " "));
+ 	var url = window.location.search.substring(1);
+    var params = url.split("&");
+    for (i=0;i<params.length;i++) 
+    {
+        var p = params[i].split("=");
+        if (p[0] == param) 
+        {
+            return p[1];
+        }
+    }   
 }
 
 // Include the jQuery library hosted at Google
