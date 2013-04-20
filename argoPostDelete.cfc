@@ -1,5 +1,5 @@
 <cfcomponent>
-	<cfset dataSource = "seproject_argopost">
+	<cfset dataSource = "ArgoPost_ArgoPost">
 	
 	<!--- Mark expired method, which will also serve as the 'deletePost' function.  No posts will actually be deleted until the 'flushExpired' function is called.--->
 	<cffunction name="deleteArgoPost" access="remote" returnFormat="JSON" returnType="struct">
@@ -21,12 +21,7 @@
 						from Posts as p
 						inner join Users as u on u.UserID = p.UserID
 						where postID = <cfqueryparam value="#arguments.postId#" cfsqltype="CF_SQL_INTEGER" >
-					</cfquery>
-					
-					<!--- forcing the component to return the uwf ID that is currently sees --->
-					<cfset rtnValue["deleteSuccess"] = qGetUserId.Uwf_Id;
-					<cfreturn rtnValue>
-					
+					</cfquery>					
 					<cfif thisUserID EQ qGetUserId.Uwf_Id>
 						<cfset boolOkToDelete = true >
 					<cfelse>
