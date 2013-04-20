@@ -101,8 +101,8 @@ a img {
 #faculty_only .deleteAll{
 	margin-left: 0px;
 	float: left;
-	background-color: #e70038;
-	border:1px solid #e70038;
+	background-color: #9dce2c;
+	border:1px solid #83c41a;
 	display:inline-block;
 	color:#ffffff;
 	font-weight:bold;
@@ -111,8 +111,8 @@ a img {
 	text-decoration:none;
 	}
 
-#faculty_only .deleteAll:hover { background:#bd002e; }
-#faculty_only .deleteAll:active { background:#bd002d; }
+#faculty_only .deleteAll:hover { background:#89be0f; }
+#faculty_only .deleteAll:active { background:#7bae04; }
 
 	
 /*------------------- Search Results ----------------------*/
