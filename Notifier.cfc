@@ -77,8 +77,8 @@ are subscribed to when a new post is made. --->
 <cffunction name="CreateEmailMessage" returntype="string">
 <cfset br="#chr(13)##chr(10)#">
 <cfset message="Hello ArgoPost User, #br#
-You are recieving this message because a post was made in the ArgoPost thread " + #attributes.threadTitle# + 
-"that you are subscribed to under the forum: " + #attributes.forumTitle# + ". #br#
+You are recieving this message because a post was made in the ArgoPost thread: #attributes.threadTitle# #br#  
+that you are subscribed to under the forum: #attributes.forumTitle#. #br#
 Navigate to uwf.edu/seproject/ArgoPost to check out the post!" >
 <cfreturn message>
 </cffunction>
