@@ -52,8 +52,6 @@ function postSucceeded(response) {
 	
 	if(response > 0){
 		alert("Your post was successfully created!");
-		// redirect here
-		//location.reload(true);
 		window.location = "index.cfm?threadId=" + response;
 		getArgoPostPosts(response);
 	}
@@ -67,7 +65,6 @@ function postSucceeded(response) {
  * This function will run if there is an error adding a post to the database.
  */
 function failedToAddPost() {
-	console.log("failed");
 	alert("Your post was not added successfully.\nPlease try again.");
 }
 

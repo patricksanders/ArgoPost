@@ -14,7 +14,7 @@ Filename: Notifier.cfc
 </cffunction>
 
 <!--- This function sends an email to the list of people who are subscribed to a thread --->
-<cffunction name="sendTosubscribersofaCategory" returntype="void" access="remote">
+<cffunction name="sendTosubscribersofACategory" returntype="void" access="remote">
 	<cfargument name="threadID">
 
 <cfinvoke method="setIDS">
