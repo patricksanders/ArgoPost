@@ -59,7 +59,9 @@ Filename: Notifier.cfc
 <cffunction name="getTitles" access="remote">
 	<cfargument name = "threadID" required="true">
 	<cfquery name="getTitles" datasource="ArgoPost_ArgoPost">
-	select t.Title, t.ForumID, f.Title
+	select t.Title as Thread_Title,
+	       t.ForumID as Thread_ForumID, 
+	       f.Title Forums_Title
 	from Threads as t
 	inner join Forums as f
 	on f.ForumID = t.ForumID 
