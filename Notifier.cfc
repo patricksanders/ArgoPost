@@ -68,8 +68,8 @@ Filename: Notifier.cfc
 	on f.ForumID = t.ForumID 
 	where ThreadID = <cfqueryparam value="#arguments.threadID#">;
 	</cfquery>
-<cfset attributes.threadTitle="#getTitles.t.Title#">
-<cfset attributes.forumTitle="#getTitles.f.Title#">
+<cfset attributes.threadTitle="#getTitles.Thread_Title#">
+<cfset attributes.forumTitle="#getTitles.Forums_Title#">
 </cffunction>
 
 <!--- This Function creates the email message that is sent to users of a thread that they 
