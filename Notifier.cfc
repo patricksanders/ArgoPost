@@ -60,7 +60,8 @@ Filename: Notifier.cfc
 	<cfargument name = "threadID" required="true">
 	<cfquery name="getTitles" datasource="ArgoPost_ArgoPost">
 	select t.Title as Thread_Title,
-	       t.ForumID as Thread_ForumID, 
+	       t.ForumID as Thread_ForumID,
+	       f.ForumID as Forum_ForumID,
 	       f.Title Forums_Title
 	from Threads as t
 	inner join Forums as f
