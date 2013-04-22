@@ -62,7 +62,7 @@ Filename: Notifier.cfc
 	select t.Title as Thread_Title,
 	       t.ForumID as Thread_ForumID,
 	       f.ForumID as Forum_ForumID,
-	       f.Title Forums_Title
+	       f.Title as Forums_Title
 	from Threads as t
 	inner join Forums as f
 	on f.ForumID = t.ForumID 
