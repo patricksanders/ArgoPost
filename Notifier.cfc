@@ -20,6 +20,9 @@ Filename: Notifier.cfc
 <cfinvoke method="setIDS">
 <cfinvokeargument name="threadID" value="#Arguments.threadID#">
 </cfinvoke>
+<cfinvoke method="getTitles">
+<cfinvokeargument name="threadID" value="#Arguments.threadID#">
+</cfinvoke> 
 <cfloop list="#attributes.UserIDs#" index="item">
 	<cfinvoke method="setEmail">
 	<cfinvokeargument name="UserID" value="#item#">
@@ -71,7 +74,8 @@ are subscribed to when a new post is made. --->
 <cffunction name="CreateEmailMessage" returntype="string">
 <cfset br="#chr(13)##chr(10)#">
 <cfset message="Hello ArgoPost User, #br#
-You are recieving this message because a post was made in an ArgoPost thread you are subscribed to. #br#
+You are recieving this message because a post was made in the ArgoPost thread " + #attributes.threadTitle# + 
+"that you are subscribed to under the forum: " + #attributes.forumTitle# + ". #br#
 Navigate to uwf.edu/seproject/ArgoPost to check out the post!" >
 <cfreturn message>
 </cffunction>
