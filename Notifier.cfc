@@ -52,6 +52,18 @@ Filename: Notifier.cfc
 <cfset attributes.email="#getEmail.Email#">
 </cffunction>
 
+<!--- This Function gets the The Title of the Thread and the Forum that the new post in created within --->
+<cffunction name="getTitles" access="remote">
+	<cfargument name = "threadID" required="true">
+	<cfquery name="getTitles" datasource="ArgoPost_ArgoPost">
+	select Title, ForumID
+	from Threads
+	inner Join Title
+	on Forums
+	where ThreadID = <cfqueryparam value="#arguments.threadID#">;
+	</cfquery>
+</cffunction>
+
 <!--- This Function creates the email message that is sent to users of a thread that they 
 are subscribed to when a new post is made. --->
 <cffunction name="CreateEmailMessage" returntype="string">
