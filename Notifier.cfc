@@ -59,10 +59,11 @@ Filename: Notifier.cfc
 	select Threads.Title, Threads.ForumID, Forums.Title
 	from Threads
 	inner join Forums
-	on Forums.ForumID = Threads.ThreadID 
+	on Forums.ForumID = Threads.ForumID 
 	where ThreadID = <cfqueryparam value="#arguments.threadID#">;
 	</cfquery>
-<cfset attributes.threadTitle="#getTitles.Title#">	
+<cfset attributes.threadTitle="#getTitles.Threads.Title#">
+<cfset attributes.forumTitle="#getTitles.Forums.Title#">
 </cffunction>
 
 <!--- This Function creates the email message that is sent to users of a thread that they 
