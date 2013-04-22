@@ -56,12 +56,13 @@ Filename: Notifier.cfc
 <cffunction name="getTitles" access="remote">
 	<cfargument name = "threadID" required="true">
 	<cfquery name="getTitles" datasource="ArgoPost_ArgoPost">
-	select Title, ForumID
+	select Threads.Title, Threads.ForumID, Forums.Title
 	from Threads
-	inner Join Title
-	on Forums
+	inner join Forums
+	on Forums.ForumID = Threads.ThreadID 
 	where ThreadID = <cfqueryparam value="#arguments.threadID#">;
 	</cfquery>
+<cfset attributes.threadTitle="#getTitles.Title#">	
 </cffunction>
 
 <!--- This Function creates the email message that is sent to users of a thread that they 
