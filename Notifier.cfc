@@ -63,8 +63,8 @@ Filename: Notifier.cfc
 	       t.ForumID as Thread_ForumID,
 	       f.ForumID as Forum_ForumID,
 	       f.Title as Forums_Title
-	from (Threads as t
-	inner join Forums as f)
+	from Threads as t
+	inner join Forums as f
 	on f.ForumID = t.ForumID 
 	where ThreadID = <cfqueryparam value="#arguments.threadID#">;
 	</cfquery>
