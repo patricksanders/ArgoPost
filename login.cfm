@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
 <title>ArgoPost LogIn</title>
 
 
@@ -39,7 +40,7 @@
 <cfif session.loggedIn eq 0>
         <cfsavecontent variable="footer"><cfinclude template ="index_login_foot.cfm"></cfsavecontent>
      	<cf_uwfLogin loginTimeout="30"
-			loginWelcome="<div align = 'center'><strong>Login</strong></div>"
+			loginWelcome="<div class="customLogin" align = 'center'><strong>Login</strong></div>"
 			logoutMessage="You have logged out of the system."
 			logoutURL="login.cfm"
 			loginIDName="Username"
