@@ -67,7 +67,7 @@ function populateSubComboBox(response) {
 		var threadTitle = result.THREADTITLE;
 		var forumTitle = result.FORUMTITLE;
 		
-		$('#subscrips').append("<option value='" + threadId + "'>" + forumTitle + threadTitle + "</option>");
+		$('#subscrips').append("<option value='" + threadId + "'>" + forumTitle + " - " + threadTitle + "</option>");
 	});	
 }
 /**

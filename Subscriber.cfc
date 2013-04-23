@@ -71,10 +71,10 @@ Filename: Subscriber.cfc
 		<cfset rtnStruct = structNew()>
 		<cftry>
 			<cfquery name="getArgoPostSubs" datasource="ArgoPost_ArgoPost">
-			SELECT Threads.Title AS ThreadTitle, Threads.ThreadID, Forums.Title AS ForumTitle
+			SELECT Threads.Title AS ThreadTitle, Threads.ThreadID  AS ThreadID, Forums.Title AS ForumTitle
 			FROM Forums INNER JOIN (Threads INNER JOIN Notifications ON Threads.ThreadID = Notifications.ThreadID) 
 			ON Forums.ForumID = Threads.ForumID
-			WHERE (((Notifications.UserID)=<cfqueryparam value="#userID#">));
+			WHERE Notifications.UserID = <cfqueryparam value="#userID#">;
 		</cfquery>
 		<cfcatch type="any">
 			<cfreturn rtnStruct>
