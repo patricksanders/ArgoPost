@@ -71,8 +71,8 @@ Filename: Subscriber.cfc
 		<cfset rtnStruct = structNew()>
 		<cftry>
 			<cfquery name="getArgoPostSubs" datasource="ArgoPost_ArgoPost">
-			SELECT Threads.Title, Threads.ThreadID, Forums.Title AS Forum_Title
-			FROM Forums INNER JOIN (Threads INNER JOIN Subscriptions ON Threads.ThreadID = Subscriptions.ThreadID) 
+			SELECT Threads.Title AS ThreadTitle , Threads.ThreadID, Forums.Title AS ForumTitle
+			FROM Forums INNER JOIN (Threads INNER JOIN Notifications ON Threads.ThreadID = Notifications.ThreadID) 
 			ON Forums.ForumID = Threads.ForumID
 			WHERE (((Subscriptions.UserID)=<cfqueryparam value="#userID#">));
 		</cfquery>
@@ -91,21 +91,6 @@ Filename: Subscriber.cfc
 		<cfreturn rtnStruct>
 	</cffunction>
 	
-	<!--- This Function gets the The Title of the Thread and the Forum that the new post in created within --->
-<cffunction name="getTitles" access="remote">
-	<cfargument name = "threadID" required="true">
-	<cfquery name="getTitles" datasource="ArgoPost_ArgoPost">
-	select t.Title as Thread_Title,
-	       t.ForumID as Thread_ForumID,
-	       f.ForumID as Forum_ForumID,
-	       f.Title as Forums_Title
-	from Threads as t
-	inner join Forums as f
-	on f.ForumID = t.ForumID 
-	where ThreadID = <cfqueryparam value="#arguments.threadID#">;
-	</cfquery>
-<cfset attributes.threadTitle="#getTitles.Thread_Title#">
-<cfset attributes.forumTitle="#getTitles.Forums_Title#">
-</cffunction>
+	
 	
 </cfcomponent>
