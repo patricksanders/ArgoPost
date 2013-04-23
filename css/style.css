@@ -80,7 +80,7 @@ a img {
 #faculty_only {float:left; margin:15px 0 0 5px; }
 
 /*------------------- Search Box ----------------------*/
-.customLogin { height:100px; background:url(../images/cas-header-standard.png) no-repeat center;}
+.customLogin { height:150px; background:url(../images/login_header.png) no-repeat center;}
 
 /*------------------- Search Box ----------------------*/
 #searchControls {float:right; padding:15px; margin-bottom:20px; border:1px solid #CCCCCC; background:#f0f0f0;}
