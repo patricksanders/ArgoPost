@@ -182,6 +182,10 @@ function getArgoPostSearchResultsSuccess(response)
 			var threadId = result.THREAD_ID;
 			var loggedInUser = result.LOGGED_IN_USER;
 			var isFaculty = result.IS_FACULTY;
+			
+			var splitDate = createdDate.split(" ");
+			
+			console.log("Split date: " + splitDate);
 
 			var deleteBtn = "&nbsp;";
 			
@@ -217,7 +221,7 @@ function getArgoPostSearchResultsSuccess(response)
 				+ deleteBtn
 				+ "&nbsp;&nbsp;"
 				+ "<span style='font: italic 10px Helvetica, Arial, sans-serif;color:gray;'>Created by "
-				+ userUwfId
+				+ userUwfId + " on " + createdDate
 				+ "</span>"
 				+ "<br />"
 				+ "<div class='posts' id='postIdContent"+postId+"' style='display:none;'>"
