@@ -397,8 +397,9 @@ function getArgoPostPostsSuccess(response)
 			
 			var isFaculty = result.IS_FACULTY;
 			
-			//console.log(result.IS_FACULTY);
-			
+			var splitDate = createdDate.split(" ");
+			createdDate = splitDate[0] + " " + splitDate[1] + " " + splitDate[2];
+						
 			var deleteBtn = "&nbsp;";
 			
 			if(loggedInUser == userUwfId || isFaculty == 1)
@@ -431,7 +432,7 @@ function getArgoPostPostsSuccess(response)
 				+ deleteBtn
 				+ "&nbsp;&nbsp;"
 				+ "<span style='font: italic 10px Helvetica, Arial, sans-serif;color:gray;'>Created by "
-				+ userUwfId
+				+ userUwfId  + " on " + createdDate
 				+ "</span>"
 				+ "<br />"
 				+ "<div class='posts' id='postIdContent"+postId+"' style='display:none;'>"
