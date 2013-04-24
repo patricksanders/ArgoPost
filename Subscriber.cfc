@@ -22,7 +22,8 @@ Filename: Subscriber.cfc
 	<cfset currentUID = getUserID(#session.userName#)>
 	
 	<cfinvoke name="CheckForSubscriptions">
-		
+	<cfinvokeargument name="ThreadID" value="#Arguments.ThreadID#">
+	<cfinvokeargument name="UserID"  value="#Arguments.UserID#">	
 	</cfinvoke>
 	
 	<cftry>
