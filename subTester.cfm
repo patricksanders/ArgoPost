@@ -2,9 +2,9 @@
   <body>
 
 	<!---cfset SESSION.UserID="4"--->
-	<h2>getTitle('1')</h2>
+	<h2>addSubscription('1')</h2>
 	<cftry>
-	<cfinvoke component="Notifier" method="Notifier">
+	<cfinvoke component="Subscriber" method="addSubscription">
 	<cfinvokeargument name="threadID" value="1">
 	</cfinvoke>
 	<!--- <cfdump var="#return#"> --->
