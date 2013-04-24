@@ -184,8 +184,7 @@ function getArgoPostSearchResultsSuccess(response)
 			var isFaculty = result.IS_FACULTY;
 			
 			var splitDate = createdDate.split(" ");
-			
-			console.log("Split date: " + splitDate);
+			createdDate = splitDate[0] + " " + splitDate[1] + " " + splitDate[2];
 
 			var deleteBtn = "&nbsp;";
 			
