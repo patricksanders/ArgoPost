@@ -34,6 +34,23 @@ Filename: Subscriber.cfc
 	<cfreturn true>
 </cffunction>
 
+<cffunction name="CheckForSubscriptions" access="remote" returntype="string">
+
+<cftry>
+<cfquery name="CheckSubscriptions" datasource="ArgoPost_ArgoPost">
+select UserID,ThreadID
+from Notifications
+where UserID = <cfqueryparam value="#currentUID#"  cfsqltype="cf_sql_numeric">
+      ThreadID = <cfqueryparam value="#Arguments.ThreadID#"  cfsqltype="cf_sql_numeric">
+</cfquery>
+<cfset subUID="#CheckSubscriptions.currentUID#">
+<cfset subTID="#CheckSubScriptions_ThreadID#">
+<cfreturn "#subUID#">
+<cfcatch type="any">
+</cfcatch>
+</cftry>
+</cffunction>
+
 
 
 <!---Removes a Subscription to the list of the user's subscripitons. --->
