@@ -4,10 +4,10 @@
 	<!---cfset SESSION.UserID="4"--->
 	<h2>addSubscription('1')</h2>
 	<cftry>
-	<cfinvoke component="Subscriber" method="CheckForSubscriptions" returnVariable="test">
+	<cfinvoke component="Notifier" method="Notifier">
 	<cfinvokeargument name="threadID" value="1">
 	</cfinvoke>
-	<cfoutput>#test#</cfoutput>
+	<!--- <cfoutput>#test#</cfoutput> --->
 	<!--- <cfdump var="#return#"> --->
 	<cfcatch type="any">
 		<h2>ERROR:</h2>
