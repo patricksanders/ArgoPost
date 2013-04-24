@@ -1,10 +1,10 @@
 <html>
-  <body>
+<body>
 
 	<!---cfset SESSION.UserID="4"--->
 	<h2>addSubscription('1')</h2>
 	<cftry>
-	<cfinvoke component = "Subscriber" METHOD = "CheckForSubscriptions" returnVariable = "test">
+	<cfinvoke component="Subscriber" method="CheckForSubscriptions" returnVariable="test">
 	<cfinvokeargument name="threadID" value="1">
 	</cfinvoke>
 	<cfoutput>#test#</cfoutput>
