@@ -55,7 +55,6 @@ where UserID = <cfqueryparam value="#Arguments.currentUID#"  cfsqltype="cf_sql_n
 <cfreturn true>
 <cfelse>
 <cfreturn false>	
-</cfelse>
 </cfif>
 <cfcatch type="any">
 <cfreturn false>
