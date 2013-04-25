@@ -26,7 +26,7 @@ Filename: Subscriber.cfc
 	<cfinvokeargument name="currentUID"  value="#Arguments.UserID#">	
 	</cfinvoke> --->
 	<cftry>
-	<!--- <cfif Check eq true>
+	<!--- <cfif Check eq true and Check2 eq true> 
 	<cfreturn false>
 	<cfelse> --->
 	<cfquery name="Add" datasource="ArgoPost_ArgoPost"> 
@@ -42,7 +42,7 @@ Filename: Subscriber.cfc
 		</cftry>	
 </cffunction>
 
-<cffunction name="CheckForSubscriptions" access="remote" returnType="boolean">
+<!--- <cffunction name="CheckForSubscriptions" access="remote" returnType="boolean">
 <cfargument name="ThreadID" requried="true">
 <cfargument name="currentUID" required="true">
 <cftry>
@@ -64,7 +64,48 @@ having( Count(UserID) and Count(ThreadID) > 1)
 <cfreturn false>
 </cfcatch>
 </cftry>
+</cffunction> --->
+
+<cffunction name"CheckForThreadID" access="remote" returnType="boolean">
+<cfargument name="ThreadID" requried="true">
+<cftry>
+<cfquery name="CheckThreadID" datasource="ArgoPost_ArgoPost">
+select ThreadID
+from Notifications
+where ThreadID = <cfqueryparam value="#Arguments.ThreadID#"  cfsqltype="cf_sql_numeric">
+</cfquery>
+<cfset subTID="#CheckSubscriptions.ThreadID#"> 
+<cfif ThreadID eq subTID>
+<cfreturn true>
+<cfelse>
+<cfreturn false>	
+</cfif>
+<cfcatch type="any">
+<cfreturn false>
+</cfcatch>
+</cftry>
 </cffunction>
+
+<cffunction name"CheckForUserID" access="remote" returnType="boolean">
+<cfargument name="currentUID" required="true">
+<cftry>
+<cfquery name="CheckUserID" datasource="ArgoPost_ArgoPost">
+select UserID
+from Notifications
+where UserID = <cfqueryparam value="#Arguments.UserID#"  cfsqltype="cf_sql_numeric">
+</cfquery>
+<cfset subUID="#CheckSubscriptions.UserID#">
+<cfif currentUID eq subUID>
+<cfreturn true>
+<cfelse>
+<cfreturn false>	
+</cfif>
+<cfcatch type="any">
+<cfreturn false>
+</cfcatch>
+</cftry>
+</cffunction>
+
 
 
 
