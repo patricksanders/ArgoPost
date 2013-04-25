@@ -20,26 +20,27 @@ Filename: Subscriber.cfc
 
 	<cfargument name="ThreadID" type="int">
 	<cfset currentUID = getUserID(#session.userName#)>
-	
-	 <cfinvoke method="CheckForSubscriptions" returnVarible="Check">
-	<cfinvokeargument name="ThreadID" value="#Arguments.ThreadID#">
-	<cfinvokeargument name="currentUID"  value="#Arguments.UserID#">	
-	</cfinvoke> 
-	<cfif Check eq true>
-	<cfreturn false>
-	<cfelse> 
+	 
 	<cftry>
 	<cfquery name="Add" datasource="ArgoPost_ArgoPost"> 
 			insert into Notifications(UserID,ThreadID)
 			values(<cfqueryparam value="#currentUID#"  cfsqltype="cf_sql_numeric">,
 					<cfqueryparam value="#Arguments.ThreadID#"  cfsqltype="cf_sql_numeric">);
 	</cfquery>
-	<cfreturn true>
+	
+	<cfinvoke method="CheckForSubscriptions" returnVarible="Check">
+	<cfinvokeargument name="ThreadID" value="#Arguments.ThreadID#">
+	<cfinvokeargument name="currentUID"  value="#Arguments.UserID#">	
+	</cfinvoke>
+	<cfif Check eq true>
+	<cfreturn false>
+	<cfelse> 
 	<cfcatch type="any">
 			<cfreturn false>
 		</cfcatch>
 		</cftry>	
-	 </cfif> 
+	 <cfreturn true>
+	 </cfif>
 </cffunction>
 
 <cffunction name="CheckForSubscriptions" access="remote" returnType="boolean">
