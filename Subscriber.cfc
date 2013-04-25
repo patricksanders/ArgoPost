@@ -51,7 +51,7 @@ select UserID,ThreadID
 from Notifications
 where UserID = <cfqueryparam value="#Arguments.UserID#"  cfsqltype="cf_sql_numeric">
       ThreadID = <cfqueryparam value="#Arguments.ThreadID#"  cfsqltype="cf_sql_numeric">
-having( Count(UserID) > 1)      
+having( Count(UserID) and Count(ThreadID) > 1)      
 </cfquery>
 <cfset subUID="#CheckSubscriptions.UserID#">
 <cfset subTID="#CheckSubscriptions.ThreadID#"> 
