@@ -98,7 +98,7 @@ where ThreadID = <cfqueryparam value="#Arguments.ThreadID#"  cfsqltype="cf_sql_n
 <cfquery name="CheckUserID" datasource="ArgoPost_ArgoPost">
 select UserID
 from Notifications
-where UserID = <cfqueryparam value="#Arguments.UserID#"  cfsqltype="cf_sql_numeric">
+where UserID = <cfqueryparam value="#Arguments.UserID#">
 </cfquery>
 <cfset subUID="#CheckSubscriptions.UserID#">
 <cfif currentUID eq subUID>
