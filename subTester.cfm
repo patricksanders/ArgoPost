@@ -8,7 +8,7 @@
 	<cfinvokeargument name="threadID" value="1">
 	<cfinvokeargument name="userID" value="2">
 	</cfinvoke>
-	<cfoutput>#test#</cfoutput> 
+	<cfdump var="#test#">
 	<!--- <cfdump var="#return#"> --->
 	<cfcatch type="any">
 		<h2>ERROR:</h2>
