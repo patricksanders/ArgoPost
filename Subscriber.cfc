@@ -51,7 +51,7 @@ where UserID = <cfqueryparam value="#Arguments.currentUID#"  cfsqltype="cf_sql_n
 </cfquery>
 <cfset subUID="#CheckSubscriptions.currentUID#">
 <cfset subTID="#CheckSubscriptions.ThreadID#"> 
-<cfif ThreadID == subTID>
+<cfif ThreadID eq subTID>
 <cfreturn true>
 <cfelse>
 <cfreturn false>	
