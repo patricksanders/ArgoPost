@@ -8,13 +8,14 @@
 		<cfargument name="postTitle"  type="string" required="true" />
 		<cfargument name="postContent" type="string" required="true" />
 		<cfargument name="threadID" type="numeric" required="true" />
+		<cfargument name="daysToExpire" type="numeric" required="true" />
 			
 		<!--- Get all the dates needed for the post --->
 		<cfset postDate = Now()>
 		<cfset postDate = DateFormat(postDate, "mm/dd/yyyy")>
 		<cfset dateLastModified = Now()>
 		<cfset dateLastModified = DateFormat(dateLastModified, "mm/dd/yyyy")>
-		<cfset expDate = Now() + 30>
+		<cfset expDate = Now() + #arguments.daysToExpire#>
 		<cfset expDate = DateFormat(expDate, "mm/dd/yyyy")>
 		
 		<cfset currentUID = getUserID(#session.userName#)>

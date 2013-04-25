@@ -7,8 +7,12 @@
 	var aThreadID = document.getElementById("threads");
 	//get forum title from dropdown menu in the post UI
 	var aForumTitle = document.getElementById("forums");
+	//get expiration date entered by the user
+	var expirationDate = document.getElementById("expirationDate");
 	//this variable is used to check if a field was left empty
 	var isEmptyField = false;
+	//this variable will be used to validate the expiration date
+	var validDate = true;
 	
 	//check if the title or description is null and set isError if needed
 	if (isEmpty(aTitle.value) === true || isEmpty(aDescription.value) === true) {
@@ -24,12 +28,17 @@
 	if(aForumTitle.value == "Select a forum"){
 		isEmptyField = true;
 	}
+	
+	//check that an expiration date is valid (between 1 and 30 days) and write error if needed
+	if(!validateDate(expirationDate.value)){
+		validDate = false;
+	}
 
 	//if there is an empty field send user back to post page with an error
 	//explaining that all fields must be completed
-	if (isEmptyField === true) {
-		writeFormError(document.aPost);
-	} 
+	if (isEmptyField === true || validDate === false) {
+		writeFormError(document.aPost, validDate);
+	}
 	else {
 		$.ajax({
 			type : "POST",
@@ -77,16 +86,28 @@ function isEmpty(value) {
 	return false;
 }
 
+/** This function validates that the expiration date entered by the user is between 1 and 30 days */
+function validateDate(numDays){
+	if(numDays < 1 || numDays > 30){
+		return false;
+	}	
+	else if(isNaN(numDays)){
+		return false;
+	}	
+	return true;
+}
+
 
 /**
  *This function is used to alert the user that a field has been left empty. 
  */
-function writeFormError(form1){
+function writeFormError(form1, validDate){
 	document.getElementById('titleErrorMsg').innerHTML = "";
 	document.getElementById('descriptionErrorMsg').innerHTML = "";
 	document.getElementById('threadsErrorMsg').innerHTML = "";
 	document.getElementById('forumsErrorMsg').innerHTML = "";
-	
+	document.getElementById('expirationDateError').innerHTML = "";
+
 	if(form1.title.value==""){
 		document.getElementById('titleErrorMsg').innerHTML = "*Please enter a title.";
 	}
@@ -101,6 +122,10 @@ function writeFormError(form1){
 	
 	if(form1.forums.value=="Select a forum"){
 		document.getElementById('forumsErrorMsg').innerHTML = "*Please select a forum.";
+	}
+	
+	if(validDate === false){
+		document.getElementById('expirationDateError').innerHTML = "*Please enter between 1 and 30 days to expire.";
 	}
 }
 
