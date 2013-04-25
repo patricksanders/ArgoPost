@@ -21,10 +21,10 @@ Filename: Subscriber.cfc
 	<cfargument name="ThreadID" type="int">
 	<cfset currentUID = getUserID(#session.userName#)>
 	
-	<!---<cfinvoke method="CheckForSubscriptions">
+	<cfinvoke method="CheckForSubscriptions" returnVarible="Check">
 	<cfinvokeargument name="ThreadID" value="#Arguments.ThreadID#">
-	<cfinvokeargument name="UserID"  value="#Arguments.UserID#">	
-	</cfinvoke> --->
+	<cfinvokeargument name="currentUID"  value="#Arguments.UserID#">	
+	</cfinvoke> 
 	
 	<cftry>
 	<cfquery name="Add" datasource="ArgoPost_ArgoPost"> 
@@ -46,11 +46,11 @@ Filename: Subscriber.cfc
 <cfquery name="CheckSubscriptions" datasource="ArgoPost_ArgoPost">
 select UserID,ThreadID
 from Notifications
-where UserID = <cfqueryparam value="#Arguments.UserID#"  cfsqltype="cf_sql_numeric">
+where UserID = <cfqueryparam value="#Arguments.currentUID#"  cfsqltype="cf_sql_numeric">
       ThreadID = <cfqueryparam value="#Arguments.ThreadID#"  cfsqltype="cf_sql_numeric">
 </cfquery>
 <cfset subUID="#CheckSubscriptions.currentUID#">
-<cfset subTID="#CheckSubScriptions_ThreadID#">
+<cfset subTID="#CheckSubScriptions.ThreadID#">
 <cfreturn "#subTID#">
 <cfcatch type="any">
 </cfcatch>
