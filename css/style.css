@@ -136,6 +136,19 @@ a img {
 	}
 #searchResults a { font-size:22px; font-weight:normal; padding-right:15px; }
 */
+
+/*------------------------- Error Messages ------------------*/
+
+#forumsErrorMsg { color: #FF0000; font-style: italic;}
+
+#threadsErrorMsg { color: #FF0000; font-style: italic;}
+
+#titleErrorMsg { color: #FF0000; font-style: italic;}
+
+#descriptionErrorMsg { color: #FF0000; font-style: italic;}
+
+#expirationDateError { color: #FF0000; font-style: italic;}
+
 /*------------------------- Footer ------------------------*/
 #footer {
 	background:url(../images/bg-footer.png) repeat-x;
