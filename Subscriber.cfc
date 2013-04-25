@@ -72,7 +72,7 @@ having( Count(UserID) and Count(ThreadID) > 1)
 </cftry>
 </cffunction> --->
 
-<cffunction name"CheckForThreadID" access="remote" returnType="boolean">
+<cffunction name="CheckForThreadID" access="remote" returnType="boolean">
 <cfargument name="ThreadID" requried="true">
 <cftry>
 <cfquery name="CheckThreadID" datasource="ArgoPost_ArgoPost">
