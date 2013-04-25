@@ -39,7 +39,7 @@ Filename: Subscriber.cfc
 	<cfreturn true>
 </cffunction>
 
-<cffunction name="CheckForSubscriptions" access="remote" returntype="string">
+<cffunction name="CheckForSubscriptions" access="remote" returnType="boolean">
 <cfargument name="ThreadID" requried="true">
 <cfargument name="currentUID" required="true">
 <cftry>
@@ -50,9 +50,15 @@ where UserID = <cfqueryparam value="#Arguments.currentUID#"  cfsqltype="cf_sql_n
       ThreadID = <cfqueryparam value="#Arguments.ThreadID#"  cfsqltype="cf_sql_numeric">
 </cfquery>
 <cfset subUID="#CheckSubscriptions.currentUID#">
-<cfset subTID="#CheckSubScriptions.ThreadID#">
-<cfreturn "#subTID#">
+<cfset subTID="#CheckSubscriptions.ThreadID#"> 
+<cfif ThreadID == subTID>
+<cfreturn true>
+<cfelse>
+<cfreturn false>	
+</cfelse>
+</cfif>
 <cfcatch type="any">
+<cfreturn false>
 </cfcatch>
 </cftry>
 </cffunction>
