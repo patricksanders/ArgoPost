@@ -21,10 +21,10 @@ Filename: Subscriber.cfc
 	<cfargument name="ThreadID" type="int">
 	<cfset currentUID = getUserID(#session.userName#)>
 	
-	<cfinvoke method="CheckForSubscriptions">
+	<!---<cfinvoke method="CheckForSubscriptions">
 	<cfinvokeargument name="ThreadID" value="#Arguments.ThreadID#">
 	<cfinvokeargument name="UserID"  value="#Arguments.UserID#">	
-	</cfinvoke>
+	</cfinvoke> --->
 	
 	<cftry>
 	<cfquery name="Add" datasource="ArgoPost_ArgoPost"> 
