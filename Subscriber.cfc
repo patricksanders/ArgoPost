@@ -92,7 +92,7 @@ where ThreadID = <cfqueryparam value="#Arguments.ThreadID#"  cfsqltype="cf_sql_n
 </cftry>
 </cffunction>
 
-<cffunction name"CheckForUserID" access="remote" returnType="boolean">
+<cffunction name="CheckForUserID" access="remote" returnType="boolean">
 <cfargument name="currentUID" required="true">
 <cftry>
 <cfquery name="CheckUserID" datasource="ArgoPost_ArgoPost">
