@@ -33,7 +33,12 @@ Filename: Subscriber.cfc
 	<cfinvokeargument name="currentUID"  value="#Arguments.UserID#">	
 	</cfinvoke>
 	<cfif Check eq true>
-	<cfreturn false>
+	
+	<cfinvoke method="removefromSubscriptions">
+	<cfinvokeargument name="ThreadID" value="#Arguments.ThreadID#">	
+	</cfinvoke>
+	
+	<cfreturn true>
 	<cfelse> 
 	<cfcatch type="any">
 			<cfreturn false>
