@@ -39,13 +39,13 @@ Filename: Subscriber.cfc
 	</cfinvoke>
 	
 	<cfreturn true>
-	<cfelse> 
+	<cfelse>
+	<cfreturn true>
+	 </cfif>
 	<cfcatch type="any">
 			<cfreturn false>
 		</cfcatch>
 		</cftry>	
-	 <cfreturn true>
-	 </cfif>
 </cffunction>
 
 <cffunction name="CheckForSubscriptions" access="remote" returnType="boolean">
