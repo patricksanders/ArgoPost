@@ -41,12 +41,12 @@ Filename: Subscriber.cfc
 
 <cffunction name="CheckForSubscriptions" access="remote" returntype="string">
 <cfargument name="ThreadID" requried="true">
-<cfargument name="UserID" required="true">
+<cfargument name="currentUID" required="true">
 <cftry>
 <cfquery name="CheckSubscriptions" datasource="ArgoPost_ArgoPost">
 select UserID,ThreadID
 from Notifications
-where UserID = <cfqueryparam value="#currentUID#"  cfsqltype="cf_sql_numeric">
+where UserID = <cfqueryparam value="#Arguments.UserID#"  cfsqltype="cf_sql_numeric">
       ThreadID = <cfqueryparam value="#Arguments.ThreadID#"  cfsqltype="cf_sql_numeric">
 </cfquery>
 <cfset subUID="#CheckSubscriptions.currentUID#">
