@@ -6,7 +6,7 @@
 	<cftry>
 	<cfinvoke component="Subscriber" method="CheckForSubscriptions" returnVariable="test">
 	<cfinvokeargument name="threadID" value="1">
-	<cfinvokrargument name="userID" value="2">
+	<cfinvokeargument name="userID" value="2">
 	</cfinvoke>
 	<cfoutput>#test#</cfoutput> 
 	<!--- <cfdump var="#return#"> --->
