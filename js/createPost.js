@@ -43,7 +43,7 @@
 		$.ajax({
 			type : "POST",
 			url : "Post.cfc?method=addPost&returnformat=json",
-			data: {postTitle: aTitle.value, postContent: aDescription.value, threadID: aThreadID.value},
+			data: {postTitle: aTitle.value, postContent: aDescription.value, threadID: aThreadID.value, daysToExpire: expirationDate.value},
 			dataType : "json",
 			success : postSucceeded,
 			failure : failedToAddPost
