@@ -13,102 +13,31 @@ Filename: Subscriber.cfc
 	Method="getUserID"
 	userName="#Session.userName#"
 	returnVariable ="userIDnum">
+</cfinvoke>
 	
 <cfset userID = #userIDnum#>
 <!---Adds a Subscription to the list of the user's subscripitons. --->
 <cffunction name="AddToSubscriptions" access="remote" returntype="boolean">
-
-	<cfargument name="ThreadID" type="int">
-	<cfset currentUID = getUserID(#session.userName#)>
+	<cfargument name="ThreadID" type="numeric" required="true">
+	<cfset currentUID=getUserID(#session.userName#)>
 	
-	<!--- <cfinvoke method="CheckForSubscriptions" returnVarible="Check">
-	<cfinvokeargument name="ThreadID" value="#Arguments.ThreadID#">
-	<cfinvokeargument name="currentUID"  value="#Arguments.UserID#">	
-	</cfinvoke> --->
-	<cftry>
-	<cfquery name="Add" datasource="ArgoPost_ArgoPost"> 
+		<cftry>
+		<cfquery name="Add" datasource="ArgoPost_ArgoPost"> 
 			insert into Notifications(UserID,ThreadID)
-			values(<cfqueryparam value="#currentUID#"  cfsqltype="cf_sql_numeric">,
-					<cfqueryparam value="#Arguments.ThreadID#"  cfsqltype="cf_sql_numeric">);
-	</cfquery>
-	<cfreturn true> 
-	<cfcatch type="any">
-	<cfreturn false>
+			values(<cfqueryparam value="#currentUID#" cfsqltype="cf_sql_numeric">,
+					<cfqueryparam value="#arguments.ThreadID#" cfsqltype="cf_sql_numeric">);
+		</cfquery>
+		<cfcatch type="any">
+			<cfreturn false>
 		</cfcatch>
 		</cftry>	
+	<cfreturn true>	
 </cffunction>
-
-<!--- <cffunction name="CheckForSubscriptions" access="remote" returnType="boolean">
-<cfargument name="ThreadID" requried="true">
-<cfargument name="currentUID" required="true">
-<cftry>
-<cfquery name="CheckSubscriptions" datasource="ArgoPost_ArgoPost">
-select UserID,ThreadID
-from Notifications
-where UserID = <cfqueryparam value="#Arguments.UserID#"  cfsqltype="cf_sql_numeric">
-      ThreadID = <cfqueryparam value="#Arguments.ThreadID#"  cfsqltype="cf_sql_numeric">
-having( Count(UserID) and Count(ThreadID) > 1)      
-</cfquery>
-<cfset subUID="#CheckSubscriptions.UserID#">
-<cfset subTID="#CheckSubscriptions.ThreadID#"> 
-<cfif ThreadID eq subTID>
-<cfreturn true>
-<cfelse>
-<cfreturn false>	
-</cfif>
-<cfcatch type="any">
-<cfreturn false>
-</cfcatch>
-</cftry>
-</cffunction> --->
-
-<!--- <cffunction name="CheckForThreadID" access="remote" returnType="boolean">
-<cfargument name="ThreadID" requried="true">
-<cftry>
-<cfquery name="CheckThreadID" datasource="ArgoPost_ArgoPost">
-select ThreadID
-from Notifications
-where ThreadID = <cfqueryparam value="#Arguments.ThreadID#"  cfsqltype="cf_sql_numeric">
-</cfquery>
-<cfset subTID="#CheckSubscriptions.ThreadID#"> 
-<cfif ThreadID eq subTID>
-<cfreturn true>
-<cfelse>
-<cfreturn false>	
-</cfif>
-<cfcatch type="any">
-<cfreturn false>
-</cfcatch>
-</cftry>
-</cffunction>
-
-<cffunction name="CheckForUserID" access="remote" returnType="boolean">
-<cfargument name="currentUID" required="true">
-<cftry>
-<cfquery name="CheckUserID" datasource="ArgoPost_ArgoPost">
-select UserID
-from Notifications
-where UserID = <cfqueryparam value="#Arguments.UserID#" cfsqltype="cf_sql_varchar">
-</cfquery>
-<cfset subUID="#CheckSubscriptions.UserID#">
-<cfif currentUID eq subUID>
-<cfreturn true>
-<cfelse>
-<cfreturn false>	
-</cfif>
-<cfcatch type="any">
-<cfreturn false>
-</cfcatch>
-</cftry>
-</cffunction> --->
-
-
-
 
 <!---Removes a Subscription to the list of the user's subscripitons. --->
 <cffunction name="removefromSubscriptions" access="remote" returntype="void">
 
-	<cfargument name="ThreadID" type="int">
+	<cfargument name="ThreadID" type="numeric">
 	<cfset currentUID = getUserID(#session.userName#)>
 
 	<cfquery name="Delete" datasource="ArgoPost_ArgoPost">
@@ -137,17 +66,21 @@ where UserID = <cfqueryparam value="#Arguments.UserID#" cfsqltype="cf_sql_varcha
 
 <!--- Gets a JSON object representing the Forums in ArgoPost --->
 	<cffunction name="getSubs" access="remote" returnFormat="JSON" returnType="struct">	
+	
+		<cfset currentUID = getUserID(#session.userName#)>
+		
 		<cfset rtnStruct = structNew()>
 		<cftry>
 			<cfquery name="getArgoPostSubs" datasource="ArgoPost_ArgoPost">
 			SELECT Threads.Title AS ThreadTitle, Threads.ThreadID  AS ThreadID, Forums.Title AS ForumTitle
 			FROM Forums INNER JOIN (Threads INNER JOIN Notifications ON Threads.ThreadID = Notifications.ThreadID) 
 			ON Forums.ForumID = Threads.ForumID
-			WHERE Notifications.UserID = <cfqueryparam value="#userID#">;
+			WHERE Notifications.UserID = <cfqueryparam value="#currentUID#">;
 		</cfquery>
 		<cfcatch type="any">
 			<cfreturn rtnStruct>
 		</cfcatch>
+		
 		</cftry>
 		<cfset i = 0>
 		<cfloop query="getArgoPostSubs">

@@ -6,27 +6,36 @@ function createSubscription() {
 	//this variable is used to check if a field was left empty
 	var isEmptyField = false;
 	
-	//check that a thread has been selected
-	if(aThreadID.value == "Select a thread"){
-		isEmptyField = true;
+	//check if the user is already subscribed to this thread
+	var isSubscribed = alreadySubscribed(aThreadID.value);
+	
+	//if already subscribed alert user they are already subscribed, else add subscription
+	if(isSubscribed === true){
+		alert("You have already subscribed to this topic.");
 	}
-	//check that a forum has been selected
-	if(aForumTitle.value == "Select a forum"){
-		isEmptyField = true;
-	}
-	//if there is an empty field send user back to post page with an error
-	//explaining that all fields must be completed
-	if (isEmptyField === true) {
-		alert("You must select a forum and thread.");
-
-	} 
-	else {
-		$.ajax({
-			type : "GET",
-			url : "Subscriber.cfc?wsdl&method=AddToSubscriptions&ThreadID="+aThreadID.value,
-			success : subscriptionSucceeded,
-			failure : failedToAddSubscription
-		});
+	else{	
+	
+		//check that a thread has been selected
+		if(aThreadID.value == "Select a thread"){
+			isEmptyField = true;
+		}
+		//check that a forum has been selected
+		if(aForumTitle.value == "Select a forum"){
+			isEmptyField = true;
+		}
+		//if there is an empty field send user back to post page with an error
+		//explaining that all fields must be completed
+		if (isEmptyField === true) {
+			alert("You must select a forum and thread.");
+		}	 
+		else {
+			$.ajax({
+				type : "GET",
+				url : "Subscriber.cfc?wsdl&method=AddToSubscriptions&ThreadID="+aThreadID.value,
+				success : subscriptionSucceeded,
+				failure : failedToAddSubscription
+			});
+		}
 	}
 }
 
@@ -39,6 +48,23 @@ function subscriptionSucceeded(response) {
 function failedToAddSubscription() {
 	document.getElementById('addSubFailure').innerHTML = "*Subscription was not successfully created. Please try again."
 	
+}
+
+/** This function checks if a user is already subscribed to a topic before a subscription is added
+	It is used to prevent duplicate subscriptions. */
+function alreadySubscribed(threadID){
+	//get the select box
+	var select = document.getElementById("subscrips");
+	
+	//iterate through the select box to see if thread is already in the list
+	for(var i = 0; i < select.length; i++){
+		if(select[i].value == threadID){
+			//thread is already in list
+			return true;
+		}
+	}
+	//thread is not in the list
+	return false;
 }
 
 /**
