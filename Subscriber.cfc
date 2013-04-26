@@ -26,24 +26,14 @@ Filename: Subscriber.cfc
 	<cfinvokeargument name="currentUID"  value="#Arguments.UserID#">	
 	</cfinvoke> --->
 	<cftry>
-	<cfinvoke method="CheckForThreadID" returnVarible="Check">
-	<cfinvokeargument name="ThreadID" value="#Arguments.ThreadID#">	
-	</cfinvoke> 
-	<cfinvoke method="CheckForUserID" returnVarible="Check2">
-	<cfinvokeargument name="currentUID"  value="#Arguments.UserID#">	
-	</cfinvoke>
-	<cfif (Check eq true) and (Check2 eq true)> 
-	<cfreturn false>
-	<cfelse> 
 	<cfquery name="Add" datasource="ArgoPost_ArgoPost"> 
 			insert into Notifications(UserID,ThreadID)
 			values(<cfqueryparam value="#currentUID#"  cfsqltype="cf_sql_numeric">,
 					<cfqueryparam value="#Arguments.ThreadID#"  cfsqltype="cf_sql_numeric">);
 	</cfquery>
-	<cfreturn true>
-	</cfif> 
+	<cfreturn true> 
 	<cfcatch type="any">
-			<cfreturn false>
+	<cfreturn false>
 		</cfcatch>
 		</cftry>	
 </cffunction>
